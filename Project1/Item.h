@@ -18,7 +18,11 @@ class CItem
 	///Copy Constructor Disabled
 	CItem(const CItem&) = delete;
 
+	///
+	int GetX() { return mPosX;	}
+
 private:
 	CGame mGame;
+	int mPosX;
 };
 
