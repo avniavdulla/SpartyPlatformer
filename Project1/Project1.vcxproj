@@ -185,16 +185,25 @@
   <ItemGroup>
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="Door.h" />
+    <ClInclude Include="PlayingArea.h" />
+    <ClInclude Include="TuitionUp.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Project1.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildFrm.cpp" />
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="Door.cpp" />
+    <ClCompile Include="PlayingArea.cpp" />
+    <ClCompile Include="TuitionUp.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -203,6 +212,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Project1.cpp" />
+    <ClCompile Include="XmlNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc" />
