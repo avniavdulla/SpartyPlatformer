@@ -25,6 +25,10 @@ CChildView::~CChildView()
 
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
+	ON_COMMAND(ID_LEVEL_LEVEL0, &CChildView::OnLevelLevel0)
+	ON_COMMAND(ID_LEVEL_LEVEL1, &CChildView::OnLevelLevel1)
+	ON_COMMAND(ID_LEVEL_LEVEL2, &CChildView::OnLevelLevel2)
+	ON_COMMAND(ID_LEVEL_LEVEL3, &CChildView::OnLevelLevel3)
 END_MESSAGE_MAP()
 
 
@@ -53,3 +57,36 @@ void CChildView::OnPaint()
 	// Do not call CWnd::OnPaint() for painting messages
 }
 
+
+
+/**
+ * Handler for Level 0
+ */
+void CChildView::OnLevelLevel0()
+{
+	// TODO: Add your command handler code here
+}
+
+/**
+ * Handler for Level 1
+ */
+void CChildView::OnLevelLevel1()
+{
+	// TODO: Add your command handler code here
+}
+
+/**
+ * Handler for Level 2
+ */
+void CChildView::OnLevelLevel2()
+{
+	// TODO: Add your command handler code here
+}
+
+/**
+ * Handler for Level 3
+ */
+void CChildView::OnLevelLevel3()
+{
+	// TODO: Add your command handler code here
+}
