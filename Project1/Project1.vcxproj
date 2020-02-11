@@ -186,6 +186,9 @@
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="ItemVisitor.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="PlayingArea.h" />
     <ClInclude Include="TuitionUp.h" />
     <ClInclude Include="framework.h" />
@@ -203,6 +206,9 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="ItemVisitor.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="PlayingArea.cpp" />
     <ClCompile Include="TuitionUp.cpp" />
     <ClCompile Include="Game.cpp" />
