@@ -9,17 +9,22 @@
 #pragma once
 
 #include <string>
+#include "XmlNode.h"
+
+class CLevel;
 
 class CItem
 {
-	///Constructor - Uses the game it is part of 
-	///Game doesn't exist rn but this should be fine once it does
-	CItem(CGame* game);
-
+public:
 	///Default Constructor Disabled
 	CItem() = delete;
+
 	///Copy Constructor Disabled
 	CItem(const CItem&) = delete;
+
+	virtual ~CItem();
+
+	void SetImage(const std::wstring& file);
 
 	/**
 	* Function used to draw an item
@@ -27,16 +32,22 @@ class CItem
 	*/
 	virtual void Draw(Gdiplus::Graphics* graphics);
 
+	/** The directory were the images are stored */
+	static const std::wstring ImagesDirectory;
+
+protected:
+	CItem(CLevel* level);
+
 private:
-	CGame mGame;
+	CLevel *mLevel;
 
 	std::string mID = ""; ///< item ID
 	
 	std::unique_ptr<Gdiplus::Bitmap> mImage; ///< item Image
 
+	std::wstring mFile; ///< The file for this Item
+
 	double mPosX; ///< X position of item
 	double mPosY; ///< Y position of item
-
-
 };
 
