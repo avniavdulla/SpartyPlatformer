@@ -8,6 +8,7 @@
 #include "Item.h"
 #include "Level.h"
 
+
 using namespace std;
 using namespace Gdiplus;
 
@@ -63,7 +64,7 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
         double hit = mImage->GetHeight();
 
         graphics->DrawImage(mImage.get(),
-            float(mPosX - wid / 2), float(mPosY - hit / 2),
+            float(mP.X() - wid / 2), float(mP.Y()  - hit / 2),
             (float)wid, (float)hit);
     }
 
