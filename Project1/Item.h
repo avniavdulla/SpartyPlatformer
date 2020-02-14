@@ -10,6 +10,7 @@
 
 #include <string>
 #include "XmlNode.h"
+#include "Vector.h"
 
 class CLevel;
 
@@ -47,7 +48,6 @@ private:
 
 	std::wstring mFile; ///< The file for this Item
 
-	double mPosX; ///< X position of item
-	double mPosY; ///< Y position of item
+	CVector mP; // < item position
 };
 
