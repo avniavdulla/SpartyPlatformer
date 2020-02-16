@@ -9,10 +9,9 @@
 #include<vector>
 #include"Item.h"
 #include"Game.h"
+#include "Gnome.h"
 
 using namespace Gdiplus;
-
-class CGame;
 
 /**
 * Class representing a level
@@ -20,23 +19,31 @@ class CGame;
 class CLevel
 {
 public:
-	//default contructor deleted
 	CLevel();
-	~CLevel();
-
-	/// copy constructor disabled
-	CLevel(const CLevel&) = delete;
+	
+	virtual ~CLevel();
 
 	void Add(std::shared_ptr<CItem> item);
 
+	void Draw(Gdiplus::Graphics* graphics, int scroll);
+
+	void Update(double elapsed);
 
 private:
 	std::unique_ptr<Gdiplus::Bitmap> mBackground; ///< Background image
 	
-	/// holds all items that could go in a level
-	std::vector<std::shared_ptr<CItem> >mItems; 
+	/// The player-controlled Gnome object
+	CGnome* mGnome;
 
-	CGame mGame;
+	/// The Items contained in our Level
+	std::vector<std::shared_ptr<CItem> > mItems;
+
+	// Level dimensions
+	double mHeight = 1024; ///< Height of the level in pixels
+	double mWidth = 1024; ///< Width of the level in pixels
+
+	/// Start Vector for the Gnome;
+	CVector mStart;
 
 };
 

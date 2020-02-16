@@ -1,21 +1,29 @@
-
-// ChildView.cpp : implementation of the CChildView class
-//
+/**
+ * \file ChildView.cpp
+ *
+ * \author Sean Nguyen
+ */
 
 #include "pch.h"
 #include "framework.h"
+
+#include <algorithm>
 #include "Project1.h"
 #include "ChildView.h"
+#include "DoubleBufferDC.h"
+
+using namespace Gdiplus;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-
-// CChildView
+/// Frame duration in milliseconds
+const int FrameDuration = 30;
 
 CChildView::CChildView()
 {
+	srand((unsigned int)time(nullptr));
 }
 
 CChildView::~CChildView()
@@ -29,6 +37,8 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_LEVEL_LEVEL1, &CChildView::OnLevelLevel1)
 	ON_COMMAND(ID_LEVEL_LEVEL2, &CChildView::OnLevelLevel2)
 	ON_COMMAND(ID_LEVEL_LEVEL3, &CChildView::OnLevelLevel3)
+	ON_WM_ERASEBKGND()
+    ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -50,11 +60,41 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 
 void CChildView::OnPaint() 
 {
-	CPaintDC dc(this); // device context for painting
-	
-	// TODO: Add your message handler code here
-	
-	// Do not call CWnd::OnPaint() for painting messages
+	CPaintDC paintDC(this); // device context for painting
+	CDoubleBufferDC dc(&paintDC); // device context for painting
+    Graphics graphics(dc.m_hDC); // Create GDI+ graphics context
+
+    CRect rect;
+    GetClientRect(&rect);
+
+    mGame.OnDraw(&graphics, rect.Width(), rect.Height());
+
+    if (mFirstDraw)
+    {
+        mFirstDraw = false;
+        SetTimer(1, FrameDuration, nullptr);
+
+        /*
+         * Initialize the elapsed time system
+         */
+        LARGE_INTEGER time, freq;
+        QueryPerformanceCounter(&time);
+        QueryPerformanceFrequency(&freq);
+
+        mLastTime = time.QuadPart;
+        mTimeFreq = double(freq.QuadPart);
+    }
+
+    /*
+     * Compute the elapsed time since the last draw
+     */
+    LARGE_INTEGER time;
+    QueryPerformanceCounter(&time);
+    long long diff = time.QuadPart - mLastTime;
+    double elapsed = double(diff) / mTimeFreq;
+    mLastTime = time.QuadPart;
+
+    mGame.Update(elapsed);
 }
 
 
@@ -89,4 +129,27 @@ void CChildView::OnLevelLevel2()
 void CChildView::OnLevelLevel3()
 {
 	// TODO: Add your command handler code here
+}
+
+/**
+ * Erase the background
+ *
+ * This is disabled to eliminate flicker
+ * \param pDC Device context
+ * \returns FALSE
+ */
+BOOL CChildView::OnEraseBkgnd(CDC* pDC)
+{
+	return FALSE;
+}
+
+
+/**
+ * Handle timer events
+ * \param nIDEvent The timer event ID
+ */
+void CChildView::OnTimer(UINT_PTR nIDEvent)
+{
+    Invalidate();
+    CWnd::OnTimer(nIDEvent);
 }

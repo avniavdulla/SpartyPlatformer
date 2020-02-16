@@ -6,93 +6,64 @@
 
 #include "pch.h"
 #include "Game.h"
-#include "XmlNode.h"
+#include "Level.h"
+#include "Gnome.h"
+
+ // Testing includes
+#include "Item.h"
+#include "Gnome.h"
+#include "Background.h"
+#include "Obstacle.h"
+#include "Platform.h"
 
 using namespace std;
 using namespace Gdiplus;
-using namespace xmlnode;
+
+/// Game area height in virtual pixels
+const static int Height = 1024;
 
 /**
  * Constructor
  */
 CGame::CGame()
 {
-    mLevel = NULL;
-    mScoreboard = NULL;
+    auto platform = make_shared<CPlatform>(&mLevel);
+    platform->SetLocation(400, 976);
+    platform->SetDimensions(160, 32);
+    mLevel.Add(platform);
+    auto gnome = make_shared<CGnome>(&mLevel);
+    gnome->SetLocation(572, 468);
+    mLevel.Add(gnome);
 }
 
 /**
- * Destructor
+ * Draw the Game
+ * \param graphics The GDI+ graphics context to draw on
+ * \param width Width of the client window
+ * \param height Height of the client window
  */
-CGame::~CGame()
+void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 {
+    //
+    // Automatic Scaling
+    //
+    mScale = float(height) / float(Height);
+    graphics->ScaleTransform(mScale, mScale);
+
+    // Determine the virtual width
+    auto virtualWidth = (float)width / mScale;
+
+    // Compute the amount to scroll in the X dimension
+    // auto scroll = (float)mLevel->GetGnome()->GetX() + virtualWidth / 2.0f;
+    auto scroll = 0;
+    mLevel.Draw(graphics, scroll);
 }
 
 /**
- * Draw the game
- * \param graphics the GDI+ graphics context to draw on
+ * Handle updates for animation
+ * \param elapsed The time since the last update
  */
-void CGame::OnDraw(Gdiplus::Graphics* graphics)
+void CGame::Update(double elapsed)
 {
-    mLevel->Draw(graphics);
-    mScoreboard->Draw(graphics);
-}
-
-/**
- * Save the level as an XML file.
- * Open an XML file and stream the level data to it.
- * \param filename The filename of the file to save the level to
- */
-void CGame::Save(const std::wstring& filename)
-{
-    // Create an XML document
-    auto root = CXmlNode::CreateDocument(L"xml");
-
-    // Iterate over all items and save them
-    /*for (auto item : mItems)
-    {
-        item->XmlSave(root);
-    }*/
-
-    try
-    {
-        root->Save(filename);
-    }
-    catch (CXmlNode::Exception ex)
-    {
-        AfxMessageBox(ex.Message().c_str());
-    }
-}
-
-/**
- * Load the level from an XML file.
- * Opens the XML file and reads the nodes, creating the level and items as appropriate.
- * \param filename The filename of the file to load the level from.
- */
-void CGame::Load(const std::wstring& filename)
-{
-    try
-    {
-        // Open the document to read
-        shared_ptr<CXmlNode> level = CXmlNode::OpenDocument(filename);
-
-        // Once we know it is open, clear the existing data
-        // Clear();
-
-        //
-        // Traverse the children of the root
-        // node of the XML document in memory!!!!
-        //
-        for (auto node : level->GetChildren())
-        {
-            if (node->GetType() == NODE_ELEMENT && node->GetName() == L"item")
-            {
-                XmlItem(node);
-            }
-        }
-    }
-    catch (CXmlNode::Exception ex)
-    {
-        AfxMessageBox(ex.Message().c_str());
-    }
+    mLevel.Update(elapsed);
 }

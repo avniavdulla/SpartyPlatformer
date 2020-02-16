@@ -56,16 +56,16 @@ void CItem::SetImage(const std::wstring& file)
     mFile = file;
 }
 
-void CItem::Draw(Gdiplus::Graphics* graphics)
+/**
+ * Draw our Item
+ * \param graphics The graphics context to draw on
+ */
+void CItem::Draw(Gdiplus::Graphics* graphics, int scroll)
 {
-    if (mImage != nullptr)
-    {
-        double wid = mImage->GetWidth();
-        double hit = mImage->GetHeight();
+    double width = mImage->GetWidth();
+    double height = mImage->GetHeight();
 
-        graphics->DrawImage(mImage.get(),
-            float(mP.X() - wid / 2), float(mP.Y()  - hit / 2),
-            (float)wid, (float)hit);
-    }
-
+    graphics->DrawImage(mImage.get(),
+        float(GetX() - width / 2) + (float)scroll, float(GetY() - height / 2),
+        (float)width, (float)height);
 }
