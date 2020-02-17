@@ -61,5 +61,7 @@ public:
 	afx_msg void OnLevelLevel3();
     afx_msg BOOL OnEraseBkgnd(CDC* pDC);
     afx_msg void OnTimer(UINT_PTR nIDEvent);
+    afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+    afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
 };
 

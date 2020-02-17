@@ -39,6 +39,8 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_LEVEL_LEVEL3, &CChildView::OnLevelLevel3)
 	ON_WM_ERASEBKGND()
     ON_WM_TIMER()
+	ON_WM_KEYDOWN()
+    ON_WM_KEYUP()
 END_MESSAGE_MAP()
 
 
@@ -152,4 +154,38 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 {
     Invalidate();
     CWnd::OnTimer(nIDEvent);
+}
+
+
+/**
+ * Handle key press events
+ */
+void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+    switch (nChar)
+    {
+    case VK_RIGHT:
+        // right arrow pressed
+        break;
+
+    case VK_LEFT:
+        // left arrow pressed
+        break;
+
+    case VK_SPACE:
+        // space bar pressed
+        break;
+    }
+}
+
+
+void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+    switch (nChar)
+    {
+    case VK_RIGHT:
+    case VK_LEFT:
+        // left or right arrow released
+        break;
+    }
 }
