@@ -162,10 +162,20 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
  */
 void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
+    /*
+    * Compute the elapsed time since the last draw
+    */
+    LARGE_INTEGER time;
+    QueryPerformanceCounter(&time);
+    long long diff = time.QuadPart - mLastTime;
+    double elapsed = double(diff) / mTimeFreq;
+    mLastTime = time.QuadPart;
+
     switch (nChar)
     {
     case VK_RIGHT:
         // right arrow pressed
+        mGame.GetGnome()->Update(elapsed);
         break;
 
     case VK_LEFT:

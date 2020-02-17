@@ -29,6 +29,7 @@ public:
 
 	void Update(double elapsed);
 
+	CGnome* GetGnome() { return mGnome; }
 private:
 	std::unique_ptr<Gdiplus::Bitmap> mBackground; ///< Background image
 	

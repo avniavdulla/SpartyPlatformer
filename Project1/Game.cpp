@@ -30,10 +30,10 @@ CGame::CGame()
     auto platform = make_shared<CPlatform>(&mLevel);
     platform->SetLocation(400, 976);
     platform->SetDimensions(160, 32);
-    mLevel.Add(platform);
+    mLevel->Add(platform);
     auto gnome = make_shared<CGnome>(&mLevel);
     gnome->SetLocation(572, 468);
-    mLevel.Add(gnome);
+    mLevel->Add(gnome);
 }
 
 /**
@@ -56,7 +56,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     // Compute the amount to scroll in the X dimension
     // auto scroll = (float)mLevel->GetGnome()->GetX() + virtualWidth / 2.0f;
     auto scroll = 0;
-    mLevel.Draw(graphics, scroll);
+    mLevel->Draw(graphics, scroll);
 }
 
 /**
@@ -65,5 +65,5 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
  */
 void CGame::Update(double elapsed)
 {
-    mLevel.Update(elapsed);
+    mLevel->Update(elapsed);
 }

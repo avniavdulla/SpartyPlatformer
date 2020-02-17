@@ -25,12 +25,12 @@ public:
 
     void Update(double elapsed);
 
-    // Level* GetLevel() { return mLevel; }
+    CLevel* GetLevel() { return mLevel; }
 
-    // CGnome* GetGnome() { return mLevel->GetGnome(); }
+    CGnome* GetGnome() { return mLevel->GetGnome(); }
 private:
     /// An object that describes the current Level
-    CLevel mLevel;
+    CLevel* mLevel;
 
     /// An object that describes the Scoreboard
     // CScoreboard* mScoreboard;
