@@ -41,6 +41,12 @@ public:
      */
     double GetY() const { return mP.Y(); }
 
+    /** 
+    * Gets the position vector of item
+    * \returns mP of item
+    */
+    CVector GetPos() const { return mP; }
+
     /**
      * Set the item location
      * \param x X location
