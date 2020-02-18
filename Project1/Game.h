@@ -3,48 +3,38 @@
  *
  * \author Sean Nguyen
  *
- * Class that implements the Game
+ * Class that represents the Game.
  */
 
 #pragma once
 
-#include <string>
-#include <vector>
-#include <memory>
 #include "Level.h"
-#include "PlayingArea.h"
-#include "Scoreboard.h"
+#include "Gnome.h"
 
  /**
-  * Implements a game
+  * Represents the Game
   */
 class CGame
 {
 public:
     CGame();
 
-    /// Default constructor (disabled)
-    CGame() = delete;
+    void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
-    /// Copy constructor (disabled)
-    CGame(const CGame&) = delete;
+    // void LoadLevel(CLevel* level) { mLevel = level; }
 
-    ~CGame();
+    void Update(double elapsed);
 
-    void OnDraw(Gdiplus::Graphics* graphics);
+    CLevel* GetLevel() { return mLevel; }
 
-    void Save(const std::wstring& filename);
-
-    void Load(const std::wstring& filename);
-
+    CGnome* GetGnome() { return mLevel->GetGnome(); }
 private:
-    /// Level available to play
-    std::unique_ptr<CLevel> mLevel;
+    /// An object that describes the current Level
+    CLevel* mLevel;
 
-    /// Playing Area object for the game
-    std::unique_ptr<CPlayingArea> mPlayingArea;
+    /// An object that describes the Scoreboard
+    // CScoreboard* mScoreboard;
 
-    /// Scoreboard object for the game
-    std::unique_ptr<CScoreboard> mScoreboard;
+    /// Scale of the Game dependent on window size
+    float mScale = 0.0;
 };
-
