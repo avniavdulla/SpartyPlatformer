@@ -84,6 +84,8 @@ public:
     /// Getter for level item is currently in 
     CLevel* GetLevel() { return mLevel; }
 
+    bool CollisionTest(CItem* item);
+
 protected:
 	CItem(CLevel* level);
 
