@@ -11,7 +11,9 @@
 #include <string>
 #include "XmlNode.h"
 #include "Vector.h"
+#include "Game.h"
 
+class CGame;
 class CLevel;
 
 class CItem
@@ -82,7 +84,7 @@ public:
 	static const std::wstring ImagesDirectory;
 
     /// Getter for level item is currently in 
-    CLevel* GetLevel() { return mLevel; }
+    CGame* GetGame() { return mGame; }
 
     bool CollisionTest(CItem* item);
 
@@ -92,7 +94,7 @@ protected:
 
 private:
     
-    CLevel* mLevel;  ///< level this item is contained in 
+    CGame* mGame;  ///< level this item is contained in 
 
 	std::string mID = ""; ///< item ID
 	
