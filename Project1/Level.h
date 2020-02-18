@@ -1,6 +1,6 @@
 /**
 * \file Level.h
-* \author Avni Avdulla
+* \author Avni Avdulla, Hugh Wilson
 */
 
 

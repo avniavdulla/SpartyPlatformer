@@ -1,6 +1,6 @@
 /** 
 * \file Level.cpp
-* \author Avni Avdulla, 
+* \author Avni Avdulla, Hugh Wilson
 */
 
 #include "pch.h"
