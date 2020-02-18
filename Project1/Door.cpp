@@ -39,3 +39,17 @@ std::shared_ptr<xmlnode::CXmlNode> CDoor::XmlSave(const std::shared_ptr<xmlnode:
 
     return itemNode;
 }
+
+bool CDoor::CollisionTest(CItem* item)
+{
+    // Collision for door is different
+    double dx = item->GetX() - GetX();
+    double dy = item->GetY() - GetY();
+    double distance = sqrt(dx * dx + dy * dy);
+    if (distance < CollisionDistance)
+    {
+        return true;
+    }
+
+    return false;
+}

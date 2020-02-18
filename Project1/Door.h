@@ -7,6 +7,7 @@
  */
 
 #pragma once
+#include "Item.h"
 #include "Collide.h"
 
 class CDoor : public CCollide
@@ -23,5 +24,11 @@ public:
     ~CDoor();
 
     virtual std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
+
+    bool CollisionTest(CItem* item);
+
+private:
+    /// Collision distance for the door in pixels
+    const double CollisionDistance = 20;
 };
 
