@@ -36,7 +36,7 @@ void CGnome::Update(double elapsed)
     //
     SetLocation(GetPos().X(), newP.Y());
 
-    auto collided = GetGame()->CollisionTest(this);
+    auto collided = GetLevel()->GetGame()->CollisionTest(this);
     
     if (collided != nullptr)
     {
@@ -62,7 +62,7 @@ void CGnome::Update(double elapsed)
     //
     SetLocation(newP.X(), GetPos().Y());
 
-    collided = GetGame()->CollisionTest(this);
+    collided = GetLevel()->GetGame()->CollisionTest(this);
     if (collided != nullptr)
     {
         if (newV.X() > 0)

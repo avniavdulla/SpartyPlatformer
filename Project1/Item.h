@@ -81,11 +81,16 @@ public:
 	/** The directory were the images are stored */
 	static const std::wstring ImagesDirectory;
 
+    /// Getter for level item is currently in 
+    CLevel* GetLevel() { return mLevel; }
+
 protected:
 	CItem(CLevel* level);
 
+
 private:
-	CLevel *mLevel;
+    
+    CLevel* mLevel;  ///< level this item is contained in 
 
 	std::string mID = ""; ///< item ID
 	
@@ -93,6 +98,6 @@ private:
 
 	std::wstring mFile; ///< The file for this Item
 
-	CVector mP; // < item position
+	CVector mP; /// < item position
 };
 

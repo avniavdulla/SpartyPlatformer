@@ -31,7 +31,7 @@ public:
 
 	CGnome* GetGnome() { return mGnome; }
 private:
-	unique_ptr<Gdiplus::Bitmap> mBackground; ///< Background image
+	std::unique_ptr<Gdiplus::Bitmap> mBackground; ///< Background image
 	
 	/// The player-controlled Gnome object
 	CGnome* mGnome;
