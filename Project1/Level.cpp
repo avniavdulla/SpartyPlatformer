@@ -36,7 +36,8 @@ CLevel::~CLevel()
  * Add an item to the level
  * \param item New item to add
  */
-void CLevel::Add(std::shared_ptr<CItem> item) {
+void CLevel::Add(std::shared_ptr<CItem> item) 
+{
     mItems.push_back(item);
 }
 
