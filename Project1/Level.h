@@ -19,7 +19,7 @@ using namespace Gdiplus;
 class CLevel
 {
 public:
-	CLevel();
+	CLevel(const std::wstring&);
 	
 	virtual ~CLevel();
 
@@ -31,7 +31,7 @@ public:
 
 	CGnome* GetGnome() { return mGnome; }
 private:
-	std::unique_ptr<Gdiplus::Bitmap> mBackground; ///< Background image
+	unique_ptr<Gdiplus::Bitmap> mBackground; ///< Background image
 	
 	/// The player-controlled Gnome object
 	CGnome* mGnome;

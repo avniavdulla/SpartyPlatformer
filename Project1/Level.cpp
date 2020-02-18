@@ -13,11 +13,10 @@ using namespace Gdiplus;
 * Constructor for level
 * saves the background image into mBackground 
 */
-CLevel::CLevel() {
+CLevel::CLevel(const wstring& background) {
 
-    //choses a background right now, when background class implemented we call draw on that instead
-    mBackground = unique_ptr<Gdiplus::Bitmap>(
-        Bitmap::FromFile(L"SpartyGnome/images/backgroundColorDesert.png"));
+    //sets the given background image to the level's mBackground based on the given filename
+    mBackground = unique_ptr<Bitmap>(Bitmap::FromFile(background.c_str()));
     if (mBackground->GetLastStatus() != Ok)
     {
         AfxMessageBox(L"Failed to open images/background1.png");
