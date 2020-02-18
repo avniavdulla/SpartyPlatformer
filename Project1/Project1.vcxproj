@@ -183,6 +183,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Collision.h" />
@@ -211,6 +212,7 @@
     <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="ChildFrm.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="Collision.cpp" />
