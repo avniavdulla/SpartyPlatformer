@@ -7,6 +7,8 @@
  */
 
 #pragma once
+#include "Game.h"
+
 class CBackground
 {
 	///Constructor - Uses the game it is part of 

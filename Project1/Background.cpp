@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Background.h"
+#include "Game.h"
 
 /**
  * Constructor
