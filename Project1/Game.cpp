@@ -29,10 +29,14 @@ CGame::CGame()
     auto platform = make_shared<CPlatform>(&mLevel);
     platform->SetLocation(400, 976);
     platform->SetDimensions(160, 32);
+
+    //need to push back 
+    mItems.push_back(platform);
     mLevel->Add(platform);
     auto gnome = make_shared<CGnome>(&mLevel);
     gnome->SetLocation(572, 468);
     mLevel->Add(gnome);
+
 }
 
 /**
@@ -67,8 +71,22 @@ void CGame::Update(double elapsed)
     mLevel->Update(elapsed);
 }
 
-std::unique_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
+
+/**
+* Tests Collision between Gnome and every item in the game
+* \param gnome Gnome object to test against
+* \return std::shared_ptr<CItem> Item that it collided with 
+*/
+std::shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
 {
+    // go through every item and check collision against gnome
+    for (auto item : mItems) 
+    {   
+        bool collided = item.get()->CollisionTest(gnome);
+        if (collided) 
+        {
+            return item;
+        }
+    }
     
-    return std::unique_ptr<CItem>();
 }

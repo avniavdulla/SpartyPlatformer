@@ -34,7 +34,7 @@ public:
 
     CGnome* GetGnome() { return CGame::mGnome; }
 
-    std::unique_ptr<CItem> CollisionTest(CGnome* gnome);
+    std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
 
 
 private:
@@ -46,6 +46,9 @@ private:
 
     /// An object that describes the Scoreboard
     // CScoreboard* mScoreboard;
+
+    /// holds items from level
+    std::vector<std::shared_ptr<CItem>> mItems;
 
     /// Scale of the Game dependent on window size
     float mScale = 0.0;

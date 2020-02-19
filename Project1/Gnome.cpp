@@ -10,6 +10,9 @@
 /// Gravity in virtual pixels per second per second
 const double Gravity = 1000.0;
 
+//TESTING
+const double Gravity = 0.0;
+
 /// Horizontal character speed in pixels per second
 const double HorizontalSpeed = 500.00;
 
@@ -27,8 +30,8 @@ void CGnome::Update(double elapsed)
     // Compute a new velocity with gravity added in.
     CVector newV(mVelocity.X(), mVelocity.Y() + Gravity * elapsed);
 
-        // Update position
-        CVector newP = GetPos() + newV * elapsed;
+    // Update position
+    CVector newP = GetPos() + newV * elapsed;
 
     //
     // Try updating the Y location. 

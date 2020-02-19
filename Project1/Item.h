@@ -93,7 +93,7 @@ protected:
 
 private:
     
-    CGame* mGame;  ///< level this item is contained in 
+    CGame* mGame;  ///< game this item is contained in 
 
 	std::string mID = ""; ///< item ID
 	

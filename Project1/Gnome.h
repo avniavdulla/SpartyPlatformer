@@ -13,9 +13,11 @@ class CLevel;
 class CGnome : public CItem
 {
 public:
-
+	// Deafult constructor (deleted)
 	CGnome() = delete;
-	CGnome(CGnome& gnome) = delete;
+
+	/// Copy Constructor (deleted)
+	CGnome(const CGnome& gnome) = delete;
 	
 	/** 
 	* Update function for gnome movement
