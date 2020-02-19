@@ -12,18 +12,19 @@
 
 #include "XmlNode.h"
 #include "Vector.h"
+#include "Declaration.h"
 
 using namespace xmlnode;
 
 class CGame;
 
 /**
- * Base class for any Item in a Level
+ * Base class for any Item in a Game
  */
 class CItem
 {
 public:
-    /// The directory were the images are stored
+    /// The directory where the images are stored
     static const std::wstring ImagesDirectory;
 
     /// Default constructor (disabled)
@@ -85,7 +86,9 @@ public:
      * \returns Filename or blank if none */
     std::wstring GetFile() { return mFile; }
 
-    std::unique_ptr<Gdiplus::Bitmap> GetImage();
+    /**  Get the image for this Item
+    * \returns Image */
+    std::shared_ptr<Gdiplus::Bitmap> GetImage() { return mImage;  }
 
     /**
      * Get the width of the Item
@@ -99,11 +102,15 @@ public:
      */
     int GetHeight() const { return mImage->GetHeight(); }
 
-    virtual void XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node);
+    // virtual void XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node);
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
     
     virtual bool CollisionTest(CItem* item);
+
+    void SetDeclaration(std::shared_ptr<CDeclaration> declare) { mDeclare = declare; }
+
+    std::shared_ptr<CDeclaration> GetDeclaration() { return mDeclare; }
 
 protected:
     CItem(CGame* game);
@@ -115,8 +122,10 @@ private:
     // Item Vector in the Level
     CVector mPos;
 
+    std::shared_ptr<CDeclaration> mDeclare;
+
     /// The image of this Item
-    std::unique_ptr<Gdiplus::Bitmap> mImage;
+    std::shared_ptr<Gdiplus::Bitmap> mImage;
 
     /// The file for this Item
     std::wstring mFile;

@@ -6,7 +6,9 @@
 
 #include "pch.h"
 #include <string>
+#include "Item.h"
 #include "Game.h"
+#include "Declaration.h"
 #include "XmlNode.h"
 
 using namespace std;
@@ -68,10 +70,6 @@ void CItem::SetImage(const std::wstring& file)
             return;
         }
     }
-    else
-    {
-        mImage.release();
-    }
 
     mFile = file;
 }
@@ -79,11 +77,11 @@ void CItem::SetImage(const std::wstring& file)
 /**
  * Returns the image file to draw
  */
-unique_ptr<Bitmap> CItem::GetImage()
-{
-    wstring filename = ImagesDirectory + mFile;
-    return unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
-}
+//unique_ptr<Bitmap> CItem::GetImage()
+//{
+//    wstring filename = ImagesDirectory + mFile;
+//    return unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+//}
 
 /**
 * This is the  base class version that loads the attributes
@@ -92,19 +90,19 @@ unique_ptr<Bitmap> CItem::GetImage()
 *
 * \param node The Xml node we are loading the item from
 */
-void CItem::XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node)
-{
-    if (node->GetAttributeValue(L"image", L"") == L"")
-    {
-        mFile = node->GetAttributeValue(L"mid-image", L"");
-    }
-    else
-    {
-        mFile = node->GetAttributeValue(L"image", L"");
-    }
-
-    SetImage(mFile);
-}
+//void CItem::XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node)
+//{
+//    if (node->GetAttributeValue(L"image", L"") == L"")
+//    {
+//        mFile = node->GetAttributeValue(L"mid-image", L"");
+//    }
+//    else
+//    {
+//        mFile = node->GetAttributeValue(L"image", L"");
+//    }
+//
+//    SetImage(mFile);
+//}
 
 /**
 * This is the  base class version that loads the attributes
@@ -119,6 +117,9 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
     double y = node->GetAttributeDoubleValue(L"y", 0);
 
     mPos.Set(x, y);
+
+    mImage = GetDeclaration()->GetImage();
+    mFile = GetDeclaration()->GetFile();
 }
 
 /**
