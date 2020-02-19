@@ -11,6 +11,9 @@
 #include "Level.h"
 #include "Gnome.h"
 
+class CGnome;
+class CLevel;
+
  /**
   * Represents the Game
   */
@@ -25,12 +28,19 @@ public:
 
     void Update(double elapsed);
 
-    CLevel* GetLevel() { return mLevel; }
+    CLevel* GetLevel() { return CGame::mLevel; }
 
-    CGnome* GetGnome() { return mLevel->GetGnome(); }
+    CGnome* GetGnome() { return CGame::mGnome; }
+
+    std::unique_ptr<CItem> CollisionTest(CGnome* gnome);
+
+
 private:
     /// An object that describes the current Level
     CLevel* mLevel;
+
+    /// An object that describes the current level
+    CGnome* mGnome;
 
     /// An object that describes the Scoreboard
     // CScoreboard* mScoreboard;

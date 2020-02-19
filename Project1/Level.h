@@ -13,6 +13,8 @@
 
 using namespace Gdiplus;
 
+class CItem;
+
 /**
 * Class representing a level
 */
@@ -29,12 +31,8 @@ public:
 
 	void Update(double elapsed);
 
-	CGnome* GetGnome() { return mGnome; }
 private:
 	std::unique_ptr<Gdiplus::Bitmap> mBackground; ///< Background image
-	
-	/// The player-controlled Gnome object
-	CGnome* mGnome;
 
 	/// The Items contained in our Level
 	std::vector<std::shared_ptr<CItem> > mItems;

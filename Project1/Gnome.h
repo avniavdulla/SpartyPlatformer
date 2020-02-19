@@ -6,6 +6,7 @@
 #pragma once
 #include "Item.h"
 #include "Vector.h"
+
 class CGnome :
 	public CItem
 {
