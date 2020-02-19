@@ -8,7 +8,7 @@
 
 
 /// Gravity in virtual pixels per second per second
-const double Gravity = 1000.0;
+//const double Gravity = 1000.0;
 
 //TESTING
 const double Gravity = 0.0;
