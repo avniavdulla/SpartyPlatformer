@@ -6,14 +6,15 @@
 
 #include "pch.h"
 #include <string>
+
 #include "Scoreboard.h"
 
 using namespace std;
 using namespace Gdiplus;
 
-/**
- * Constructor
- */
+ /**
+  * Constructor
+  */
 CScoreboard::CScoreboard()
 {
 }
@@ -56,7 +57,7 @@ void CScoreboard::Draw(Gdiplus::Graphics* graphics, int scroll)
 
     SolidBrush grey(Color(200, 200, 200));
 
-    graphics->DrawString(time.c_str(), -1, &font, PointF(90, 18), &grey);
+    graphics->DrawString(time.c_str(), -1, &font, PointF(90, 18), &grey); 
     graphics->DrawString(score.c_str(), -1, &font, PointF(1050, 18), &grey);
 }
 

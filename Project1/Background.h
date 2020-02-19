@@ -1,17 +1,18 @@
 /**
  * \file Background.h
  *
- * \author Steven Wang
+ * \author Sean Nguyen
  *
  * Class that represents the Background
  */
 
 #pragma once
+
 #include "Item.h"
 
- /**
-  * Represents the Background
-  */
+/**
+ * Represents the Background
+ */
 class CBackground : public CItem
 {
 public:
@@ -29,3 +30,4 @@ public:
 
     virtual bool CollisionTest(CItem* item) override;
 };
+

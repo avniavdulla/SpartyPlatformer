@@ -33,7 +33,9 @@ CItem::~CItem()
 
 /**
  * Draw our Item
+ *
  * \param graphics The graphics context to draw on
+ * \param scroll The scroll offset
  */
 void CItem::Draw(Gdiplus::Graphics* graphics, int scroll)
 {

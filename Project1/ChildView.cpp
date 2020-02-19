@@ -23,11 +23,17 @@ using namespace Gdiplus;
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
 
+/**
+ * Constructor
+ */
 CChildView::CChildView()
 {
-	srand((unsigned int)time(nullptr));
+    srand((unsigned int)time(nullptr));
 }
 
+/**
+ * Destructor
+ */
 CChildView::~CChildView()
 {
 }
@@ -38,13 +44,13 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
     ON_WM_TIMER()
     ON_WM_KEYDOWN()
     ON_WM_KEYUP()
-	ON_COMMAND(ID_LEVEL_LEVEL0, &CChildView::OnLevelLevel0)
-	ON_COMMAND(ID_LEVEL_LEVEL1, &CChildView::OnLevelLevel1)
-	ON_COMMAND(ID_LEVEL_LEVEL2, &CChildView::OnLevelLevel2)
-	ON_COMMAND(ID_LEVEL_LEVEL3, &CChildView::OnLevelLevel3)
+    ON_COMMAND(ID_LEVEL_LEVEL0, &CChildView::OnLevelLevel0)
+    ON_COMMAND(ID_LEVEL_LEVEL1, &CChildView::OnLevelLevel1)
+    ON_COMMAND(ID_LEVEL_LEVEL2, &CChildView::OnLevelLevel2)
+    ON_COMMAND(ID_LEVEL_LEVEL3, &CChildView::OnLevelLevel3)
 END_MESSAGE_MAP()
 
-/**
+/** 
  * This function is called before the window is created.
  * \param cs A structure with the window creation parameters
  * \returns TRUE
@@ -62,7 +68,7 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
-/**
+/** 
  * This function is called to draw in the window.
  *
  * This function is called in response to a drawing message
@@ -129,31 +135,16 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
     CWnd::OnTimer(nIDEvent);
 }
 
-/**
- * Handle key press events
- */
 void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-    /*
-    * Compute the elapsed time since the last draw
-    */
-    LARGE_INTEGER time;
-    QueryPerformanceCounter(&time);
-    long long diff = time.QuadPart - mLastTime;
-    double elapsed = double(diff) / mTimeFreq;
-    mLastTime = time.QuadPart;
-
     switch (nChar)
     {
     case VK_RIGHT:
-        // right arrow pressed
-        mGame.GetGnome()->Update(elapsed);
+        mGame.GetGnome()->GoRight(true);
         break;
-
     case VK_LEFT:
-        // left arrow pressed
+        mGame.GetGnome()->GoLeft(true);
         break;
-
     case VK_SPACE:
         // space bar pressed
         break;
@@ -169,7 +160,9 @@ void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
     {
     case VK_RIGHT:
     case VK_LEFT:
-        // left or right arrow released
+        mGame.GetGnome()->GoRight(false);
+        mGame.GetGnome()->GoLeft(false);
+
         break;
     }
 }
@@ -188,7 +181,7 @@ void CChildView::OnLevelLevel0()
  */
 void CChildView::OnLevelLevel1()
 {
-	// TODO: Add your command handler code here
+    // TODO: Add your command handler code here
 }
 
 /**
@@ -196,7 +189,7 @@ void CChildView::OnLevelLevel1()
  */
 void CChildView::OnLevelLevel2()
 {
-	// TODO: Add your command handler code here
+    // TODO: Add your command handler code here
 }
 
 /**
@@ -204,12 +197,5 @@ void CChildView::OnLevelLevel2()
  */
 void CChildView::OnLevelLevel3()
 {
-	// TODO: Add your command handler code here
+    // TODO: Add your command handler code here
 }
-
-
-
-
-
-
-

@@ -8,10 +8,10 @@
 
 #include "Obstacle.h"
 
- /**
-  * Constructor
-  * \param game The Game this Obstacle is a member of
-  */
+/**
+ * Constructor
+ * \param game The Game this Obstacle is a member of
+ */
 CObstacle::CObstacle(CGame* game) : CItem(game)
 {
 }

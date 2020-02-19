@@ -7,12 +7,12 @@
 #include "pch.h"
 
 #include "Game.h"
-#include "Item.h"
-#include "Gnome.h"
+// #include "Item.h"
+// #include "Gnome.h"
 #include "Background.h"
-#include "Villain.h"
 #include "Obstacle.h"
 #include "Platform.h"
+#include "Villain.h"
 
 using namespace std;
 using namespace Gdiplus;

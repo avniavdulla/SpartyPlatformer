@@ -9,7 +9,6 @@
 #include "Project1.h"
 #include "MainFrm.h"
 
-#include "ChildFrm.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -20,7 +19,6 @@
 
 BEGIN_MESSAGE_MAP(CProject1App, CWinApp)
 	ON_COMMAND(ID_APP_ABOUT, &CProject1App::OnAppAbout)
-	ON_COMMAND(ID_FILE_NEW, &CProject1App::OnFileNew)
 END_MESSAGE_MAP()
 
 
@@ -66,6 +64,7 @@ BOOL CProject1App::InitInstance()
 
 	CWinApp::InitInstance();
 
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
 	// Initialize OLE libraries
 	if (!AfxOleInit())
@@ -93,38 +92,30 @@ BOOL CProject1App::InitInstance()
 
 	// To create the main window, this code creates a new frame window
 	// object and then sets it as the application's main window object
-	CMDIFrameWnd* pFrame = new CMainFrame;
+	CFrameWnd* pFrame = new CMainFrame;
 	if (!pFrame)
 		return FALSE;
 	m_pMainWnd = pFrame;
-	// create main MDI frame window
-	if (!pFrame->LoadFrame(IDR_MAINFRAME))
-		return FALSE;
-	// try to load shared MDI menus and accelerator table
-	//TODO: add additional member variables and load calls for
-	//	additional menu types your application may need
-	HINSTANCE hInst = AfxGetResourceHandle();
-	m_hMDIMenu  = ::LoadMenu(hInst, MAKEINTRESOURCE(IDR_Project1TYPE));
-	m_hMDIAccel = ::LoadAccelerators(hInst, MAKEINTRESOURCE(IDR_Project1TYPE));
+	// create and load the frame with its resources
+	pFrame->LoadFrame(IDR_MAINFRAME,
+		WS_OVERLAPPEDWINDOW | FWS_ADDTOTITLE, nullptr,
+		nullptr);
 
 
 
 
-	// The main window has been initialized, so show and update it
-	pFrame->ShowWindow(m_nCmdShow);
+
+	// The one and only window has been initialized, so show and update it
+	pFrame->ShowWindow(SW_SHOW);
 	pFrame->UpdateWindow();
-
 	return TRUE;
 }
 
 int CProject1App::ExitInstance()
-{
-	//TODO: handle additional resources you may have added
-	if (m_hMDIMenu != nullptr)
-		FreeResource(m_hMDIMenu);
-	if (m_hMDIAccel != nullptr)
-		FreeResource(m_hMDIAccel);
+{	
+	Gdiplus::GdiplusShutdown(gdiplusToken);
 
+	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
 
 	return CWinApp::ExitInstance();
@@ -132,13 +123,6 @@ int CProject1App::ExitInstance()
 
 // CProject1App message handlers
 
-void CProject1App::OnFileNew()
-{
-	CMainFrame* pFrame = STATIC_DOWNCAST(CMainFrame, m_pMainWnd);
-	// create a new MDI child window
-	pFrame->CreateNewChild(
-		RUNTIME_CLASS(CChildFrame), IDR_Project1TYPE, m_hMDIMenu, m_hMDIAccel);
-}
 
 // CAboutDlg dialog used for App About
 

@@ -1,7 +1,8 @@
-/** 
-* \file Gnome.cpp
-* \author Avni Avdulla
-*/
+/**
+ * \file Gnome.cpp
+ *
+ * \author Sean Nguyen
+ */
 
 #include "pch.h"
 #include <string>
@@ -37,10 +38,10 @@ const double JumpSpeed = -800;
 /// Small value to ensure we do not stay in collision
 const double Epsilon = 0.01;
 
-/**
- * Constructor
- * \param level The Level this Gnome is a member of
- */
+ /**
+  * Constructor
+  * \param level The Level this Gnome is a member of
+  */
 CGnome::CGnome(CGame* game) : CItem(game)
 {
 }
@@ -57,6 +58,7 @@ CGnome::~CGnome()
  * This is called before we draw and allows us to
  * move the Gnome. We add our speed times the amount
  * of time that has elapsed.
+ *
  * \param elapsed Time elapsed since the class call
  */
 void CGnome::Update(double elapsed)
@@ -68,32 +70,57 @@ void CGnome::Update(double elapsed)
     CVector newVelocity(mVelocity.X(), mVelocity.Y() + Gravity * elapsed);
 
     // Update position
-    CVector newPos = GetLocation() + newVelocity * elapsed;
-    //CVector newPos = GetLocation();
+    // CVector newPos =  GetLocation() + newVelocity * elapsed;
+    CVector newPos = GetLocation();
     //
     // Try updating the Y location. 
     //
-    SetLocation(GetLocation().X(), newPos.Y());
+    SetLocation(GetX(), newPos.Y());
 
-    auto collided = GetGame()->CollisionTest(this);
-    if (collided != nullptr)
+    //auto collided = GetGame()->CollisionTest(this);
+    //if (collided != nullptr)
+    //{
+    //    if (newVelocity.Y() > 0)
+    //    {
+    //        // We are falling, stop at the collision point
+    //        newPos.SetY(collided->GetY() - collided->GetHeight() / 2 - GetHeight() / 2 - Epsilon);
+    //    }
+    //    else
+    //    {
+    //        // We are rising, stop at the collision point
+    //        newPos.SetY(collided->GetY() + collided->GetHeight() / 2 + GetHeight() / 2 + Epsilon);
+
+    //    }
+
+    //    // If we collide, we cancel any velocity
+    //    // in the Y direction
+    //    newVelocity.SetY(0);
+    //}
+
+    // 
+    // Try updating the X location
+    //
+    SetLocation(newPos.X(), GetY());
+
+    /*auto collideX = GetGame()->CollisionTest(this);
+    if (collideX != nullptr)
     {
-        if (newVelocity.Y() > 0)
+        if (newVelocity.X() > 0)
         {
-            // We are falling, stop at the collision point
-            newPos.SetY(collided->GetY() - collided->GetHeight() / 2 - GetHeight() / 2 - Epsilon);
+            // We are moving to the right, stop at the collision point
+            newPos.SetX(collideX->GetX() - collideX->GetWidth() / 2 - GetWidth() / 2 - Epsilon);
         }
         else
         {
-            // We are rising, stop at the collision point
-            newPos.SetY(collided->GetY() + collided->GetHeight() / 2 + GetHeight() / 2 + Epsilon);
-
+            // We are moving to the left, stop at the collision point
+            newPos.SetX(collideX->GetX() + collideX->GetWidth() / 2 + GetWidth() / 2 + Epsilon);
         }
 
+
         // If we collide, we cancel any velocity
-        // in the Y direction
-        newVelocity.SetY(0);
-    }
+        // in the X direction
+        newVelocity.SetX(0);
+    }*/
 
     mWalk += elapsed;
 
@@ -106,9 +133,9 @@ void CGnome::Update(double elapsed)
         newVelocity.SetX(0);
     }
 
-    if (mLeft)
+    if (mLeft) 
     {
-        if (mWalk >= 0.4)
+        if (mWalk >= 0.4) 
         {
             CItem::SetImage(GnomeLeft1Image);
             mWalk = 0;
@@ -117,13 +144,13 @@ void CGnome::Update(double elapsed)
         {
             CItem::SetImage(GnomeLeft2Image);
         }
-        else
+        else 
         {
             CItem::SetImage(GnomeLeft1Image);
         }
-        newPos.SetX(GetX() - mVelocity.X() * elapsed);
+        newPos.SetX(GetX() - newVelocity.X() * elapsed);
     }
-    else if (mRight)
+    else if (mRight) 
     {
         if (mWalk >= 0.4)
         {
@@ -138,26 +165,19 @@ void CGnome::Update(double elapsed)
         {
             CItem::SetImage(GnomeRight1Image);
         }
-        newPos.SetX(GetX() + mVelocity.X() * elapsed);
+        newPos.SetX(GetX() + newVelocity.X() * elapsed);
     }
     else
     {
         CItem::SetImage(GnomeImage);
     }
-    // 
-    // Try updating the X location
-    //
-    SetLocation(newPos.X(), GetLocation().Y());
+    
 
     // Update the velocity and position
     mVelocity = newVelocity;
     SetLocation(newPos.X(), newPos.Y());
 }
 
-
-/**
- * Resets the Gnome
- */
 void CGnome::Reset()
 {
     CItem::SetImage(GnomeImage);

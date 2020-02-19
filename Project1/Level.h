@@ -13,9 +13,9 @@
 
 #include "Item.h"
 
- /**
- * Represents a level
- */
+/**
+* Represents a level
+*/
 class CLevel
 {
 public:

@@ -29,6 +29,7 @@ CBackground::~CBackground()
 /**
  * Draw our Background
  * \param graphics The graphics context to draw on
+ * \param scroll The scroll offset
  */
 void CBackground::Draw(Gdiplus::Graphics* graphics, int scroll)
 {
@@ -36,10 +37,9 @@ void CBackground::Draw(Gdiplus::Graphics* graphics, int scroll)
     int height = GetHeight();
 
     graphics->DrawImage(GetImage().get(),
-        int(GetX() - width / 2) + scroll, int(GetY() - height / 2),
+        int(GetX() - width / 2 ) + scroll, int(GetY() - height / 2),
         width + 1, height);
 }
-
 
 /**
  * Tests if any other item is colliding with it

@@ -52,3 +52,4 @@ private:
     /// Height of Obstacle
     int mHeight = 0;
 };
+

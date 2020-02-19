@@ -9,6 +9,7 @@
 #pragma once
 
 #include <memory>
+
 #include "XmlNode.h"
 #include "Vector.h"
 
@@ -101,7 +102,7 @@ public:
     virtual void XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node);
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
-
+    
     virtual bool CollisionTest(CItem* item);
 
 protected:

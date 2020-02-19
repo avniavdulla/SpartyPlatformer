@@ -11,8 +11,9 @@
 #include <iterator> 
 #include <map>
 
-#include "Gnome.h"
 #include "Level.h"
+#include "Item.h"
+#include "Gnome.h"
 #include "Scoreboard.h"
 #include "XmlNode.h"
 
@@ -42,7 +43,7 @@ private:
     void XmlDeclaration(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
     void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
-    
+
     /// Scale of the Game dependent on window size
     float mScale = 0.0;
 

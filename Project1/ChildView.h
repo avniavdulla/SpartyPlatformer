@@ -16,24 +16,6 @@
 /**
  * The child window our program draws in.
  */
- /**
-  * \file ChildView.h
-  *
-  * \author Sean Nguyen
-  *
-  * Class that implements the child window our program draws in.
-  *
-  * The window is a child of the main frame, which holds this
-  * window, the menu bar, and the status bar.
-  */
-
-#pragma once
-
-#include "Game.h"
-
- /**
-  * The child window our program draws in.
-  */
 class CChildView : public CWnd
 {
 // Construction
@@ -77,9 +59,9 @@ public:
     afx_msg void OnTimer(UINT_PTR nIDEvent);
     afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
     afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnLevelLevel0();
-	afx_msg void OnLevelLevel1();
-	afx_msg void OnLevelLevel2();
-	afx_msg void OnLevelLevel3();
+    afx_msg void OnLevelLevel0();
+    afx_msg void OnLevelLevel1();
+    afx_msg void OnLevelLevel2();
+    afx_msg void OnLevelLevel3();
 };
 
