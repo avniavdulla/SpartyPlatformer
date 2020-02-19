@@ -108,9 +108,9 @@ public:
 protected:
     CItem(CGame* game);
 
-private:
     /// The Level this Item is contained in
     CGame* mGame;
+private:
 
     // Item Vector in the Level
     CVector mPos;

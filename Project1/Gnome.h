@@ -34,11 +34,14 @@ public:
     /// Sets the Gnome to move right
     void GoRight(bool move) { mRight = move; }
 
+    void Jump(bool move) { mJump = true; };
+
 private:
     bool mLeft = false;
 
     bool mRight = false;
 
+    bool mJump = false;
     double mWalk = 0;
 
     CVector mVelocity;

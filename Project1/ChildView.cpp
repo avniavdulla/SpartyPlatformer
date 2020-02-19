@@ -146,7 +146,7 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
         mGame.GetGnome()->GoLeft(true);
         break;
     case VK_SPACE:
-        // space bar pressed
+        mGame.GetGnome()->Jump(true);
         break;
     }
 }
@@ -159,10 +159,10 @@ void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
     switch (nChar)
     {
     case VK_RIGHT:
-    case VK_LEFT:
         mGame.GetGnome()->GoRight(false);
+        break;
+    case VK_LEFT:
         mGame.GetGnome()->GoLeft(false);
-
         break;
     }
 }

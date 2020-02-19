@@ -193,4 +193,5 @@ shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
             return item;
         }
     }
+    return nullptr;
 }

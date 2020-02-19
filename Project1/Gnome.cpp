@@ -62,71 +62,96 @@ CGnome::~CGnome()
  * \param elapsed Time elapsed since the class call
  */
 void CGnome::Update(double elapsed)
-{
-    CItem::Update(elapsed);
 
+{
+    /// Maximum amount of time to allow for elapsed
+    const double MaxElapsed = 0.050;
+    //
+    // Prevent tunnelling
+    //
+    while (elapsed > MaxElapsed)
+    {
+        CItem::Update(MaxElapsed);
+
+        elapsed -= MaxElapsed;
+    }
+
+    // Consume any remaining time
+    if (elapsed > 0)
+    {
+        CItem::Update(elapsed);
+    }
+ 
     // Gravity
     // Compute a new velocity with gravity added in.
-    CVector newVelocity(mVelocity.X(), mVelocity.Y() + Gravity * elapsed);
+    CVector newVelocity(mVelocity.X() , mVelocity.Y() + Gravity * elapsed);
 
     // Update position
-    // CVector newPos =  GetLocation() + newVelocity * elapsed;
-    CVector newPos = GetLocation();
+    CVector newPos =  GetLocation() + newVelocity * elapsed;
+    //CVector newPos = GetLocation();
     //
     // Try updating the Y location. 
     //
     SetLocation(GetX(), newPos.Y());
+    
 
-    //auto collided = GetGame()->CollisionTest(this);
-    //if (collided != nullptr)
-    //{
-    //    if (newVelocity.Y() > 0)
-    //    {
-    //        // We are falling, stop at the collision point
-    //        newPos.SetY(collided->GetY() - collided->GetHeight() / 2 - GetHeight() / 2 - Epsilon);
-    //    }
-    //    else
-    //    {
-    //        // We are rising, stop at the collision point
-    //        newPos.SetY(collided->GetY() + collided->GetHeight() / 2 + GetHeight() / 2 + Epsilon);
-
-    //    }
-
-    //    // If we collide, we cancel any velocity
-    //    // in the Y direction
-    //    newVelocity.SetY(0);
-    //}
-
-    // 
-    // Try updating the X location
-    //
-    SetLocation(newPos.X(), GetY());
-
-    /*auto collideX = GetGame()->CollisionTest(this);
-    if (collideX != nullptr)
+    auto collided = mGame->CollisionTest(this);
+    if (collided != nullptr)
     {
-        if (newVelocity.X() > 0)
+        if (newVelocity.Y() > 0)
         {
-            // We are moving to the right, stop at the collision point
-            newPos.SetX(collideX->GetX() - collideX->GetWidth() / 2 - GetWidth() / 2 - Epsilon);
+            // We are falling, stop at the collision point
+            newPos.SetY(collided->GetY() - collided->GetHeight() / 2 - GetHeight() / 2 - Epsilon);
         }
         else
         {
-            // We are moving to the left, stop at the collision point
-            newPos.SetX(collideX->GetX() + collideX->GetWidth() / 2 + GetWidth() / 2 + Epsilon);
+            // We are rising, stop at the collision point
+            newPos.SetY(collided->GetY() + collided->GetHeight() / 2 + GetHeight() / 2 + Epsilon);
+
         }
 
-
         // If we collide, we cancel any velocity
-        // in the X direction
-        newVelocity.SetX(0);
-    }*/
+        // in the Y direction
+        newVelocity.SetY(0);
+    }
 
+     //
+     //Try updating the X location
+     //
+    SetLocation(newPos.X(), GetY());
+
+    //auto collideX =mGame->CollisionTest(this);
+    //if (collideX != nullptr)
+    //{
+    //    if (newVelocity.X() > 0)
+    //    {
+    //        // We are moving to the right, stop at the collision point
+    //        newPos.SetX(collideX->GetX() - collideX->GetWidth() / 2 - GetWidth() / 2 - Epsilon);
+
+    //    }
+    //    else
+    //    {
+    //        // We are moving to the left, stop at the collision point
+    //        newPos.SetX(collideX->GetX() + collideX->GetWidth() / 2 + GetWidth() / 2 + Epsilon);
+    //    }
+
+
+    //    // If we collide, we cancel any velocity
+    //    // in the X direction
+    //    newVelocity.SetX(0);
+    //}
+
+    //used to switch image 
     mWalk += elapsed;
 
     if (mLeft || mRight)
     {
         newVelocity.SetX(HorizontalSpeed);
+
+    }
+    else if (mJump) 
+    {
+        newVelocity.SetY(JumpSpeed);
     }
     else
     {
@@ -135,6 +160,12 @@ void CGnome::Update(double elapsed)
 
     if (mLeft) 
     {
+        auto collideX = mGame->CollisionTest(this);
+        if (collideX != nullptr)
+        {
+            newPos.SetX(collideX->GetX() + collideX->GetWidth() / 2 + GetWidth() / 2 + Epsilon);
+        }
+
         if (mWalk >= 0.4) 
         {
             CItem::SetImage(GnomeLeft1Image);
@@ -150,6 +181,7 @@ void CGnome::Update(double elapsed)
         }
         newPos.SetX(GetX() - newVelocity.X() * elapsed);
     }
+
     else if (mRight) 
     {
         if (mWalk >= 0.4)
@@ -167,6 +199,12 @@ void CGnome::Update(double elapsed)
         }
         newPos.SetX(GetX() + newVelocity.X() * elapsed);
     }
+
+    else if (mJump) 
+    {
+        newPos.SetX(GetY() + newVelocity.Y() * elapsed);
+        mJump = false;
+    }
     else
     {
         CItem::SetImage(GnomeImage);
@@ -178,10 +216,18 @@ void CGnome::Update(double elapsed)
     SetLocation(newPos.X(), newPos.Y());
 }
 
+
+
+
+
+
+
 void CGnome::Reset()
 {
     CItem::SetImage(GnomeImage);
     mLeft = false;
     mRight = false;
+    mJump = false;
     mVelocity.Set(0, 0);
 }
+

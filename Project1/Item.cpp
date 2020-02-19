@@ -128,6 +128,7 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 */
 bool CItem::CollisionTest(CItem* item)
 {
+    if (item == this) { return false; }
     // Border for the item
     auto itemLeft = item->GetX() - item->GetWidth() / 2;
     auto itemRight = item->GetX() + item->GetWidth() / 2;
@@ -142,10 +143,10 @@ bool CItem::CollisionTest(CItem* item)
 
     // Test for all of the non-collision cases,
     // cases where there is a gap between the two items
-    if (ourRight < itemLeft ||  // Completely to the left
-        ourLeft > itemRight ||  // Completely to the right
-        ourTop > itemBottom ||  // Completely below
-        ourBottom < itemTop)    // Completely above
+    if (ourRight <= itemLeft ||  // Completely to the left
+        ourLeft >= itemRight ||  // Completely to the right
+        ourTop >= itemBottom ||  // Completely below
+        ourBottom <= itemTop)    // Completely above
     {
         return false;
     }

@@ -6,7 +6,6 @@
 #define IDP_OLE_INIT_FAILED             100
 #define IDR_MAINFRAME                   128
 #define IDR_Project1TYPE                130
-#define ID_WINDOW_MANAGER               131
 #define ID_LEVEL_LEVEL0                 32771
 #define ID_LEVEL_LEVEL1                 32772
 #define ID_LEVEL_LEVEL2                 32773
