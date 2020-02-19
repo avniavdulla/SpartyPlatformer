@@ -7,10 +7,13 @@
 #include "Item.h"
 #include "Vector.h"
 
-class CGnome :
+class CGnome : 
 	public CItem
 {
 public:
+
+	CGnome();
+	
 	/** 
 	* Update function for gnome movement
 	* \param elapsed Time since last update

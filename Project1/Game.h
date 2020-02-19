@@ -10,6 +10,7 @@
 
 #include "Level.h"
 #include "Gnome.h"
+#include "Item.h"
 
 class CGnome;
 class CLevel;

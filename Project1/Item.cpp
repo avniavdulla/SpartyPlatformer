@@ -19,7 +19,7 @@ const std::wstring CItem::ImagesDirectory = L"images/";
  * Constructor
  * \param level The Level this Item is a member of
  */
-CItem::CItem(CLevel* level) : mLevel(level)
+CItem::CItem(CLevel* level) 
 {
 }
 
