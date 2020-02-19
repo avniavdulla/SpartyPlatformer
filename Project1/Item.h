@@ -11,7 +11,6 @@
 #include <string>
 #include "XmlNode.h"
 #include "Vector.h"
-#include "Game.h"
 
 class CGame;
 class CLevel;

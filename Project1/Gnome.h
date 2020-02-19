@@ -5,7 +5,8 @@
 
 #pragma once
 #include "Item.h"
-#include "Level.h"
+#include "Vector.h"
+#include "Game.h"
 
 class CLevel;
 

@@ -66,3 +66,9 @@ void CGame::Update(double elapsed)
 {
     mLevel->Update(elapsed);
 }
+
+std::unique_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
+{
+    
+    return std::unique_ptr<CItem>();
+}
