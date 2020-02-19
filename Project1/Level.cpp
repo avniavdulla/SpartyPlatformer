@@ -40,10 +40,20 @@ void CLevel::Add(std::shared_ptr<CItem> item)
  */
 void CLevel::Install(CGame* game)
 {
+
     for (auto item : mItems)
     {
         game->Add(item);
     }
 
     game->GetGnome()->SetLocation(mStart.X(), mStart.Y());
+}
+
+/**
+ * Resets a Level
+ */
+void CLevel::Reset()
+{
+
+    mItems.clear();
 }

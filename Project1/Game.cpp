@@ -98,6 +98,10 @@ void CGame::Clear()
  */
 void CGame::Load(const std::wstring& filename)
 {
+    Clear();
+    mLevel.Reset();
+    mGnome->Reset();
+
     try
     {
         // Open the document to read
@@ -131,8 +135,7 @@ void CGame::Load(const std::wstring& filename)
     {
         AfxMessageBox(ex.Message().c_str());
     }
-
-    mGnome->Reset();
+    
     mLevel.Install(this);
 }
 
