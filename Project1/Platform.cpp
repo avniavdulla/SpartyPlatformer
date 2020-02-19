@@ -25,41 +25,105 @@ const wstring PlatformRightImage = L"images/platformIndustrial_061.png";
  * Constructor
  * \param level Level this Platform is a member of
  */
-CPlatform::CPlatform(CLevel* level) : CObstacle(level, PlatformMidImage)
+CPlatform::CPlatform(CGame* game) : CObstacle(game)
+{
+}
+
+/**
+ *  Destructor
+ */
+CPlatform::~CPlatform()
 {
 }
 
 /**
  * Draw our Item
+ *
  * \param graphics The graphics context to draw on
+ * \param scroll The scroll offset
  */
 void CPlatform::Draw(Gdiplus::Graphics* graphics, int scroll)
 {
-    std::unique_ptr<Gdiplus::Bitmap> leftImage = unique_ptr<Bitmap>(Bitmap::FromFile(PlatformLeftImage.c_str()));
-    std::unique_ptr<Gdiplus::Bitmap> midImage = unique_ptr<Bitmap>(Bitmap::FromFile(PlatformMidImage.c_str()));
-    std::unique_ptr<Gdiplus::Bitmap> rightImage = unique_ptr<Bitmap>(Bitmap::FromFile(PlatformRightImage.c_str()));
+    double width = GetWidth();
+    double height = GetHeight();
 
-    double width = midImage->GetWidth();
-    double height = midImage->GetHeight();
-
-    for (int i = 0; i <= GetWidth(); i += width)
+    for (int i = 0; i < GetObstacleWidth(); i += width)
     {
         if (i == 0)
         {
-            graphics->DrawImage(leftImage.get(),
-                float(GetX() - width / 2) + i + (float)scroll, float(GetY() - height / 2),
+            graphics->DrawImage(mImageLeft.get(),
+                float(GetX() - GetObstacleWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
                 (float)width + 1, (float)height);
         }
-        else if (i == GetWidth())
+        else if (i == GetObstacleWidth() - width)
         {
-            graphics->DrawImage(rightImage.get(),
-                float(GetX() - width / 2) + i + (float)scroll, float(GetY() - height / 2),
+            graphics->DrawImage(mImageRight.get(),
+                float(GetX() - GetObstacleWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
                 (float)width + 1, (float)height);
         }
         else {
-            graphics->DrawImage(midImage.get(),
-                float(GetX() - width / 2) + i + (float)scroll, float(GetY() - height / 2),
+            graphics->DrawImage(GetImage().get(),
+                float(GetX() - GetObstacleWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
                 (float)width + 1, (float)height);
         }
     }
+}
+
+/**
+* Load the attributes for an item node
+*
+* \param node The Xml node we are loading the item from
+*/
+void CPlatform::XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node)
+{
+    CItem::XmlDeclare(node);
+    mFileLeft = node->GetAttributeValue(L"left-image", L"");
+    mFileRight = node->GetAttributeValue(L"right-image", L"");
+
+    SetPlatformImage(mFileLeft, mFileRight);
+}
+
+/**
+ * Set the image file to draw for the Platform
+ * \param left The filename for the left of the Platform. Blank files are allowed
+ * \param right The filename for the right of the Platform. Blank files are allowed
+ */
+void CPlatform::SetPlatformImage(const std::wstring& left, const std::wstring& right)
+{
+    if (!left.empty())
+    {
+        wstring filename = ImagesDirectory + left;
+        mImageLeft = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+        if (mImageLeft->GetLastStatus() != Ok)
+        {
+            wstring msg(L"Failed to open ");
+            msg += filename;
+            AfxMessageBox(msg.c_str());
+            return;
+        }
+    }
+    else
+    {
+        mImageLeft.release();
+    }
+
+    if (!right.empty())
+    {
+        wstring filename = ImagesDirectory + right;
+        mImageRight = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+        if (mImageRight->GetLastStatus() != Ok)
+        {
+            wstring msg(L"Failed to open ");
+            msg += filename;
+            AfxMessageBox(msg.c_str());
+            return;
+        }
+    }
+    else
+    {
+        mImageRight.release();
+    }
+
+    mFileLeft = left;
+    mFileRight = right;
 }

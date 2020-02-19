@@ -12,7 +12,7 @@
 class CTuitionUp : public CItem
 {
 public:
-    CTuitionUp(CLevel* level);
+    CTuitionUp(CGame* game);
 
     /// Default constructor (disabled)
     CTuitionUp() = delete;

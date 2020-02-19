@@ -3,63 +3,88 @@
  *
  * \author Hugh Wilson, Avni Avdulla
  *
- * Class for items to be used in the game
+ * Base class for any Item in a Game
  */
 
 #pragma once
 
-#include <string>
+#include <memory>
 #include "XmlNode.h"
 #include "Vector.h"
 
-class CGame;
-class CLevel;
+using namespace xmlnode;
 
+class CGame;
+
+/**
+ * Base class for any Item in a Level
+ */
 class CItem
 {
 public:
-	///Default Constructor Disabled
-	CItem() = delete;
+    /// The directory were the images are stored
+    static const std::wstring ImagesDirectory;
 
-	///Copy Constructor Disabled
-	CItem(const CItem&) = delete;
+    /// Default constructor (disabled)
+    CItem() = delete;
 
-	virtual ~CItem();
+    /// Copy constructor (disabled)
+    CItem(const CItem&) = delete;
 
-	void SetImage(const std::wstring& file);
+    virtual ~CItem();
 
-	virtual void Draw(Gdiplus::Graphics* graphics, int scroll);
+    virtual void Draw(Gdiplus::Graphics* graphics, int scroll);
 
     /**
-     * The X location of the item
+     * Handle updates for animation
+     * \param elapsed The time since the last update
+     */
+    virtual void Update(double elapsed) {}
+
+    void SetImage(const std::wstring& file);
+
+    /**
+     * Return the Game the Item belongs to
+     * \return Game the Item belongs to
+     */
+    CGame* GetGame() { return mGame; }
+
+    /**
+     * The X location of the Item
      * \returns X location in pixels
      */
-    double GetX() const { return mP.X(); }
+    double GetX() const { return mPos.X(); }
 
     /**
-     * The Y location of the item
+     * The Y location of the Item
      * \returns Y location in pixels
      */
-    double GetY() const { return mP.Y(); }
-
-    /** 
-    * Gets the position vector of item
-    * \returns mP of item
-    */
-    CVector GetPos() const { return mP; }
+    double GetY() const { return mPos.Y(); }
 
     /**
-     * Set the item location
+     * Set the Item location
      * \param x X location
      * \param y Y location
      */
-    void CItem::SetLocation(double x, double y) { mP.Set(x, y); }
+    void CItem::SetLocation(double x, double y) { mPos.Set(x, y); }
 
     /**
-     * Set the item location
+     * Set the Item location
      * \param pos Vector location
      */
-    void CItem::SetLocation(CVector pos) { mP.Set(pos); }
+    void CItem::SetLocation(CVector pos) { mPos.Set(pos); }
+
+    /**
+     * The location of the Item
+     * \returns Location as a Vector
+     */
+    CVector CItem::GetLocation() { return mPos; }
+
+    /**  Get the file name for this tile image
+     * \returns Filename or blank if none */
+    std::wstring GetFile() { return mFile; }
+
+    std::unique_ptr<Gdiplus::Bitmap> GetImage();
 
     /**
      * Get the width of the Item
@@ -73,34 +98,25 @@ public:
      */
     int GetHeight() const { return mImage->GetHeight(); }
 
-    /**
-     * Handle updates for animation
-     * \param elapsed The time since the last update
-     */
-    virtual void Update(double elapsed) {}
+    virtual void XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node);
 
-	/** The directory were the images are stored */
-	static const std::wstring ImagesDirectory;
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-    /// Getter for level item is currently in 
-    CGame* GetGame() { return mGame; }
-
-    bool CollisionTest(CItem* item);
+    virtual bool CollisionTest(CItem* item);
 
 protected:
-	CItem(CLevel* level);
-
+    CItem(CGame* game);
 
 private:
-    
-    CGame* mGame;  ///< level this item is contained in 
+    /// The Level this Item is contained in
+    CGame* mGame;
 
-	std::string mID = ""; ///< item ID
-	
-	std::unique_ptr<Gdiplus::Bitmap> mImage; ///< item Image
+    // Item Vector in the Level
+    CVector mPos;
 
-	std::wstring mFile; ///< The file for this Item
+    /// The image of this Item
+    std::unique_ptr<Gdiplus::Bitmap> mImage;
 
-	CVector mP; /// < item position
+    /// The file for this Item
+    std::wstring mFile;
 };
-

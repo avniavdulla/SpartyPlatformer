@@ -8,12 +8,13 @@
 
 #pragma once
 
-#include "Level.h"
+#include <iterator> 
+#include <map>
+
 #include "Gnome.h"
-
-
-class CGnome;
-class CLevel;
+#include "Level.h"
+#include "Scoreboard.h"
+#include "XmlNode.h"
 
  /**
   * Represents the Game
@@ -25,28 +26,38 @@ public:
 
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
-
-    // void LoadLevel(CLevel* level) { mLevel = level; }
-
     void Update(double elapsed);
 
-    CLevel* GetLevel() { return CGame::mLevel; }
+    void Add(std::shared_ptr<CItem> item);
 
-    CGnome* GetGnome() { return CGame::mGnome; }
+    void Clear();
 
-    std::unique_ptr<CItem> CollisionTest(CGnome* gnome);
+    void Load(const std::wstring& filename);
 
+    std::shared_ptr<CGnome> GetGnome() { return mGnome; }
+
+    std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
 
 private:
-    /// An object that describes the current Level
-    CLevel* mLevel;
+    void XmlDeclaration(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-    /// An object that describes the current level
-    CGnome* mGnome;
-
-    /// An object that describes the Scoreboard
-    // CScoreboard* mScoreboard;
-
+    void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
+    
     /// Scale of the Game dependent on window size
     float mScale = 0.0;
+
+    /// An object that describes the current Level
+    CLevel mLevel;
+
+    /// An object that describes the Scoreboard
+    CScoreboard mScoreboard;
+
+    // The player-controlled Gnome object
+    std::shared_ptr<CGnome> mGnome;
+
+    /// The Items contained in our Level
+    std::vector<std::shared_ptr<CItem> > mItems;
+
+    /// The Nodes associated with Item Ids
+    std::map<std::wstring, std::shared_ptr<CXmlNode> > mItemIds;
 };

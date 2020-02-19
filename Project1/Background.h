@@ -3,23 +3,29 @@
  *
  * \author Steven Wang
  *
- * Class for background in the game
+ * Class that represents the Background
  */
 
 #pragma once
-#include "Game.h"
+#include "Item.h"
 
-class CBackground
+ /**
+  * Represents the Background
+  */
+class CBackground : public CItem
 {
-	///Constructor - Uses the game it is part of 
-	///Game doesn't exist rn but this should be fine once it does
-	CBackground(CGame* game);
+public:
+    CBackground(CGame* game);
 
-	///Default Constructor Disabled
-	CBackground() = delete;
-	///Copy Constructor Disabled
-	CBackground(const CItem&) = delete;
+    /// Default constructor (disabled)
+    CBackground() = delete;
 
-private:
-	CGame mGame;
+    /// Copy constructor (disabled)
+    CBackground(const CBackground&) = delete;
+
+    ~CBackground();
+
+    virtual void Draw(Gdiplus::Graphics* graphics, int scroll) override;
+
+    virtual bool CollisionTest(CItem* item) override;
 };

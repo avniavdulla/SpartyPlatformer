@@ -15,7 +15,7 @@ using namespace Gdiplus;
  * Constructor
  * \param level The level this is a member of
  */
-CDoor::CDoor(CLevel* level) : CItem(level)
+CDoor::CDoor(CGame* game) : CItem(game)
 {
 }
 

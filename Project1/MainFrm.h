@@ -3,24 +3,28 @@
 //
 
 #pragma once
+#include "ChildView.h"
 
-class CMainFrame : public CMDIFrameWnd
+class CMainFrame : public CFrameWnd
 {
-	DECLARE_DYNAMIC(CMainFrame)
+
 public:
 	CMainFrame() noexcept;
+protected:
+	DECLARE_DYNAMIC(CMainFrame)
 
-// Attributes
+	// Attributes
 public:
 
-// Operations
+	// Operations
 public:
 
-// Overrides
+	// Overrides
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+	virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
 
-// Implementation
+	// Implementation
 public:
 	virtual ~CMainFrame();
 #ifdef _DEBUG
@@ -31,10 +35,12 @@ public:
 protected:  // control bar embedded members
 	CToolBar          m_wndToolBar;
 	CStatusBar        m_wndStatusBar;
+	CChildView    m_wndView;
 
-// Generated message map functions
+	// Generated message map functions
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnSetFocus(CWnd* pOldWnd);
 	DECLARE_MESSAGE_MAP()
 
 };

@@ -1,7 +1,7 @@
 /**
  * \file Obstacle.h
  *
- * \author Avni Avdulla
+ * \author Sean Nguyen
  *
  * Base class for any Wall or Platform in a Level
  */
@@ -19,20 +19,31 @@ public:
     /// Copy constructor (disabled)
     CObstacle(const CObstacle&) = delete;
 
-    void SetWidth(int width) { mWidth = width; }
+    virtual ~CObstacle();
 
-    void SetHeight(int height) { mHeight = height; }
-
+    /**
+     * Set the Obstacle dimensions
+     * \param width Width of obstacle
+     * \param height Height of obstacle
+     */
     void SetDimensions(int width, int height) { mWidth = width; mHeight = height; }
 
-    int GetWidth() { return mWidth; }
+    /**
+     * The width of the Obstacle
+     * \returns Width of the Obstacle in pixels
+     */
+    int GetObstacleWidth() { return mWidth; }
 
-    int GetHeight() { return mHeight; }
+    /**
+     * The height of the Obstacle
+     * \returns Height of the Obstacle in pixels
+     */
+    int GetObstacleHeight() { return mHeight; }
 
-    virtual void Draw(Gdiplus::Graphics* graphics, int scroll) override;
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 protected:
-    CObstacle(CLevel* level, const std::wstring& filename);
+    CObstacle(CGame* game);
 
 private:
     /// Width of Obstacle
@@ -41,4 +52,3 @@ private:
     /// Height of Obstacle
     int mHeight = 0;
 };
-

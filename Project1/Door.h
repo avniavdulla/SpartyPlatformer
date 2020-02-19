@@ -12,7 +12,7 @@
 class CDoor : public CItem
 {
 public:
-    CDoor(CLevel* level);
+    CDoor(CGame* game);
 
     /// Default constructor (disabled)
     CDoor() = delete;

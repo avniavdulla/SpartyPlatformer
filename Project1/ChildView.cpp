@@ -7,11 +7,13 @@
 #include "pch.h"
 #include "framework.h"
 
+#include <string>
 #include <algorithm>
 #include "Project1.h"
 #include "ChildView.h"
 #include "DoubleBufferDC.h"
 
+using namespace std;
 using namespace Gdiplus;
 
 #ifdef _DEBUG
@@ -30,23 +32,23 @@ CChildView::~CChildView()
 {
 }
 
-
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
+    ON_WM_ERASEBKGND()
+    ON_WM_TIMER()
+    ON_WM_KEYDOWN()
+    ON_WM_KEYUP()
 	ON_COMMAND(ID_LEVEL_LEVEL0, &CChildView::OnLevelLevel0)
 	ON_COMMAND(ID_LEVEL_LEVEL1, &CChildView::OnLevelLevel1)
 	ON_COMMAND(ID_LEVEL_LEVEL2, &CChildView::OnLevelLevel2)
 	ON_COMMAND(ID_LEVEL_LEVEL3, &CChildView::OnLevelLevel3)
-	ON_WM_ERASEBKGND()
-    ON_WM_TIMER()
-	ON_WM_KEYDOWN()
-    ON_WM_KEYUP()
 END_MESSAGE_MAP()
 
-
-
-// CChildView message handlers
-
+/**
+ * This function is called before the window is created.
+ * \param cs A structure with the window creation parameters
+ * \returns TRUE
+ */
 BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs) 
 {
 	if (!CWnd::PreCreateWindow(cs))
@@ -60,11 +62,19 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
+/**
+ * This function is called to draw in the window.
+ *
+ * This function is called in response to a drawing message
+ * whenever we need to redraw the window on the screen.
+ * It is responsible for painting the window.
+ */
 void CChildView::OnPaint() 
 {
-	CPaintDC paintDC(this); // device context for painting
-	CDoubleBufferDC dc(&paintDC); // device context for painting
+    CPaintDC paintDC(this); // device context for painting
+    CDoubleBufferDC dc(&paintDC);
     Graphics graphics(dc.m_hDC); // Create GDI+ graphics context
+    graphics.Clear(Color(0, 0, 0));
 
     CRect rect;
     GetClientRect(&rect);
@@ -87,9 +97,7 @@ void CChildView::OnPaint()
         mTimeFreq = double(freq.QuadPart);
     }
 
-    /*
-     * Compute the elapsed time since the last draw
-     */
+    // Compute the elapsed time since the last draw
     LARGE_INTEGER time;
     QueryPerformanceCounter(&time);
     long long diff = time.QuadPart - mLastTime;
@@ -97,40 +105,6 @@ void CChildView::OnPaint()
     mLastTime = time.QuadPart;
 
     mGame.Update(elapsed);
-}
-
-
-
-/**
- * Handler for Level 0
- */
-void CChildView::OnLevelLevel0()
-{
-	// TODO: Add your command handler code here
-}
-
-/**
- * Handler for Level 1
- */
-void CChildView::OnLevelLevel1()
-{
-	// TODO: Add your command handler code here
-}
-
-/**
- * Handler for Level 2
- */
-void CChildView::OnLevelLevel2()
-{
-	// TODO: Add your command handler code here
-}
-
-/**
- * Handler for Level 3
- */
-void CChildView::OnLevelLevel3()
-{
-	// TODO: Add your command handler code here
 }
 
 /**
@@ -142,9 +116,8 @@ void CChildView::OnLevelLevel3()
  */
 BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 {
-	return FALSE;
+    return FALSE;
 }
-
 
 /**
  * Handle timer events
@@ -155,7 +128,6 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
     Invalidate();
     CWnd::OnTimer(nIDEvent);
 }
-
 
 /**
  * Handle key press events
@@ -188,7 +160,9 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
     }
 }
 
-
+/**
+ * Handle key up events
+ */
 void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
     switch (nChar)
@@ -199,3 +173,43 @@ void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
         break;
     }
 }
+
+/**
+ * Handler for Level 0
+ */
+void CChildView::OnLevelLevel0()
+{
+    mGame.Load(L"level0.xml");
+    Invalidate();
+}
+
+/**
+ * Handler for Level 1
+ */
+void CChildView::OnLevelLevel1()
+{
+	// TODO: Add your command handler code here
+}
+
+/**
+ * Handler for Level 2
+ */
+void CChildView::OnLevelLevel2()
+{
+	// TODO: Add your command handler code here
+}
+
+/**
+ * Handler for Level 3
+ */
+void CChildView::OnLevelLevel3()
+{
+	// TODO: Add your command handler code here
+}
+
+
+
+
+
+
+

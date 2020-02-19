@@ -1,32 +1,45 @@
 /**
 * \file Gnome.h
+*
 * \author Avni Avdulla
+*
+* Represents the player-controlled Gnome
 */
 
 #pragma once
+
 #include "Item.h"
 #include "Vector.h"
-#include "Game.h"
-
-class CLevel;
 
 class CGnome : public CItem
 {
 public:
+    CGnome(CGame* game);
 
-	CGnome() = delete;
-	CGnome(CGnome& gnome) = delete;
-	
-	/** 
-	* Update function for gnome movement
-	* \param elapsed Time since last update
-	*/
-	void Update(double elapsed);
-protected:
+    /// Default constructor (disabled)
+    CGnome() = delete;
 
-	CGnome(CLevel* level);
+    /// Copy constructor (disabled)
+    CGnome(const CGnome&) = delete;
+
+    ~CGnome();
+
+    void Update(double elapsed);
+
+    void Reset();
+
+    /// Sets the Gnome to move right
+    void GoLeft(bool move) { mLeft = move; }
+
+    /// Sets the Gnome to move right
+    void GoRight(bool move) { mRight = move; }
+
 private:
-	
-	CVector mVelocity; /// < velocity vector
-};
+    bool mLeft = false;
 
+    bool mRight = false;
+
+    double mWalk = 0;
+
+    CVector mVelocity;
+};
