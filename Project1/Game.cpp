@@ -1,5 +1,5 @@
 /**
- * \file Game.cpp
+ * \file Game.cpp"Gnome.h"
  *
  * \author Sean Nguyen
  */
@@ -11,7 +11,6 @@
 
  // Testing includes
 #include "Item.h"
-#include "Gnome.h"
 #include "Background.h"
 #include "Obstacle.h"
 #include "Platform.h"

@@ -9,7 +9,6 @@
 #include<vector>
 #include"Item.h"
 #include"Game.h"
-#include "Gnome.h"
 
 using namespace Gdiplus;
 

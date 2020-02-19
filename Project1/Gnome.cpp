@@ -5,7 +5,6 @@
 
 #include "pch.h"
 #include "Gnome.h"
-#include "Vector.h"
 
 
 /// Gravity in virtual pixels per second per second
@@ -85,4 +84,9 @@ void CGnome::Update(double elapsed)
     // Update the velocity and position
     mVelocity = newV;
     SetLocation(newP.X(), newP.Y());
+}
+
+CGnome::CGnome(CLevel* level) : CItem(level)
+{
+
 }
