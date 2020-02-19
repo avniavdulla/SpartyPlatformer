@@ -8,9 +8,8 @@
 
 #pragma once
 #include "Item.h"
-#include "Collide.h"
 
-class CDoor : public CCollide
+class CDoor : public CItem
 {
 public:
     CDoor(CLevel* level);
@@ -23,7 +22,7 @@ public:
 
     ~CDoor();
 
-    virtual std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
+   // virtual std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
 
     bool CollisionTest(CItem* item);
 

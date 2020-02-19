@@ -7,9 +7,9 @@
  */
 
 #pragma once
-#include "Collide.h"
+#include "Item.h"
 
-class CTuitionUp : public CCollide
+class CTuitionUp : public CItem
 {
 public:
     CTuitionUp(CLevel* level);
@@ -22,6 +22,5 @@ public:
 
     ~CTuitionUp();
 
-    virtual std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
 };
 

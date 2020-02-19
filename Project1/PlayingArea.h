@@ -11,7 +11,6 @@
 class CPlayingArea
 {
 public:
-    CPlayingArea();
 
     /// Default constructor (disabled)
     CPlayingArea() = delete;

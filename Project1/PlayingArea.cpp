@@ -11,13 +11,6 @@ using namespace std;
 using namespace Gdiplus;
 
 /**
- * Constructor
- */
-CPlayingArea::CPlayingArea()
-{
-}
-
-/**
  * Destructor
  */
 CPlayingArea::~CPlayingArea()

@@ -25,6 +25,7 @@ public:
 
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
+
     // void LoadLevel(CLevel* level) { mLevel = level; }
 
     void Update(double elapsed);
