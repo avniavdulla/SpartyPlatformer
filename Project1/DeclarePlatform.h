@@ -20,7 +20,7 @@ public:
 
     ~CDeclarePlatform();
 
-    virtual void XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node);
+    virtual void XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
     void SetPlatformImage(const std::wstring& left, const std::wstring& right);
 

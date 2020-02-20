@@ -150,8 +150,22 @@ void CGame::XmlDeclaration(const std::shared_ptr<CXmlNode>& node)
     shared_ptr<CDeclaration> declare;
     wstring id = node->GetAttributeValue(L"id", L"");
     // mItemIds.insert({ id, node });
-    declare->XmlDeclare(node);
-    mDeclarations.insert({ id, declare });
+
+    wstring name = node->GetName();
+    if (name == L"background")
+    {
+        declare = make_shared<CDeclaration>();
+    }
+    else if (name == L"platform")
+    {
+        declare = make_shared<CDeclaration>();
+    }
+
+    if (declare != nullptr)
+    {
+        declare->XmlDeclare(node);
+        mDeclarations.insert({ id, declare });
+    }
 }
 
 /**
@@ -173,9 +187,7 @@ void CGame::XmlItem(const std::shared_ptr<CXmlNode>& node)
         auto itr = mDeclarations.find(node->GetAttributeValue(L"id", L""));
         auto declare = itr->second;
         item->SetDeclaration(declare);
-        /*item 
-        item->XmlDeclare(declare);*/
-        item->XmlLoad(node);
+        /*item->XmlDeclare(declare);*/
     }
     else if (name == L"platform")
     {
@@ -183,7 +195,7 @@ void CGame::XmlItem(const std::shared_ptr<CXmlNode>& node)
         auto itr = mDeclarations.find(node->GetAttributeValue(L"id", L""));
         auto declare = itr->second;
 
-        declare = make_shared<CDeclarePlatform>();
+        //declare = make_shared<CDeclarePlatform>();
         item->SetDeclaration(declare);
 
         

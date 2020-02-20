@@ -66,7 +66,7 @@ void CDeclaration::SetImage(const std::wstring& file)
 *
 * \param node The Xml node we are loading the item from
 */
-void CDeclaration::XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node)
+void CDeclaration::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
     if (node->GetAttributeValue(L"image", L"") == L"")
     {

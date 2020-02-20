@@ -203,6 +203,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Villain.h" />
+    <ClInclude Include="Wall.h" />
     <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +228,7 @@
     <ClCompile Include="Scoreboard.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="Villain.cpp" />
+    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="XmlNode.cpp" />
   </ItemGroup>
   <ItemGroup>

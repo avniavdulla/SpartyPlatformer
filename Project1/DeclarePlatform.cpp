@@ -31,7 +31,7 @@ CDeclarePlatform::~CDeclarePlatform()
  *
  * \param node The Xml node we are loading the item from
  */
-void CDeclarePlatform::XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node)
+void CDeclarePlatform::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
     CDeclaration::XmlDeclare(node);
     mFileLeft = node->GetAttributeValue(L"left-image", L"");

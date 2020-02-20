@@ -8,6 +8,7 @@
 #include "pch.h"
 #include <string>
 #include "Platform.h"
+#include "Declaration.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -60,6 +61,7 @@ void CPlatform::Draw(Gdiplus::Graphics* graphics, int scroll)
     {
         if (i == 0)
         {
+            // SetImage(mFileLeft);
             graphics->DrawImage(mImageLeft.get(),
                 float(GetX() - GetObstacleWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
                 (float)width + 1, (float)height);
@@ -110,11 +112,11 @@ void CPlatform::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 void CPlatform::SetPlatformImage()
 {
     wstring file = CItem::GetFile();
-    wstring filename = ImagesDirectory;
+    wstring filename;
 
     if (file == L"grassMid.png")
     {
-        filename += GrassLeft;
+        filename = ImagesDirectory + GrassLeft;
         mImageLeft = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
         if (mImageLeft->GetLastStatus() != Ok)
         {
@@ -124,7 +126,7 @@ void CPlatform::SetPlatformImage()
             return;
         }
 
-        filename += GrassRight;
+        filename = ImagesDirectory + GrassRight;
         mImageRight = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
         if (mImageRight->GetLastStatus() != Ok)
         {
@@ -136,7 +138,7 @@ void CPlatform::SetPlatformImage()
     }
     else if (file == L"snowMid.png")
     {
-        filename += SnowLeft;
+        filename = ImagesDirectory + SnowLeft;
         mImageLeft = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
         if (mImageLeft->GetLastStatus() != Ok)
         {
@@ -146,7 +148,7 @@ void CPlatform::SetPlatformImage()
             return;
         }
 
-        filename += SnowRight;
+        filename = ImagesDirectory + SnowRight;
         mImageRight = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
         if (mImageRight->GetLastStatus() != Ok)
         {
@@ -158,7 +160,7 @@ void CPlatform::SetPlatformImage()
     }
     else if (file == L"platformIndustrial_060.png")
     {
-        filename += IndustrialLeft;
+        filename = ImagesDirectory + IndustrialLeft;
         mImageLeft = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
         if (mImageLeft->GetLastStatus() != Ok)
         {
@@ -168,7 +170,7 @@ void CPlatform::SetPlatformImage()
             return;
         }
 
-        filename += IndustrialRight;
+        filename = ImagesDirectory + IndustrialRight;
         mImageRight = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
         if (mImageRight->GetLastStatus() != Ok)
         {
