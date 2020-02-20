@@ -22,15 +22,19 @@ public:
 
     virtual void XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-    void SetPlatformImage(const std::wstring& left, const std::wstring& right);
+    void SetPlatformImage(const std::wstring& left, const std::wstring& mid, const std::wstring& right);
 
     /**  Get the image for this Declaration
     * \returns Filename or blank if none */
-    std::shared_ptr<Gdiplus::Bitmap> GetLeftImage() { return mImageLeft; }
+    std::shared_ptr<Gdiplus::Bitmap> GetImageLeft() { return mImageLeft; }
 
     /**  Get the image for this Declaration
     * \returns Filename or blank if none */
-    std::shared_ptr<Gdiplus::Bitmap> GetRightImage() { return mImageRight; }
+    std::shared_ptr<Gdiplus::Bitmap> GetImageMid() { return mImageMid; }
+
+    /**  Get the image for this Declaration
+    * \returns Filename or blank if none */
+    std::shared_ptr<Gdiplus::Bitmap> GetImageRight() { return mImageRight; }
 
 private:
     /// The image of the left Platform
@@ -38,6 +42,12 @@ private:
 
     /// The file for the left Platform
     std::wstring mFileLeft;
+
+    /// The image of the middle Platform
+    std::shared_ptr<Gdiplus::Bitmap> mImageMid;
+
+    /// The file for the middle Platform
+    std::wstring mFileMid;
 
     /// The image of the right Platform
     std::shared_ptr<Gdiplus::Bitmap> mImageRight;

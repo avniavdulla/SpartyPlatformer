@@ -186,6 +186,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Declaration.h" />
+    <ClInclude Include="DeclareBackground.h" />
     <ClInclude Include="DeclarePlatform.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="Declaration.cpp" />
+    <ClCompile Include="DeclareBackground.cpp" />
     <ClCompile Include="DeclarePlatform.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gnome.cpp" />

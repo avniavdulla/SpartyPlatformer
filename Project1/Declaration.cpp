@@ -46,18 +46,7 @@ void CDeclaration::SetImage(const std::wstring& file)
             return;
         }
     }
-
-    mFile = file;
 }
-
-/**
- * Returns the image file to draw
- */
-//unique_ptr<Bitmap> CDeclaration::GetImage()
-//{
-//    wstring filename = ImagesDirectory + mFile;
-//    return unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
-//}
 
 /**
 * This is the base class version that loads the attributes
@@ -68,14 +57,6 @@ void CDeclaration::SetImage(const std::wstring& file)
 */
 void CDeclaration::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
-    if (node->GetAttributeValue(L"image", L"") == L"")
-    {
-        mFile = node->GetAttributeValue(L"mid-image", L"");
-    }
-    else
-    {
-        mFile = node->GetAttributeValue(L"image", L"");
-    }
-
+    mFile = node->GetAttributeValue(L"image", L"");
     SetImage(mFile);
 }

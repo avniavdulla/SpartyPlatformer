@@ -34,20 +34,23 @@ CDeclarePlatform::~CDeclarePlatform()
 void CDeclarePlatform::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
     CDeclaration::XmlDeclare(node);
+
     mFileLeft = node->GetAttributeValue(L"left-image", L"");
+    mFileMid = node->GetAttributeValue(L"mid-image", L"");
     mFileRight = node->GetAttributeValue(L"right-image", L"");
 
-    SetPlatformImage(mFileLeft, mFileRight);
+    SetPlatformImage(mFileLeft, mFileMid, mFileRight);
 }
 
 /**
  * Set the image file to draw for the Platform
  * \param left The filename for the left of the Platform. Blank files are allowed
+ * \param left The filename for the middle of the Platform. Blank files are allowed
  * \param right The filename for the right of the Platform. Blank files are allowed
  */
-void CDeclarePlatform::SetPlatformImage(const std::wstring& left, const std::wstring& right)
+void CDeclarePlatform::SetPlatformImage(const std::wstring& left, const std::wstring& mid, const std::wstring& right)
 {
-    /*if (!left.empty())
+    if (!left.empty())
     {
         wstring filename = ImagesDirectory + left;
         mImageLeft = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
@@ -59,9 +62,18 @@ void CDeclarePlatform::SetPlatformImage(const std::wstring& left, const std::wst
             return;
         }
     }
-    else
+
+    if (!mid.empty())
     {
-        mImageLeft.release();
+        wstring filename = ImagesDirectory + mid;
+        mImageRight = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+        if (mImageRight->GetLastStatus() != Ok)
+        {
+            wstring msg(L"Failed to open ");
+            msg += filename;
+            AfxMessageBox(msg.c_str());
+            return;
+        }
     }
 
     if (!right.empty())
@@ -76,11 +88,8 @@ void CDeclarePlatform::SetPlatformImage(const std::wstring& left, const std::wst
             return;
         }
     }
-    else
-    {
-        mImageRight.release();
-    }*/
 
     mFileLeft = left;
+    mFileMid = mid;
     mFileRight = right;
 }

@@ -1,5 +1,5 @@
 /**
- * \file Game.cpp
+ * \file Background.cpp
  *
  * \author Sean Nguyen
  */
