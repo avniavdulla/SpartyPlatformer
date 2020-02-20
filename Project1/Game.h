@@ -13,7 +13,6 @@
 
 #include "Level.h"
 #include "Item.h"
-#include "Declaration.h"
 #include "Gnome.h"
 #include "Scoreboard.h"
 #include "XmlNode.h"
@@ -38,9 +37,9 @@ public:
 
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 
-    std::shared_ptr<CItem> CollisionTest(CGnome* gnome, int direction);
+    std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
 
-    void Lose();
+    // void Lose();
 
     /**
      * Gets list of Items in the Game
@@ -49,9 +48,6 @@ public:
     std::vector<std::shared_ptr<CItem> > GetItems() { return mItems; }
 
 private:
-    void XmlDeclaration(const std::shared_ptr<xmlnode::CXmlNode>& node);
-
-    void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
     /// Scale of the Game dependent on window size
     float mScale = 0.0;
@@ -67,10 +63,4 @@ private:
 
     /// The Items contained in our Game
     std::vector<std::shared_ptr<CItem> > mItems;
-
-    /// The Nodes associated with Item Ids
-    std::map<std::wstring, std::shared_ptr<CXmlNode> > mItemIds;
-
-    /// The Declarations of Items
-    std::map<std::wstring, std::shared_ptr<CDeclaration> > mDeclarations;
 };

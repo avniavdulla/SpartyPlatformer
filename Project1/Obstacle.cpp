@@ -22,14 +22,3 @@ CObstacle::CObstacle(CGame* game) : CItem(game)
 CObstacle::~CObstacle()
 {
 }
-
-/**
- * Load the attributes for an item node.
- * \param node The Xml node we are loading the item from
- */
-void CObstacle::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
-{
-    CItem::XmlLoad(node);
-    mWidth = node->GetAttributeDoubleValue(L"width", 0);
-    mHeight = node->GetAttributeDoubleValue(L"height", 0);
-}

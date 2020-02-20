@@ -8,10 +8,13 @@
 
 #pragma once
 
-#include<memory>
-#include<vector>
+#include <memory>
+#include <vector>
+#include <iterator> 
+#include <map>
 
 #include "Item.h"
+#include "Declare.h"
 
 /**
 * Represents a level
@@ -27,6 +30,8 @@ public:
 
     void SetDimensions(double width, double height) { mWidth = width; mHeight = height; }
 
+    void SetLevel(const std::wstring& filename) { mFile = filename; }
+
     void SetStart(double x, double y) { mStart.Set(x, y); }
 
     void Install(CGame* game);
@@ -36,8 +41,15 @@ public:
     CVector GetStart() { return mStart; }
 
 private:
+    void XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+    void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, CGame* game);
+
     /// The Items contained in our Level
     std::vector<std::shared_ptr<CItem> > mItems;
+
+    /// The filename of the Level
+    std::wstring mFile;
 
     // Level dimensions
     double mHeight = 1024; ///< Height of the level in pixels
@@ -45,4 +57,7 @@ private:
 
     /// Start Vector for the Gnome;
     CVector mStart;
+
+    /// The Declares of Items
+    std::map<std::wstring, std::shared_ptr<CDeclare> > mDeclares;
 };

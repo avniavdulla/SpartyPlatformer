@@ -8,7 +8,6 @@
 #include "pch.h"
 #include <string>
 #include "Platform.h"
-#include "Declaration.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -36,41 +35,29 @@ CPlatform::~CPlatform()
  */
 void CPlatform::Draw(Gdiplus::Graphics* graphics, int scroll)
 {
-    double width = mImageMid->GetWidth();
-    double height = mImageMid->GetHeight();
+    double width = mImageLeft->GetWidth();
+    double height = mImageLeft->GetHeight();
 
-    for (int i = 0; i < GetObstacleWidth(); i += width)
+    for (int i = 0; i < CObstacle::GetWidth(); i += width)
     {
         if (i == 0)
         {
             graphics->DrawImage(mImageLeft.get(),
-                float(GetX() - GetObstacleWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
+                float(GetX() - CObstacle::GetWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
                 (float)width + 1, (float)height);
         }
-        else if (i == GetObstacleWidth() - width)
+        else if (i == CObstacle::GetWidth() - width)
         {
             graphics->DrawImage(mImageRight.get(),
-                float(GetX() - GetObstacleWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
+                float(GetX() - CObstacle::GetWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
                 (float)width + 1, (float)height);
         }
         else {
             graphics->DrawImage(mImageMid.get(),
-                float(GetX() - GetObstacleWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
+                float(GetX() - CObstacle::GetWidth() / 2) + i + (float)scroll, float(GetY() - height / 2),
                 (float)width + 1, (float)height);
         }
     }
-}
-
-/**
- * Load the attributes for an item node.
- * \param node The Xml node we are loading the item from
- */
-void CPlatform::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
-{
-    CObstacle::XmlLoad(node);
-    // mImageLeft = GetDeclaration()->GetImageLeft();
-    // mImageMid = mDeclare->GetImageMid();
-    // mImageRight = mDeclare->GetImageRight();
 }
 
 /**
@@ -83,4 +70,37 @@ void CPlatform::SetPlatformImage(std::shared_ptr<Gdiplus::Bitmap> left, std::sha
     mImageLeft = left;
     mImageMid = mid;
     mImageRight = right;
+}
+
+/**
+ * Tests if any other item is colliding with it
+ * Backgrounds do not collide with anything
+ * \param gnome testing for a collision
+ */
+bool CPlatform::CollisionTest(CItem* item)
+{
+    // Border for the item
+    auto itemLeft = item->GetX() - item->GetWidth() / 2;
+    auto itemRight = item->GetX() + item->GetWidth() / 2;
+    auto itemTop = item->GetY() - item->GetHeight() / 2;
+    auto itemBottom = item->GetY() + item->GetHeight() / 2;
+
+    // For us
+    auto ourLeft = GetX() - GetWidth() / 2;
+    auto ourRight = GetX() + GetWidth() / 2;
+    auto ourTop = GetY() - GetHeight() / 2;
+    auto ourBottom = GetY() + GetHeight() / 2;
+
+    // Test for all of the non-collision cases,
+    // cases where there is a gap between the two items
+    if (ourRight < itemLeft ||  // Completely to the left
+        ourLeft > itemRight ||  // Completely to the right
+        ourTop > itemBottom ||  // Completely below
+        ourBottom < itemTop)    // Completely above
+    {
+        return false;
+    }
+
+
+    return true;
 }

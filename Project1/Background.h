@@ -31,15 +31,6 @@ public:
 
     virtual bool CollisionTest(CItem* item) override;
 
-    /**
-     * Set associated Declaration
-     * \param declare Associated Declaration
-     */
-    //virtual void SetDeclaration(std::shared_ptr<CDeclaration> declare) {
-    //    //std::shared_ptr<CDeclareBackground> temp = declare;
-    //    mDeclare = declare;
-    //}
-
 private:
     /// Associated Declaration class
     std::shared_ptr<CDeclareBackground> mDeclare;

@@ -26,7 +26,11 @@ public:
 
     void Update(double elapsed);
 
-    void Reset();
+    void Reset(CVector start);
+
+    /** Gets Gnome's Velocity
+     * \return Gnome's Velocity */
+    CVector GetVelocity() { return mVelocity; }
 
     /// Sets the Gnome to move right
     void GoLeft(bool move) { mLeft = move; }
@@ -42,6 +46,7 @@ private:
     bool mRight = false;
 
     bool mJump = false;
+
     double mWalk = 0;
 
     CVector mVelocity;

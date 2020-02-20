@@ -185,7 +185,7 @@
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="ChildView.h" />
-    <ClInclude Include="Declaration.h" />
+    <ClInclude Include="Declare.h" />
     <ClInclude Include="DeclareBackground.h" />
     <ClInclude Include="DeclarePlatform.h" />
     <ClInclude Include="DoubleBufferDC.h" />
@@ -210,7 +210,7 @@
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="ChildView.cpp" />
-    <ClCompile Include="Declaration.cpp" />
+    <ClCompile Include="Declare.cpp" />
     <ClCompile Include="DeclareBackground.cpp" />
     <ClCompile Include="DeclarePlatform.cpp" />
     <ClCompile Include="Game.cpp" />

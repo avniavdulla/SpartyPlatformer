@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include "Declaration.h"
+#include "Declare.h"
 
-class CDeclarePlatform : public CDeclaration
+class CDeclarePlatform : public CDeclare
 {
 public:
     CDeclarePlatform();
@@ -21,6 +21,8 @@ public:
     ~CDeclarePlatform();
 
     virtual void XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+    virtual std::shared_ptr<CItem> XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, CGame* game) override;
 
     void SetPlatformImage(const std::wstring& left, const std::wstring& mid, const std::wstring& right);
 

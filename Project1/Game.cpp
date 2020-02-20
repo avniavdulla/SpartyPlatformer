@@ -7,14 +7,10 @@
 #include "pch.h"
 
 #include "Game.h"
-// #include "Item.h"
-// #include "Gnome.h"
 #include "Background.h"
 #include "Obstacle.h"
 #include "Platform.h"
 #include "Villain.h"
-#include "Declaration.h"
-#include "DeclarePlatform.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -94,7 +90,6 @@ void CGame::Clear()
     mItems.clear();
 }
 
-
 /**
  * Load the Game from a specified Level
  * \param filename File name of the Level
@@ -102,112 +97,8 @@ void CGame::Clear()
 void CGame::Load(const std::wstring& filename)
 {
     Clear();
-    mLevel.Reset();
-    mGnome->Reset();
-
-    try
-    {
-        // Open the document to read
-        shared_ptr<CXmlNode> root = CXmlNode::OpenDocument(filename);
-
-        double width = root->GetAttributeDoubleValue(L"width", 0);
-        double height = root->GetAttributeDoubleValue(L"height", 0);
-        double x = root->GetAttributeDoubleValue(L"start-x", 0);
-        double y = root->GetAttributeDoubleValue(L"start-y", 0);
-        mLevel.SetDimensions(width, height);
-        mLevel.SetStart(x, y);
-
-        // Once we know it is open, clear the existing data
-        Clear();
-
-        shared_ptr<CXmlNode> declare = root->GetChild(0);
-
-        for (auto node : declare->GetChildren())
-        {
-            XmlDeclaration(node);
-        }
-
-        shared_ptr<CXmlNode> items = root->GetChild(1);
-
-        for (auto node : items->GetChildren())
-        {
-            XmlItem(node);
-        }
-    }
-    catch (CXmlNode::Exception ex)
-    {
-        AfxMessageBox(ex.Message().c_str());
-    }
-    
+    mLevel.SetLevel(filename);
     mLevel.Install(this);
-}
-
-/**
- * Handle a declared Item node
- * \param node Pointer to XML node we are handling
- */
-void CGame::XmlDeclaration(const std::shared_ptr<CXmlNode>& node)
-{
-    shared_ptr<CDeclaration> declare;
-    wstring id = node->GetAttributeValue(L"id", L"");
-    // mItemIds.insert({ id, node });
-
-    wstring name = node->GetName();
-    if (name == L"background")
-    {
-        declare = make_shared<CDeclaration>();
-    }
-    else if (name == L"platform")
-    {
-        declare = make_shared<CDeclaration>();
-    }
-
-    if (declare != nullptr)
-    {
-        declare->XmlDeclare(node);
-        mDeclarations.insert({ id, declare });
-    }
-}
-
-/**
- * Handle an Item node
- * \param node Pointer to XML node we are handling
- */
-void CGame::XmlItem(const std::shared_ptr<CXmlNode>& node)
-{
-    // A pointer for the Item we are loading
-    shared_ptr<CItem> item;
-
-    // We have an item. What type?
-    wstring name = node->GetName();
-    if (name == L"background")
-    {
-        item = make_shared<CBackground>(this);
-        /*auto itr = mItemIds.find(node->GetAttributeValue(L"id", L""));
-        auto declare = itr->second;*/
-        auto itr = mDeclarations.find(node->GetAttributeValue(L"id", L""));
-        auto declare = itr->second;
-        item->SetDeclaration(declare);
-        /*item->XmlDeclare(declare);*/
-    }
-    else if (name == L"platform")
-    {
-        item = make_shared<CPlatform>(this);
-        auto itr = mDeclarations.find(node->GetAttributeValue(L"id", L""));
-        auto declare = itr->second;
-
-        //declare = make_shared<CDeclarePlatform>();
-        item->SetDeclaration(declare);
-
-        
-        /*item->XmlDeclare(declare);*/
-    }
-
-    if (item != nullptr)
-    {
-        item->XmlLoad(node);
-        mLevel.Add(item);
-    }
 }
 
 /**
@@ -215,7 +106,7 @@ void CGame::XmlItem(const std::shared_ptr<CXmlNode>& node)
  * \param gnome The player-controlled Gnome
  * \return Item that is colliding with the Gnome
  */
-shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome,  int direction)
+shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
 {
     for (auto item : mItems)
     {   

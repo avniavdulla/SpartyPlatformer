@@ -32,15 +32,13 @@ public:
      * The width of the Obstacle
      * \returns Width of the Obstacle in pixels
      */
-    int GetObstacleWidth() { return mWidth; }
+    virtual int GetWidth() const override { return mWidth; }
 
     /**
      * The height of the Obstacle
      * \returns Height of the Obstacle in pixels
      */
-    int GetObstacleHeight() { return mHeight; }
-
-    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+    virtual int GetHeight() const override { return mHeight; }
 
 protected:
     CObstacle(CGame* game);

@@ -12,7 +12,6 @@
 
 #include "XmlNode.h"
 #include "Vector.h"
-#include "Declaration.h"
 
 using namespace xmlnode;
 
@@ -43,8 +42,9 @@ public:
      */
     virtual void Update(double elapsed) {}
 
-    void SetImage(const std::wstring& file);
+    void SetImage(std::shared_ptr<Gdiplus::Bitmap> image) { mImage = image; }
 
+    void SetImage(const std::wstring& file);
     /**
      * Return the Game the Item belongs to
      * \return Game the Item belongs to
@@ -88,43 +88,31 @@ public:
 
     /**  Get the image for this Item
     * \returns Image */
-    std::shared_ptr<Gdiplus::Bitmap> GetImage() { return mImage;  }
+    std::shared_ptr<Gdiplus::Bitmap> GetImage() { return mImage; }
 
     /**
      * Get the width of the Item
      * \returns Width of the Item
      */
-    int GetWidth() const { return mImage->GetWidth(); }
+    virtual int GetWidth() const { return mImage->GetWidth(); }
 
     /**
      * Get the height of the Item
      * \returns Height of the Item
      */
-    int GetHeight() const { return mImage->GetHeight(); }
-
-    // virtual void XmlDeclare(std::shared_ptr<xmlnode::CXmlNode> node);
-
-    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+    virtual int GetHeight() const { return mImage->GetHeight(); }
     
     virtual bool CollisionTest(CItem* item);
 
-	virtual bool VerticalCollision(CItem* item);
-
-    void SetDeclaration(std::shared_ptr<CDeclaration> declare) { mDeclare = declare; }
-
-    std::shared_ptr<CDeclaration> GetDeclaration() { return mDeclare; }
-
 protected:
     CItem(CGame* game);
-
+    
+private:
     /// The Level this Item is contained in
     CGame* mGame;
-private:
 
     // Item Vector in the Level
     CVector mPos;
-
-    std::shared_ptr<CDeclaration> mDeclare;
 
     /// The image of this Item
     std::shared_ptr<Gdiplus::Bitmap> mImage;

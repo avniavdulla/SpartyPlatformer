@@ -26,8 +26,6 @@ public:
 
     virtual void Draw(Gdiplus::Graphics* graphics, int scroll) override;
 
-    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
-
     /**
      * Set associated Declaration
      * \param declare Associated Declaration
@@ -56,6 +54,8 @@ public:
      * \returns Right image of the Platform
      */
     std::shared_ptr<Gdiplus::Bitmap> GetImageRight() { return mImageRight; }
+
+    virtual bool CollisionTest(CItem* item) override;
 
 private:
     /// Associated Declaration class
