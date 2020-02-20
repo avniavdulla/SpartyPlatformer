@@ -13,6 +13,8 @@
 #include "Obstacle.h"
 #include "Platform.h"
 #include "Villain.h"
+#include "Declaration.h"
+#include "DeclarePlatform.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -98,6 +100,10 @@ void CGame::Clear()
  */
 void CGame::Load(const std::wstring& filename)
 {
+    Clear();
+    mLevel.Reset();
+    mGnome->Reset();
+
     try
     {
         // Open the document to read
@@ -131,8 +137,7 @@ void CGame::Load(const std::wstring& filename)
     {
         AfxMessageBox(ex.Message().c_str());
     }
-
-    mGnome->Reset();
+    
     mLevel.Install(this);
 }
 
@@ -142,8 +147,25 @@ void CGame::Load(const std::wstring& filename)
  */
 void CGame::XmlDeclaration(const std::shared_ptr<CXmlNode>& node)
 {
+    shared_ptr<CDeclaration> declare;
     wstring id = node->GetAttributeValue(L"id", L"");
-    mItemIds.insert({ id, node });
+    // mItemIds.insert({ id, node });
+
+    wstring name = node->GetName();
+    if (name == L"background")
+    {
+        declare = make_shared<CDeclaration>();
+    }
+    else if (name == L"platform")
+    {
+        declare = make_shared<CDeclaration>();
+    }
+
+    if (declare != nullptr)
+    {
+        declare->XmlDeclare(node);
+        mDeclarations.insert({ id, declare });
+    }
 }
 
 /**
@@ -160,16 +182,24 @@ void CGame::XmlItem(const std::shared_ptr<CXmlNode>& node)
     if (name == L"background")
     {
         item = make_shared<CBackground>(this);
-        auto itr = mItemIds.find(node->GetAttributeValue(L"id", L""));
+        /*auto itr = mItemIds.find(node->GetAttributeValue(L"id", L""));
+        auto declare = itr->second;*/
+        auto itr = mDeclarations.find(node->GetAttributeValue(L"id", L""));
         auto declare = itr->second;
-        item->XmlDeclare(declare);
+        item->SetDeclaration(declare);
+        /*item->XmlDeclare(declare);*/
     }
     else if (name == L"platform")
     {
         item = make_shared<CPlatform>(this);
-        auto itr = mItemIds.find(node->GetAttributeValue(L"id", L""));
+        auto itr = mDeclarations.find(node->GetAttributeValue(L"id", L""));
         auto declare = itr->second;
-        item->XmlDeclare(declare);
+
+        //declare = make_shared<CDeclarePlatform>();
+        item->SetDeclaration(declare);
+
+        
+        /*item->XmlDeclare(declare);*/
     }
 
     if (item != nullptr)

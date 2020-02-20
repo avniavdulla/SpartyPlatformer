@@ -13,6 +13,7 @@
 
 #include "Level.h"
 #include "Item.h"
+#include "Declaration.h"
 #include "Gnome.h"
 #include "Scoreboard.h"
 #include "XmlNode.h"
@@ -61,4 +62,7 @@ private:
 
     /// The Nodes associated with Item Ids
     std::map<std::wstring, std::shared_ptr<CXmlNode> > mItemIds;
+
+    /// The Declarations of Items
+    std::map<std::wstring, std::shared_ptr<CDeclaration> > mDeclarations;
 };

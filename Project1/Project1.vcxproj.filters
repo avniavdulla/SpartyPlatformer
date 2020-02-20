@@ -72,6 +72,15 @@
     <ClInclude Include="Platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Declaration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeclarePlatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project1.cpp">
@@ -117,6 +126,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Declaration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeclarePlatform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

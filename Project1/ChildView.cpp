@@ -181,7 +181,8 @@ void CChildView::OnLevelLevel0()
  */
 void CChildView::OnLevelLevel1()
 {
-    // TODO: Add your command handler code here
+    mGame.Load(L"level1.xml");
+    Invalidate();
 }
 
 /**
