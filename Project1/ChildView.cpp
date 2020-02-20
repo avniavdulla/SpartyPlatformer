@@ -110,7 +110,24 @@ void CChildView::OnPaint()
     double elapsed = double(diff) / mTimeFreq;
     mLastTime = time.QuadPart;
 
-    mGame.Update(elapsed);
+    /// Maximum amount of time to allow for elapsed
+    const double MaxElapsed = 0.050;
+    //
+    // Prevent tunnelling
+    //
+    while (elapsed > MaxElapsed)
+    {
+        mGame.Update(MaxElapsed);
+
+        elapsed -= MaxElapsed;
+    }
+
+    // Consume any remaining time
+    if (elapsed > 0)
+    {
+        mGame.Update(elapsed);
+    }
+    
 }
 
 /**
@@ -141,9 +158,11 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
     {
     case VK_RIGHT:
         mGame.GetGnome()->GoRight(true);
+        mGame.GetGnome()->GoLeft(false);
         break;
     case VK_LEFT:
         mGame.GetGnome()->GoLeft(true);
+        mGame.GetGnome()->GoRight(false);
         break;
     case VK_SPACE:
         mGame.GetGnome()->Jump(true);
@@ -164,6 +183,7 @@ void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
     case VK_LEFT:
         mGame.GetGnome()->GoLeft(false);
         break;
+
     }
 }
 

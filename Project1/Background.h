@@ -29,5 +29,7 @@ public:
     virtual void Draw(Gdiplus::Graphics* graphics, int scroll) override;
 
     virtual bool CollisionTest(CItem* item) override;
+
+    //virtual bool VerticalCollision(CItem* item) override;
 };
 

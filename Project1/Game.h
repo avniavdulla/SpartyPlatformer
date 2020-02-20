@@ -38,7 +38,7 @@ public:
 
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 
-    std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
+    std::shared_ptr<CItem> CollisionTest(CGnome* gnome, int direction);
 
 private:
     void XmlDeclaration(const std::shared_ptr<xmlnode::CXmlNode>& node);

@@ -67,6 +67,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
  */
 void CGame::Update(double elapsed)
 {
+
     for (auto item : mItems)
     {
         item->Update(elapsed);
@@ -214,14 +215,15 @@ void CGame::XmlItem(const std::shared_ptr<CXmlNode>& node)
  * \param gnome The player-controlled Gnome
  * \return Item that is colliding with the Gnome
  */
-shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
+shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome,  int direction)
 {
     for (auto item : mItems)
-    {
-        if (item->CollisionTest(gnome))
+    {   
+        if (item->CollisionTest(gnome)) 
         {
             return item;
         }
+       
     }
     return nullptr;
 }

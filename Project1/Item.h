@@ -108,6 +108,8 @@ public:
     
     virtual bool CollisionTest(CItem* item);
 
+	virtual bool VerticalCollision(CItem* item);
+
     void SetDeclaration(std::shared_ptr<CDeclaration> declare) { mDeclare = declare; }
 
     std::shared_ptr<CDeclaration> GetDeclaration() { return mDeclare; }

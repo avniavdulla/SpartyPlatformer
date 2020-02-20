@@ -144,13 +144,36 @@ bool CItem::CollisionTest(CItem* item)
 
     // Test for all of the non-collision cases,
     // cases where there is a gap between the two items
-    if (ourRight <= itemLeft ||  // Completely to the left
-        ourLeft >= itemRight ||  // Completely to the right
-        ourTop >= itemBottom ||  // Completely below
-        ourBottom <= itemTop)    // Completely above
+    if (ourRight < itemLeft ||  // Completely to the left
+        ourLeft > itemRight ||  // Completely to the right
+        ourTop > itemBottom ||  // Completely below
+        ourBottom < itemTop)    // Completely above
     {
         return false;
     }
+    return true;
+    
+}
 
+/**
+* This is the  base class version that tests for collisions
+*
+* \param item The Item we are testing collision against
+*/
+bool CItem::VerticalCollision(CItem* item) {
+    
+    // Border for the item
+    auto itemTop = item->GetY() - item->GetHeight() / 2;
+    auto itemBottom = item->GetY() + item->GetHeight() / 2;
+
+    //border for our item
+    auto ourTop = GetY() - GetHeight() / 2;
+    auto ourBottom = GetY() + GetHeight() / 2;
+
+    if (ourTop > itemBottom || //completley below 
+        ourBottom < itemTop) //completley above
+    {
+        return false;
+    }
     return true;
 }
