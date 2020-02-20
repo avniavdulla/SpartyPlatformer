@@ -27,10 +27,14 @@ public:
      */
     void AddScore(int value) { mScore += value; }
 
+    void Lose() { mLose = true; }
+
 private:
     /// Seconds spent in the Level
     double mSeconds = 0;
 
     /// Score accumulated in the Level
     int mScore = 0;
+
+    bool mLose = false;
 };

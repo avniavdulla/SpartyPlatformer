@@ -33,6 +33,8 @@ public:
 
     void Reset();
 
+    CVector GetStart() { return mStart; }
+
 private:
     /// The Items contained in our Level
     std::vector<std::shared_ptr<CItem> > mItems;

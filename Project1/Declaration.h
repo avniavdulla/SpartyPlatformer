@@ -24,8 +24,6 @@ public:
     /// The directory where the images are stored
     static const std::wstring ImagesDirectory;
 
-    CDeclaration();
-
     /// Copy constructor (disabled)
     CDeclaration(const CDeclaration&) = delete;
 
@@ -42,6 +40,9 @@ public:
     std::wstring GetFile() { return mFile; }
 
     virtual void XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+protected:
+    CDeclaration();
 
 private:
     /// The image of this Item

@@ -40,6 +40,14 @@ public:
 
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
 
+    void Lose();
+
+    /**
+     * Gets list of Items in the Game
+     * \return List of Items
+     */
+    std::vector<std::shared_ptr<CItem> > GetItems() { return mItems; }
+
 private:
     void XmlDeclaration(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
@@ -57,7 +65,7 @@ private:
     // The player-controlled Gnome object
     std::shared_ptr<CGnome> mGnome;
 
-    /// The Items contained in our Level
+    /// The Items contained in our Game
     std::vector<std::shared_ptr<CItem> > mItems;
 
     /// The Nodes associated with Item Ids
