@@ -11,6 +11,8 @@
 #include "Declare.h"
 #include "DeclareBackground.h"
 #include "DeclarePlatform.h"
+#include "DeclareMoney.h"
+#include "DeclareWall.h"
 #include "DeclareDoor.h"
 
 using namespace std;
@@ -147,6 +149,14 @@ void CLevel::XmlDeclare(const shared_ptr<CXmlNode>& node)
     {
         declare = make_shared<CDeclarePlatform>();
     }
+    else if (name == L"wall")
+    {
+        declare = make_shared<CDeclareWall>();
+    }
+    else if (name == L"money")
+    {
+        declare = make_shared<CDeclareMoney>();
+    }
     else if (name == L"door")
     {
         declare = make_shared<CDeclareDoor>();
@@ -167,12 +177,15 @@ void CLevel::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {
     wstring id = node->GetAttributeValue(L"id", L"");
     auto itr = mDeclares.find(node->GetAttributeValue(L"id", L""));
-    auto declare = itr->second;
-
-    if (declare != nullptr)
+    if (itr != mDeclares.end())
     {
-        auto item = declare->XmlItem(node, game);
-        Add(item);
+        auto declare = itr->second;
+
+        if (declare != nullptr)
+        {
+            auto item = declare->XmlItem(node, game);
+            Add(item);
+        }
     }
 }
 /**

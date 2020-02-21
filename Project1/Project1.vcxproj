@@ -188,7 +188,9 @@
     <ClInclude Include="Declare.h" />
     <ClInclude Include="DeclareBackground.h" />
     <ClInclude Include="DeclareDoor.h" />
+    <ClInclude Include="DeclareMoney.h" />
     <ClInclude Include="DeclarePlatform.h" />
+    <ClInclude Include="DeclareWall.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
@@ -197,6 +199,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="Money.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Platform.h" />
@@ -215,13 +218,16 @@
     <ClCompile Include="Declare.cpp" />
     <ClCompile Include="DeclareBackground.cpp" />
     <ClCompile Include="DeclareDoor.cpp" />
+    <ClCompile Include="DeclareMoney.cpp" />
     <ClCompile Include="DeclarePlatform.cpp" />
+    <ClCompile Include="DeclareWall.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gnome.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="Money.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

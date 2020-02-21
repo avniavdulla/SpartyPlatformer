@@ -17,9 +17,9 @@
 #include "Scoreboard.h"
 #include "XmlNode.h"
 
- /**
-  * Represents the Game
-  */
+/**
+ * Represents the Game
+ */
 class CGame
 {
 public:

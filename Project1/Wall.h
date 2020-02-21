@@ -10,7 +10,21 @@
 
 #include "Obstacle.h"
 
+/**
+ * Represents a Wall
+ */
 class CWall : public CObstacle
 {
+public:
+    CWall(CGame* game);
 
+    /// Default constructor (disabled)
+    CWall() = delete;
+
+    /// Copy constructor (disabled)
+    CWall(const CWall&) = delete;
+
+    ~CWall();
+
+    virtual void Draw(Gdiplus::Graphics* graphics, int scroll) override;
 };
