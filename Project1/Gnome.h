@@ -37,8 +37,13 @@ public:
 
     /// Sets the Gnome to move right
     void GoRight(bool move) { mRight = move; }
-
+    /// sets the Gnome to jump
     void Jump(bool move) { mJump = true; };
+    /**
+    * Getter for mDying
+    * \return bool mDying variable
+    */
+    bool GetDying() { return mDying; }
 
 private:
 

@@ -35,8 +35,7 @@ CGame::CGame()
  */
 void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 {
-    // set dimensions in variable
-    mDimensions.Set(width, height);
+
     //
     // Automatic Scaling
     //

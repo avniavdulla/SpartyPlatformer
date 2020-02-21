@@ -41,6 +41,8 @@ public:
 
     void Reset();
 
+    /// getter for level height 
+    double GetHeight() { return mHeight; }
     /** Gets starting position
      * \return Vector Starting position */
     CVector GetStart() { return mStart; }

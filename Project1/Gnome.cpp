@@ -223,8 +223,9 @@ void CGnome::Update(double elapsed)
     mVelocity = newVelocity;
     SetLocation(newPos.X(), newPos.Y());
 
+    auto ourTop = GetY() - GetHeight() / 2;
     // gnome falling out of the window, therefor dying 
-    if (GetY() > GetGame()->GetDimension().X()) 
+    if (ourTop > GetGame()->GetLevelHeight()) 
     {
         mDying = true;
     }
