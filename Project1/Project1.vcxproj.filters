@@ -99,6 +99,12 @@
     <ClInclude Include="DeclareMoney.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TuitionUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeclareTuitionUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project1.cpp">
@@ -171,6 +177,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DeclareMoney.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TuitionUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeclareTuitionUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

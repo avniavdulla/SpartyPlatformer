@@ -71,7 +71,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	EnableDocking(CBRS_ALIGN_ANY);
 	DockControlBar(&m_wndToolBar);
 
-	m_wndView.OnLevelLevel0();
+	m_wndView.OnLevelLevel1();
 	return 0;
 }
 

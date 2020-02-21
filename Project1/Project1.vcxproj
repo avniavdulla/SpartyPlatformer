@@ -190,6 +190,7 @@
     <ClInclude Include="DeclareDoor.h" />
     <ClInclude Include="DeclareMoney.h" />
     <ClInclude Include="DeclarePlatform.h" />
+    <ClInclude Include="DeclareTuitionUp.h" />
     <ClInclude Include="DeclareWall.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoubleBufferDC.h" />
@@ -207,6 +208,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TuitionUp.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Villain.h" />
     <ClInclude Include="Wall.h" />
@@ -220,6 +222,7 @@
     <ClCompile Include="DeclareDoor.cpp" />
     <ClCompile Include="DeclareMoney.cpp" />
     <ClCompile Include="DeclarePlatform.cpp" />
+    <ClCompile Include="DeclareTuitionUp.cpp" />
     <ClCompile Include="DeclareWall.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -238,6 +241,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Project1.cpp" />
     <ClCompile Include="Scoreboard.cpp" />
+    <ClCompile Include="TuitionUp.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="Villain.cpp" />
     <ClCompile Include="Wall.cpp" />

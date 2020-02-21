@@ -12,7 +12,6 @@
 #include "Money.h"
 
 using namespace std;
-using namespace Gdiplus;
 
 /**
  * Constructor
