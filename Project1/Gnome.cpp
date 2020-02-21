@@ -78,20 +78,27 @@ void CGnome::Update(double elapsed)
     auto collided = GetGame()->CollisionTest(this);
     if (collided != nullptr)
     {
-        if (newVelocity.Y() > 0)
+        auto itemTop = collided->GetY() - collided->GetHeight() / 2;
+        auto itemBottom = collided->GetY() + collided->GetHeight() / 2;
+
+        auto ourTop = GetY() - GetHeight() / 2;
+        auto ourBottom = GetY() + GetHeight() / 2;
+        if (newVelocity.Y() > 0 && (ourBottom > itemTop))
         {
             // We are falling, stop at the collision point
             newPos.SetY(collided->GetY() - collided->GetHeight() / 2 - GetHeight() / 2 - Epsilon);
+            newVelocity.SetY(0);
         }
-        else if (newVelocity.Y() < 0)
+        else if (newVelocity.Y() < 0 && (ourTop < itemBottom))
         {
             // We are rising, stop at the collision point
             newPos.SetY(collided->GetY() + collided->GetHeight() / 2 + GetHeight() / 2 + Epsilon);
+            newVelocity.SetY(0);
         }
 
         // If we collide, we cancel any velocity
         // in the Y direction
-        newVelocity.SetY(0);
+        
     }
 
     // 
@@ -99,7 +106,7 @@ void CGnome::Update(double elapsed)
     //
     SetLocation(newPos.X(), GetY());
 
-    if ((mLeft && mRight) || (!mLeft && mRight))
+    if ((mLeft && mRight) || (!mLeft && !mRight))
     {
         newVelocity.SetX(0);
     }
@@ -115,20 +122,33 @@ void CGnome::Update(double elapsed)
     collided = GetGame()->CollisionTest(this);
     if (collided != nullptr)
     {
-        if (newVelocity.X() > 0)
+        // Border for the item
+        auto itemLeft = collided->GetX() - collided->GetWidth() / 2;
+        auto itemRight = collided->GetX() + collided->GetWidth() / 2;
+        //auto itemTop = item->GetY() - item->GetHeight() / 2;
+        //auto itemBottom = item->GetY() + item->GetHeight() / 2;
+
+        // For us
+        auto ourLeft = GetX() - GetWidth() / 2;
+        auto ourRight = GetX() + GetWidth() / 2;
+        //auto ourTop = GetY() - GetHeight() / 2;
+        //auto ourBottom = GetY() + GetHeight() / 2;
+        if (newVelocity.X() > 0 && (ourRight < itemLeft))
         {
             // we are moving to the right, stop at the collision point
             newPos.SetX(collided->GetX() - collided->GetWidth() / 2 - GetWidth() / 2 - Epsilon);
+            newVelocity.SetX(0);
         }
-        else if (newVelocity.X() < 0)
+        else if (newVelocity.X() < 0 && (ourLeft > itemRight))
         {
             // we are moving to the left, stop at the collision point
             newPos.SetX(collided->GetX() + collided->GetWidth() / 2 + GetWidth() / 2 + Epsilon);
+            newVelocity.SetX(0);
         }
 
         // if we collide, we cancel any velocity
         // in the x direction
-        newVelocity.SetX(0);
+        
     }
 
     mWalk += elapsed;
