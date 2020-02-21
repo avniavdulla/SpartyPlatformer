@@ -38,7 +38,13 @@ public:
 
     void Reset();
 
+    /** Gets starting position
+     * \return Vector Starting position */
     CVector GetStart() { return mStart; }
+
+    /** Gets collection of Items
+     * \return Vector of Items */
+    std::vector<std::shared_ptr<CItem> > GetItems() { return mItems; }
 
 private:
     void XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node);
