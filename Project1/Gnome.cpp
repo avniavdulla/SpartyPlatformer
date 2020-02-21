@@ -232,8 +232,6 @@ void CGnome::Update(double elapsed)
     
 }
 
-
-
 void CGnome::Reset(CVector start)
 {
     CItem::SetImage(GnomeImage);
