@@ -3,6 +3,7 @@
 <declarations>
 <background id="i001" image="backgroundForest.png"/>
 <platform id="i005" left-image="platformIndustrial_059.png" mid-image="platformIndustrial_060.png" right-image="platformIndustrial_061.png"/>
+<door id="i011" image="door.png"/>
 </declarations>
 <items>
 <background id="i001" x="512" y="512"/>
@@ -12,5 +13,6 @@
 <platform id="i005" x="448" y="784" width="128" height="32"/>
 <platform id="i005" x="464" y="720" width="160" height="32"/>
 <platform id="i005" x="464" y="300" width="160" height="32"/>
+<door id="i011" x="464" y="400"/>
 </items>
 </level>

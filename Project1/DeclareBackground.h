@@ -3,13 +3,16 @@
  *
  * \author Sean Nguyen
  *
- * Class that represents the Background Declare
+ * Class that represents the Background Declaration
  */
 
 #pragma once
 
 #include "Declare.h"
 
+ /**
+  * Represents the Background Declaration
+  */
 class CDeclareBackground : public CDeclare
 {
 public:
