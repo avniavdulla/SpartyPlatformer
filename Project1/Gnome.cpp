@@ -67,88 +67,17 @@ void CGnome::Update(double elapsed)
     // Compute a new velocity with gravity added in.
     CVector newVelocity(mVelocity.X(), mVelocity.Y() + Gravity * elapsed);
 
-    // Update position
-    CVector newPos = GetLocation() + newVelocity * elapsed;
-
-    //
-    // Try updating the Y location. 
-    //
-    SetLocation(GetX(), newPos.Y());
-
-    auto collided = GetGame()->CollisionTest(this);
-    if (collided != nullptr)
-    {
-        auto itemTop = collided->GetY() - collided->GetHeight() / 2;
-        auto itemBottom = collided->GetY() + collided->GetHeight() / 2;
-
-        auto ourTop = GetY() - GetHeight() / 2;
-        auto ourBottom = GetY() + GetHeight() / 2;
-        if (newVelocity.Y() > 0 && (ourBottom > itemTop))
-        {
-            // We are falling, stop at the collision point
-            newPos.SetY(collided->GetY() - collided->GetHeight() / 2 - GetHeight() / 2 - Epsilon);
-            newVelocity.SetY(0);
-        }
-        else if (newVelocity.Y() < 0 && (ourTop < itemBottom))
-        {
-            // We are rising, stop at the collision point
-            newPos.SetY(collided->GetY() + collided->GetHeight() / 2 + GetHeight() / 2 + Epsilon);
-            newVelocity.SetY(0);
-        }
-
-        // If we collide, we cancel any velocity
-        // in the Y direction
-        
-    }
-
-    // 
-    // Try updating the X location
-    //
-    SetLocation(newPos.X(), GetY());
-
     if ((mLeft && mRight) || (!mLeft && !mRight))
     {
         newVelocity.SetX(0);
     }
-    else if (mLeft) 
+    else if (mLeft)
     {
         newVelocity.SetX(-HorizontalSpeed);
     }
     else if (mRight)
     {
         newVelocity.SetX(HorizontalSpeed);
-    }
-
-    collided = GetGame()->CollisionTest(this);
-    if (collided != nullptr)
-    {
-        // Border for the item
-        auto itemLeft = collided->GetX() - collided->GetWidth() / 2;
-        auto itemRight = collided->GetX() + collided->GetWidth() / 2;
-        //auto itemTop = item->GetY() - item->GetHeight() / 2;
-        //auto itemBottom = item->GetY() + item->GetHeight() / 2;
-
-        // For us
-        auto ourLeft = GetX() - GetWidth() / 2;
-        auto ourRight = GetX() + GetWidth() / 2;
-        //auto ourTop = GetY() - GetHeight() / 2;
-        //auto ourBottom = GetY() + GetHeight() / 2;
-        if (newVelocity.X() > 0 && (ourRight < itemLeft))
-        {
-            // we are moving to the right, stop at the collision point
-            newPos.SetX(collided->GetX() - collided->GetWidth() / 2 - GetWidth() / 2 - Epsilon);
-            newVelocity.SetX(0);
-        }
-        else if (newVelocity.X() < 0 && (ourLeft > itemRight))
-        {
-            // we are moving to the left, stop at the collision point
-            newPos.SetX(collided->GetX() + collided->GetWidth() / 2 + GetWidth() / 2 + Epsilon);
-            newVelocity.SetX(0);
-        }
-
-        // if we collide, we cancel any velocity
-        // in the x direction
-        
     }
 
     mWalk += elapsed;
@@ -209,6 +138,80 @@ void CGnome::Update(double elapsed)
     {
         CItem::SetImage(GnomeImage);
     }
+
+    // Update position
+    CVector newPos = GetLocation() + newVelocity * elapsed;
+
+    //
+    // Try updating the Y location. 
+    //
+    SetLocation(GetX(), newPos.Y());
+
+    // checks collision while falling 
+    auto collided = GetGame()->CollisionTest(this);
+    if (collided != nullptr)
+    {
+        auto itemTop = collided->GetY() - collided->GetHeight() / 2;
+        auto itemBottom = collided->GetY() + collided->GetHeight() / 2;
+        auto itemLeft = collided->GetX() - collided->GetWidth() / 2;
+        auto itemRight = collided->GetX() + collided->GetWidth() / 2;
+
+        auto ourTop = GetY() - GetHeight() / 2;
+        auto ourBottom = GetY() + GetHeight() / 2;
+        auto ourRight = GetX() + GetWidth() / 2;
+        auto ourLeft = GetX() - GetWidth() / 2;
+
+        if (newVelocity.Y() > 0 )
+        {
+            
+            // We are falling, stop at the collision point
+            newPos.SetY(collided->GetY() - collided->GetHeight() / 2 - GetHeight() / 2 - Epsilon);
+            //newVelocity.SetY(0);
+        }
+        else if (newVelocity.Y() < 0 )
+        {
+            // We are rising, stop at the collision point
+            newPos.SetY(collided->GetY() + collided->GetHeight() / 2 + GetHeight() / 2 + Epsilon);
+            //newVelocity.SetY(0);
+        }
+
+        // If we collide, we cancel any velocity
+        // in the Y direction
+        newVelocity.SetY(0);
+    }
+
+    // 
+    // Try updating the X location
+    //
+      SetLocation(newPos.X(), GetY());
+
+    collided = GetGame()->CollisionTest(this);
+    if (collided != nullptr)
+    {
+        auto itemTop = collided->GetY() - collided->GetHeight() / 2;
+        auto ourBottom = GetY() + GetHeight() / 2;
+        auto ourTop = GetY() - GetHeight() / 2;
+
+        //makes sure the platform is not below or above gnome
+        if (newVelocity.X() > 0 && !(collided->GetY() > ourBottom ) && !(collided->GetY() < ourTop)) 
+        {
+            // We are moving to the right, stop at the collision point
+            newPos.SetX(collided->GetX() - collided->GetWidth() / 2 - GetWidth() / 2 - Epsilon);
+            //newVelocity.SetX(0);
+        }
+        //makes sure the platform is not below or above gnome
+        else if (newVelocity.X() < 0 && !(collided->GetY() > ourBottom ) && !(collided->GetY() < ourTop))
+        {
+            // We are moving to the left, stop at the collision point
+            newPos.SetX(collided->GetX() + collided->GetWidth() / 2 + GetWidth() / 2 + Epsilon);
+            //newVelocity.SetX(0);
+        }
+
+        // If we collide, we cancel any velocity
+        // in the X direction
+        newVelocity.SetX(0);
+    }
+
 
     // Update the velocity and position
     mVelocity = newVelocity;

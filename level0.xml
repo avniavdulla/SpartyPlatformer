@@ -10,7 +10,8 @@
 <platform id="i005" x="416" y="912" width="64" height="32"/>
 <platform id="i005" x="432" y="848" width="96" height="32"/>
 <platform id="i005" x="448" y="784" width="128" height="32"/>
-<platform id="i005" x="464" y="720" width="160" height="32"/>
+<platform id="i005" x="464" y="720" width="6000" height="32"/>
 <platform id="i005" x="464" y="300" width="160" height="32"/>
+<platform id="i005" x="600" y="550" width="160" height="32"/>
 </items>
 </level>
