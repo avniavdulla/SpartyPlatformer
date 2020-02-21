@@ -9,11 +9,10 @@
 
 using namespace std;
 using namespace Gdiplus;
-using namespace xmlnode;
 
 /**
  * Constructor
- * \param level The Level this Background is a member of
+ * \param game The Level this Game is a member of
  */
 CBackground::CBackground(CGame* game) : CItem(game)
 {

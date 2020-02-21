@@ -10,9 +10,9 @@
 
 #include "Declare.h"
 
- /**
-  * Represents the Platform Declaration
-  */
+/**
+ * Represents the Platform Declaration
+ */
 class CDeclarePlatform : public CDeclare
 {
 public:

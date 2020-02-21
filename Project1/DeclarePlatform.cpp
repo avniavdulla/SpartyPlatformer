@@ -5,7 +5,9 @@
  */
 
 #include "pch.h"
+
 #include <string>
+
 #include "DeclarePlatform.h"
 #include "Platform.h"
 
@@ -14,7 +16,6 @@ using namespace Gdiplus;
 
 /**
  * Constructor
- * \param level Level this Platform is a member of
  */
 CDeclarePlatform::CDeclarePlatform()
 {
