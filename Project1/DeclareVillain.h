@@ -1,27 +1,28 @@
 /**
- * \file DeclareTuitionUp.h
+ * \file DeclareVillain.h
  *
  * \author Sean Nguyen
  *
  * Class that represents the Tuition Up Declaration
  */
 
+
 #pragma once
 
 #include "Declare.h"
 
 /**
- * Represents the Tuition Up Declaration
+ * Represents the Villain Declaration
  */
-class CDeclareTuitionUp : public CDeclare
+class CDeclareVillain : public CDeclare
 {
 public:
-    CDeclareTuitionUp();
+    CDeclareVillain();
 
     /// Copy constructor (disabled)
-    CDeclareTuitionUp(const CDeclareTuitionUp&) = delete;
+    CDeclareVillain(const CDeclareVillain&) = delete;
 
-    ~CDeclareTuitionUp();
+    ~CDeclareVillain();
 
     virtual std::shared_ptr<CItem> XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, CGame* game) override;
 };
