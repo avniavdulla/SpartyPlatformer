@@ -50,8 +50,7 @@ void CDeclarePlatform::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node
  */
 shared_ptr<CItem> CDeclarePlatform::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {
-    shared_ptr<CPlatform> item;
-    item = make_shared<CPlatform>(game);
+    shared_ptr<CPlatform> item = make_shared<CPlatform>(game);
 
     double x = node->GetAttributeDoubleValue(L"x", 0);
     double y = node->GetAttributeDoubleValue(L"y", 0);

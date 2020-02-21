@@ -11,6 +11,9 @@
 #include "Obstacle.h"
 #include "DeclarePlatform.h";
 
+/**
+ * Represents a Platform
+ */
 class CPlatform : public CObstacle
 {
 public:

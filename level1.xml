@@ -34,6 +34,7 @@
     <money id="i009" x="1440" y="48"/>
     <platform id="i004" x="2080" y="944" width="1152" height="32"/>
     <wall id="i006" x="1520" y="816" width="32" height="224"/>
+    <wall id="i007" x="1520" y="816" width="32" height="32"/>
     <money id="i009" x="1664" y="48"/>
     <money id="i009" x="1760" y="48"/>
     <money id="i009" x="1856" y="48"/>

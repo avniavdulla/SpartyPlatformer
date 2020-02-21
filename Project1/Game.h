@@ -17,9 +17,9 @@
 #include "Scoreboard.h"
 #include "XmlNode.h"
 
- /**
-  * Represents the Game
-  */
+/**
+ * Represents the Game
+ */
 class CGame
 {
 public:
@@ -38,8 +38,6 @@ public:
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
-
-    // void Lose();
 
     /**
      * Gets list of Items in the Game
