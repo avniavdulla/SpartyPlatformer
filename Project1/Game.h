@@ -33,7 +33,7 @@ public:
 
     void Clear();
 
-    void Load(const std::wstring& filename);
+    void Load(int levelNum);
 
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 

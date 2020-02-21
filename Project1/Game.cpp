@@ -94,10 +94,10 @@ void CGame::Clear()
  * Load the Game from a specified Level
  * \param filename File name of the Level
  */
-void CGame::Load(const std::wstring& filename)
+void CGame::Load(int levelNum)
 {
     Clear();
-    mLevel.SetLevel(filename);
+    mLevel.SetLevel(levelNum);
     mLevel.Install(this);
 }
 

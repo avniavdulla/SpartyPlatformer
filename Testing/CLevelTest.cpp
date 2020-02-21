@@ -32,7 +32,7 @@ namespace Testing
 			CLevel level;
 			CVector start;
 
-			level.SetLevel(L"level0.xml");
+			level.SetLevel(0);
 			level.Install(&game);
 
 			start = level.GetStart();
@@ -54,7 +54,7 @@ namespace Testing
 			CLevel level;
 			CVector start;
 
-			level.SetLevel(L"level0.xml");
+			level.SetLevel(0);
 			level.Install(&game);
 
 			vector<shared_ptr<CItem> > items = level.GetItems();

@@ -30,8 +30,11 @@ public:
 
     void SetDimensions(double width, double height) { mWidth = width; mHeight = height; }
 
-    void SetLevel(const std::wstring& filename) { mFile = filename; }
+    void SetLevel(int levelNum);
 
+    /** Sets starting position
+     * \param x Starting X position
+     * \param y Starting Y position */
     void SetStart(double x, double y) { mStart.Set(x, y); }
 
     void Install(CGame* game);
@@ -56,6 +59,9 @@ private:
 
     /// The filename of the Level
     std::wstring mFile;
+
+    /// The number of the Level
+    int mLevelNum = 1;
 
     // Level dimensions
     double mHeight = 1024; ///< Height of the level in pixels

@@ -11,9 +11,23 @@
 #include "Declare.h"
 #include "DeclareBackground.h"
 #include "DeclarePlatform.h"
+#include "DeclareDoor.h"
 
 using namespace std;
 using namespace xmlnode;
+
+
+/// Level 0 filename
+const wstring Level0File = L"level0.xml";
+
+/// Level 1 filename
+const wstring Level1File = L"level1.xml";
+
+/// Level 2 filename
+const wstring Level2File = L"level2.xml";
+
+/// Level 3 filename
+const wstring Level3File = L"level3.xml";
 
 /**
  * Constructor
@@ -36,6 +50,35 @@ CLevel::~CLevel()
 void CLevel::Add(std::shared_ptr<CItem> item)
 {
     mItems.push_back(item);
+}
+
+/**
+ * Sets the Level number and associated file
+ * \param levelNum Level number
+ */
+void CLevel::SetLevel(int levelNum)
+{
+    mLevelNum = levelNum;
+
+    switch (mLevelNum)
+    {
+        case 0: 
+            mFile = Level0File;
+            break;
+        case 1: 
+            mFile = Level1File;
+            break;
+        case 2: 
+            mFile = Level2File;
+            break;
+        case 3: 
+            mFile = Level3File;
+            break;
+        default:
+            mLevelNum = 1;
+            mFile = Level1File;
+            break;
+    }
 }
 
 /**
@@ -103,6 +146,10 @@ void CLevel::XmlDeclare(const shared_ptr<CXmlNode>& node)
     else if (name == L"platform")
     {
         declare = make_shared<CDeclarePlatform>();
+    }
+    else if (name == L"door")
+    {
+        declare = make_shared<CDeclareDoor>();
     }
 
     if (declare != nullptr)
