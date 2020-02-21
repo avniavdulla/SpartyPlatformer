@@ -5,7 +5,9 @@
  */
 
 #include "pch.h"
+
 #include <string>
+
 #include "Villain.h"
 #include "Game.h"
 
@@ -36,11 +38,11 @@ void CVillain::Update(double elapsed)
 {
     SetLocation(GetX(), GetY() + mSpeed * elapsed);
 
-    if (mSpeed > 0 && GetY() >= mMaxHeight)
+    if (mSpeed < 0 && GetY() <= mMaxHeight)
     {
         mSpeed = -mSpeed;
     }
-    else if (mSpeed < 0 && GetY() <= mMinHeight)
+    else if (mSpeed > 0 && GetY() >= mMinHeight)
     {
         mSpeed = -mSpeed;
     }

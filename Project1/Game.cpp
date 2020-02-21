@@ -55,7 +55,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     }
 
     mGnome->Draw(graphics, scroll);
-    mScoreboard.Draw(graphics, 0);
+    mScoreboard.Draw(graphics);
 }
 
 /**

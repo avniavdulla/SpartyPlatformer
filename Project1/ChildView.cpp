@@ -210,7 +210,7 @@ void CChildView::OnLevelLevel1()
  */
 void CChildView::OnLevelLevel2()
 {
-    mGame.Load(3);
+    mGame.Load(2);
     Invalidate();
 }
 
@@ -219,5 +219,6 @@ void CChildView::OnLevelLevel2()
  */
 void CChildView::OnLevelLevel3()
 {
-    // TODO: Add your command handler code here
+    mGame.Load(3);
+    Invalidate();
 }

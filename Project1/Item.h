@@ -34,7 +34,7 @@ public:
 
     virtual ~CItem();
 
-    virtual void Draw(Gdiplus::Graphics* graphics, int scroll);
+    virtual void Draw(Gdiplus::Graphics* graphics, float scroll);
 
     /**
      * Handle updates for animation

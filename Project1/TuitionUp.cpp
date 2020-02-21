@@ -1,12 +1,12 @@
 /**
- * \file Money.cpp
+ * \file TuitionUp.cpp
  *
  * \author Sean Nguyen
  */
 
 #include "pch.h"
 
-#include "Money.h"
+#include "TuitionUp.h"
 
 using namespace std;
 
@@ -14,14 +14,14 @@ using namespace std;
  * Constructor
  * \param game The Game this Money is a member of
  */
-CMoney::CMoney(CGame* game) : CItem(game)
+CTuitionUp::CTuitionUp(CGame* game) : CItem(game)
 {
 }
 
 /**
  *  Destructor
  */
-CMoney::~CMoney()
+CTuitionUp::~CTuitionUp()
 {
 }
 
@@ -29,7 +29,7 @@ CMoney::~CMoney()
  * Tests if any other item is colliding with it
  * \param item Item testing for a collision
  */
-bool CMoney::CollisionTest(CItem* item)
+bool CTuitionUp::CollisionTest(CItem* item)
 {
     return false;
 }

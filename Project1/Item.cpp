@@ -39,7 +39,7 @@ CItem::~CItem()
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
  */
-void CItem::Draw(Gdiplus::Graphics* graphics, int scroll)
+void CItem::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
     if (mImage != nullptr)
     {

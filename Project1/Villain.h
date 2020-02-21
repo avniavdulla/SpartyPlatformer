@@ -10,6 +10,9 @@
 
 #include "Item.h"
 
+/**
+ * Represents the Villain
+ */
 class CVillain : public CItem
 {
 public:
@@ -23,11 +26,11 @@ public:
 
     ~CVillain();
 
-    void SetRangeHeight() { mMaxHeight = GetY() + 300;  mMinHeight = GetY(); }
+    void SetRangeHeight() { mMaxHeight = GetY() - 300;  mMinHeight = GetY(); }
 
     void Update(double elapsed);
 
-    virtual bool CollisionTest(CItem* item) override ;
+    virtual bool CollisionTest(CItem* item) override;
 
 private:
     double mMaxHeight = 0;

@@ -26,7 +26,7 @@ public:
 
     ~CBackground();
 
-    virtual void Draw(Gdiplus::Graphics* graphics, int scroll) override;
+    virtual void Draw(Gdiplus::Graphics* graphics, float scroll) override;
 
     virtual bool CollisionTest(CItem* item) override;
 };

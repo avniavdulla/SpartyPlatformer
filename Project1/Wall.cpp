@@ -34,7 +34,7 @@ CWall::~CWall()
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
  */
-void CWall::Draw(Gdiplus::Graphics* graphics, int scroll)
+void CWall::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
     double width = CItem::GetWidth();
     double height = CItem::GetHeight();

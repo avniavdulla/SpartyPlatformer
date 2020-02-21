@@ -11,8 +11,10 @@
 #include "Declare.h"
 #include "DeclareBackground.h"
 #include "DeclarePlatform.h"
-#include "DeclareMoney.h"
 #include "DeclareWall.h"
+#include "DeclareMoney.h"
+#include "DeclareTuitionUp.h"
+#include "DeclareVillain.h"
 #include "DeclareDoor.h"
 
 using namespace std;
@@ -156,6 +158,14 @@ void CLevel::XmlDeclare(const shared_ptr<CXmlNode>& node)
     else if (name == L"money")
     {
         declare = make_shared<CDeclareMoney>();
+    }
+    else if (name == L"tuition-up")
+    {
+        declare = make_shared<CDeclareTuitionUp>();
+    }
+    else if (name == L"villain")
+    {
+        declare = make_shared<CDeclareVillain>();
     }
     else if (name == L"door")
     {
