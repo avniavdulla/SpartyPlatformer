@@ -41,13 +41,13 @@ public:
     void Jump(bool move) { mJump = true; };
 
 private:
-    bool mLeft = false;
 
-    bool mRight = false;
+    bool mLeft = false; ///< gnome walking left
+    bool mRight = false; ///< gnome walking right 
+    bool mJump = false; ///< jump initiated
+    bool mDying = false; ///< gnome is dying 
+    double mWalk = 0; ///< keeps track of time while walking
 
-    bool mJump = false;
+    CVector mVelocity; ///< velocity of the gnome
 
-    double mWalk = 0;
-
-    CVector mVelocity;
 };

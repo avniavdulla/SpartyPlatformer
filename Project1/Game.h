@@ -38,6 +38,10 @@ public:
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
+    /// getter for mDimensions
+    CVector GetDimension() { return mDimensions; }
+    
+    void Lose();
 
     /**
      * Gets list of Items in the Game
@@ -46,6 +50,8 @@ public:
     std::vector<std::shared_ptr<CItem> > GetItems() { return mItems; }
 
 private:
+    /// dimentions of the draw window
+    CVector mDimensions;
     /// Scale of the Game dependent on window size
     float mScale = 0.0;
 
@@ -60,4 +66,5 @@ private:
 
     /// The Items contained in our Game
     std::vector<std::shared_ptr<CItem> > mItems;
+
 };

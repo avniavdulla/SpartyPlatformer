@@ -35,6 +35,8 @@ CGame::CGame()
  */
 void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 {
+    // set dimensions in variable
+    mDimensions.Set(width, height);
     //
     // Automatic Scaling
     //
@@ -119,3 +121,15 @@ shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
     return nullptr;
 }
 
+/** 
+* Loses the game
+* Resets the level / scoreboard and returns the gnome 
+* back to the starting position 
+*/
+void CGame::Lose()
+{
+    Clear();
+    mLevel.Reset();
+    mScoreboard.Reset();
+    mLevel.Install(this);
+}
