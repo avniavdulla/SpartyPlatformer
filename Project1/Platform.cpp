@@ -33,7 +33,7 @@ CPlatform::~CPlatform()
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
  */
-void CPlatform::Draw(Gdiplus::Graphics* graphics, int scroll)
+void CPlatform::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
     double width = mImageLeft->GetWidth();
     double height = mImageLeft->GetHeight();

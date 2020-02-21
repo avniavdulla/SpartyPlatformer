@@ -90,10 +90,10 @@ namespace Testing
 
 			vector<shared_ptr<CItem> > items = game.GetItems();
 
-			game.Load(0);
+			game.Load(1);
 			items = game.GetItems();
-			// Check if Game has loaded the 7 items in our Level 0
-			Assert::IsTrue(items.size() == 7);
+			// Check if Game has loaded the 89 items in Level 1
+			Assert::IsTrue(items.size() == 89);
 		}
 
 	};

@@ -32,17 +32,17 @@ namespace Testing
 			CLevel level;
 			CVector start;
 
-			level.SetLevel(0);
+			level.SetLevel(1);
 			level.Install(&game);
 
 			start = level.GetStart();
 			// Check if Level has correct start
-			Assert::IsTrue(start.X() == 468);
-			Assert::IsTrue(start.Y() == 572);
+			Assert::IsTrue(start.X() == 852);
+			Assert::IsTrue(start.Y() == 540);
 
 			vector<shared_ptr<CItem> > items = level.GetItems();
-			// Check if Level has installed the 7 items in our Level 0
-			Assert::IsTrue(items.size() == 7);
+			// Check if Level has installed the 89 items in Level 1
+			Assert::IsTrue(items.size() == 89);
 
 			// Check if Level installed a Gnome
 			Assert::IsTrue(game.GetGnome() != nullptr);
@@ -54,12 +54,12 @@ namespace Testing
 			CLevel level;
 			CVector start;
 
-			level.SetLevel(0);
+			level.SetLevel(1);
 			level.Install(&game);
 
 			vector<shared_ptr<CItem> > items = level.GetItems();
-			// Check if Level has installed the 7 items in our Level 0
-			Assert::IsTrue(items.size() == 7);
+			// Check if Level has installed the 89 items in Level 1
+			Assert::IsTrue(items.size() == 89);
 
 			level.Reset();
 			items = level.GetItems();

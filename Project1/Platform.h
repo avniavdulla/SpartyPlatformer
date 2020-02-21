@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Obstacle.h"
-#include "DeclarePlatform.h";
+#include "DeclarePlatform.h"
 
 /**
  * Represents a Platform
@@ -27,7 +27,7 @@ public:
 
     ~CPlatform();
 
-    virtual void Draw(Gdiplus::Graphics* graphics, int scroll) override;
+    virtual void Draw(Gdiplus::Graphics* graphics, float scroll) override;
 
     void SetPlatformImage(std::shared_ptr<Gdiplus::Bitmap> left, std::shared_ptr<Gdiplus::Bitmap> mid, std::shared_ptr<Gdiplus::Bitmap> right);
 

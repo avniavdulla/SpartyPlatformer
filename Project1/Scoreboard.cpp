@@ -31,7 +31,7 @@ CScoreboard::~CScoreboard()
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
  */
-void CScoreboard::Draw(Gdiplus::Graphics* graphics, int scroll)
+void CScoreboard::Draw(Gdiplus::Graphics* graphics)
 {
     int min = int(mSeconds / 60);
     int sec = int(mSeconds - (double(min) * 60));

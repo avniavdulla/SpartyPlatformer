@@ -15,7 +15,7 @@ public:
 
     ~CScoreboard();
 
-    void Draw(Gdiplus::Graphics* graphics, int scroll);
+    void Draw(Gdiplus::Graphics* graphics);
 
     void Update(double elapsed);
 
