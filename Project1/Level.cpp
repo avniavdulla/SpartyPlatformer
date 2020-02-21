@@ -44,7 +44,6 @@ void CLevel::Add(std::shared_ptr<CItem> item)
  */
 void CLevel::Install(CGame* game)
 {
-
     try
     {
         // Open the document to read

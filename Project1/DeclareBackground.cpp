@@ -33,8 +33,7 @@ CDeclareBackground::~CDeclareBackground()
  */
 shared_ptr<CItem> CDeclareBackground::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {
-    shared_ptr<CBackground> item;
-    item = make_shared<CBackground>(game);
+    shared_ptr<CBackground> item = make_shared<CBackground>(game);
 
     double x = node->GetAttributeDoubleValue(L"x", 0);
     double y = node->GetAttributeDoubleValue(L"y", 0);

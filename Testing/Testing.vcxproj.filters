@@ -24,10 +24,7 @@
     <ClCompile Include="EmptyTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GnomeTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionTest.cpp">
+    <ClCompile Include="CGameTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

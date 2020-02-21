@@ -26,15 +26,6 @@ public:
 
     virtual void Draw(Gdiplus::Graphics* graphics, int scroll) override;
 
-    /**
-     * Set associated Declaration
-     * \param declare Associated Declaration
-     */
-    /*virtual void SetDeclaration(std::shared_ptr<CDeclaration> declare) { 
-        declare = make_shared<CDeclarePlatform>();
-        mDeclare = declare; 
-    }*/
-
     void SetPlatformImage(std::shared_ptr<Gdiplus::Bitmap> left, std::shared_ptr<Gdiplus::Bitmap> mid, std::shared_ptr<Gdiplus::Bitmap> right);
 
     /**
@@ -55,17 +46,9 @@ public:
      */
     std::shared_ptr<Gdiplus::Bitmap> GetImageRight() { return mImageRight; }
 
-    virtual bool CollisionTest(CItem* item) override;
-
 private:
-    /// Associated Declaration class
-    std::shared_ptr<CDeclarePlatform> mDeclare;
-
     /// The image of the left Platform
     std::shared_ptr<Gdiplus::Bitmap> mImageLeft;
-
-    /// The file for the left Platform
-    // std::wstring mFileLeft;
 
     /// The image of the middle Platform
     std::shared_ptr<Gdiplus::Bitmap> mImageMid;
@@ -73,6 +56,4 @@ private:
     /// The image of the right Platform
     std::shared_ptr<Gdiplus::Bitmap> mImageRight;
 
-    /// The file for the right Platform
-    // std::wstring mFileRight;
 };

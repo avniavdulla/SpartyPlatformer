@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;Level;Item;Declare;XmlNode;Vector;Gnome;Platform;Obstacle;Scoreboard;DeclarePlatform</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;Level;Item;Declare;XmlNode;Vector;Gnome;Background;Platform;Obstacle;Scoreboard;DeclarePlatform;DeclareBackground</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -172,11 +172,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CollisionTest.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="GnomeTest.cpp">
+    <ClCompile Include="CGameTest.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -48,7 +48,6 @@ public:
     std::vector<std::shared_ptr<CItem> > GetItems() { return mItems; }
 
 private:
-
     /// Scale of the Game dependent on window size
     float mScale = 0.0;
 
