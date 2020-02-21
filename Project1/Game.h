@@ -15,6 +15,7 @@
 #include "Item.h"
 #include "Gnome.h"
 #include "Scoreboard.h"
+#include "Money.h"
 #include "XmlNode.h"
 
 /**
@@ -42,6 +43,8 @@ public:
     double GetLevelHeight() { return mLevel.GetHeight(); }
     
     void Lose();
+
+    void RemoveMoney(CMoney* money);
 
     /**
      * Gets list of Items in the Game

@@ -132,3 +132,23 @@ void CGame::Lose()
     mScoreboard.Reset();
     mLevel.Install(this);
 }
+
+/**
+ * Removes the Money object from the game
+ * 
+ * \param money The Money object to be removed
+ */
+void CGame::RemoveMoney(CMoney* money)
+{
+    int index = 1;
+
+    for (auto item : mItems)
+    {
+        if (item.get() == money)
+        {
+            mItems.erase(mItems.begin() + index);
+        }
+
+        index++;
+    }
+}

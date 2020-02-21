@@ -26,6 +26,10 @@ public:
 
     ~CMoney();
 
+    virtual void Draw(Gdiplus::Graphics* graphics, float scroll) override;
+
+    void Update(double elapsed);
+
     virtual bool CollisionTest(CItem* item) override;
 
     /** Set the value for this Money
@@ -39,5 +43,14 @@ public:
 private:
     /// The value of the Money
     int mValue = 100;
+
+    /// Is false as long as Money has not yet been collected
+    bool mCollected = false;
+
+    /// Offset for drawing the Money flying away
+    float mFly = 0;
+
+    /// Speed of the Money flying away
+    double mSpeed = 500;
 };
 
