@@ -63,6 +63,12 @@ CGnome::~CGnome()
  */
 void CGnome::Update(double elapsed)
 {
+    if (mDying)
+    {
+        GetGame()->Lose();
+        mDying = false;
+    }
+
     // Gravity
     // Compute a new velocity with gravity added in.
     CVector newVelocity(mVelocity.X(), mVelocity.Y() + Gravity * elapsed);
@@ -216,6 +222,13 @@ void CGnome::Update(double elapsed)
     // Update the velocity and position
     mVelocity = newVelocity;
     SetLocation(newPos.X(), newPos.Y());
+
+    // gnome falling out of the window, therefor dying 
+    if (GetY() > GetGame()->GetDimension().X()) 
+    {
+        mDying = true;
+    }
+    
 }
 
 

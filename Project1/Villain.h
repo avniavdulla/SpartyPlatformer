@@ -27,6 +27,8 @@ public:
 
     void Update(double elapsed);
 
+    virtual bool CollisionTest(CItem* item) override ;
+
 private:
     double mMaxHeight = 0;
     
