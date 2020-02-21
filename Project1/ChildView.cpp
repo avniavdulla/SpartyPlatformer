@@ -192,7 +192,7 @@ void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
  */
 void CChildView::OnLevelLevel0()
 {
-    mGame.Load(L"level0.xml");
+    mGame.Load(0);
     Invalidate();
 }
 
@@ -201,7 +201,7 @@ void CChildView::OnLevelLevel0()
  */
 void CChildView::OnLevelLevel1()
 {
-    mGame.Load(L"level1.xml");
+    mGame.Load(1);
     Invalidate();
 }
 
@@ -210,7 +210,8 @@ void CChildView::OnLevelLevel1()
  */
 void CChildView::OnLevelLevel2()
 {
-    // TODO: Add your command handler code here
+    mGame.Load(3);
+    Invalidate();
 }
 
 /**

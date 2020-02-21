@@ -90,7 +90,7 @@ namespace Testing
 
 			vector<shared_ptr<CItem> > items = game.GetItems();
 
-			game.Load(L"level0.xml");
+			game.Load(0);
 			items = game.GetItems();
 			// Check if Game has loaded the 7 items in our Level 0
 			Assert::IsTrue(items.size() == 7);
