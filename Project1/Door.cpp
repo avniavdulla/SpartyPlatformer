@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "Door.h"
+#include "Game.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -31,5 +32,11 @@ CDoor::~CDoor()
  */
 bool CDoor::CollisionTest(CItem* item)
 {
+    if (CItem::CollisionTest(item))
+    {
+        GetGame()->Clear();
+        GetGame()->NextLevel();
+        return true;
+    }
     return false;
 }

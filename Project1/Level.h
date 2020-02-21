@@ -47,6 +47,8 @@ public:
      * \return Vector Starting position */
     CVector GetStart() { return mStart; }
 
+    int GetLevelNum() { return mLevelNum; }
+
     /** Gets collection of Items
      * \return Vector of Items */
     std::vector<std::shared_ptr<CItem> > GetItems() { return mItems; }

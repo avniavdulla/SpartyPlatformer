@@ -102,6 +102,19 @@ void CGame::Load(int levelNum)
     mLevel.Install(this);
 }
 
+/*
+* Loads next level
+*/
+void CGame::NextLevel()
+{   
+    int levelNum = mLevel.GetLevelNum();
+    if (levelNum < 3) {
+        Load(levelNum + 1);
+    }
+    else { Load(3); }
+    
+}
+
 /**
  * Detect collisions within the Game
  * \param gnome The player-controlled Gnome

@@ -40,7 +40,7 @@ namespace Testing
 		{
 			CGame game;
 			//load level 0 
-			game.Load(0);
+			game.Load(1);
 
 			shared_ptr<CGnome> gnome = game.GetGnome();
 
@@ -55,20 +55,12 @@ namespace Testing
 			game.Update(.01);
 			Assert::IsFalse(gnome->GetDying());
 
-			shared_ptr<CVillain> villain = make_shared<CVillain>(&game);
-			game.Add(villain);
 			game.Update(.01);
-			
-			vector<shared_ptr<CItem>> items = game.GetItems();
-			Assert::IsTrue(items.size() == 9);
-			gnome->SetLocation(0, 0);
-			villain->SetLocation(0, 0);
 
-			game.Update(.01);
-			Assert::IsTrue(items.size() == 8);
+		}
 
-
-
+		TEST_METHOD(TestWin)
+		{
 
 
 		}

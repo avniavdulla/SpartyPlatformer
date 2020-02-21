@@ -35,6 +35,8 @@ public:
 
     void Load(int levelNum);
 
+    void NextLevel();
+
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
