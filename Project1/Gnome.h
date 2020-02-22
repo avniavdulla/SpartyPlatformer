@@ -28,6 +28,8 @@ public:
 
     void Reset(CVector start);
 
+    void SetReset(bool set) { mReset = set; }
+
     /** Gets Gnome's Velocity
      * \return Gnome's Velocity */
     CVector GetVelocity() { return mVelocity; }
@@ -51,6 +53,7 @@ private:
     bool mRight = false; ///< gnome walking right 
     bool mJump = false; ///< jump initiated
     bool mDying = false; ///< gnome is dying 
+    bool mReset = false; ///< checks if gnome got reset 
     double mWalk = 0; ///< keeps track of time while walking
 
     CVector mVelocity; ///< velocity of the gnome

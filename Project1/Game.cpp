@@ -113,7 +113,8 @@ void CGame::NextLevel()
     int levelNum = mLevel.GetLevelNum();
     if (levelNum < 3) {
         Load(levelNum + 1);
-    }
+        mGnome->SetReset(true);
+    }   
     else { Load(3); }
     
 }
@@ -146,6 +147,7 @@ void CGame::Lose()
     Clear();
     mLevel.Reset();
     mScoreboard.Reset();
+    mGnome->SetReset(true);
     mLevel.Install(this);
 }
 

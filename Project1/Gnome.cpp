@@ -156,21 +156,15 @@ void CGnome::Update(double elapsed)
     // Try updating the Y location. 
     //
     SetLocation(GetX(), newPos.Y());
+    // 
+    // Try updating the X location
+    //
+    SetLocation(newPos.X(), GetY());
 
     // checks collision while falling 
     auto collided = GetGame()->CollisionTest(this);
     if (collided != nullptr)
     {
-        /*auto itemTop = collided->GetY() - collided->GetHeight() / 2;
-        auto itemBottom = collided->GetY() + collided->GetHeight() / 2;
-        auto itemLeft = collided->GetX() - collided->GetWidth() / 2;
-        auto itemRight = collided->GetX() + collided->GetWidth() / 2;
-
-        auto ourTop = GetY() - GetHeight() / 2;
-        auto ourBottom = GetY() + GetHeight() / 2;
-        auto ourRight = GetX() + GetWidth() / 2;
-        auto ourLeft = GetX() - GetWidth() / 2;*/
-
         if (newVelocity.Y() > 0 )
         {
             
@@ -190,11 +184,7 @@ void CGnome::Update(double elapsed)
         newVelocity.SetY(0);
     }
 
-    // 
-    // Try updating the X location
-    //
-      SetLocation(newPos.X(), GetY());
-
+    
     collided = GetGame()->CollisionTest(this);
     if (collided != nullptr)
     {
@@ -222,10 +212,19 @@ void CGnome::Update(double elapsed)
         newVelocity.SetX(0);
     }
 
-
-    // Update the velocity and position
-    mVelocity = newVelocity;
-    SetLocation(newPos.X(), newPos.Y());
+    // checks if gnome got reset from dying or hitting door
+    // position is set to start of level, and not updated here
+    if (mReset)
+    {
+        mReset = false;
+    }
+    // if not function is normal
+    else
+    {
+        // Update the velocity and position
+        mVelocity = newVelocity;
+        SetLocation(newPos.X(), newPos.Y());
+    }
 
     auto ourTop = GetY() - GetHeight() / 2;
     // gnome falling out of the window, therefor dying 

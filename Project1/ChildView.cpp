@@ -158,11 +158,9 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
     {
     case VK_RIGHT:
         mGame.GetGnome()->GoRight(true);
-        mGame.GetGnome()->GoLeft(false);
         break;
     case VK_LEFT:
         mGame.GetGnome()->GoLeft(true);
-        mGame.GetGnome()->GoRight(false);
         break;
     case VK_SPACE:
         mGame.GetGnome()->Jump(true);
