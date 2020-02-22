@@ -41,9 +41,10 @@ public:
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
-    /// getter for mDimensions
+    /// getter for level height 
     double GetLevelHeight() { return mLevel.GetHeight(); }
-    
+    /// getter for level number
+    int GetLevelNumber() { return mLevel.GetLevelNum(); }
     void Lose();
 
     void RemoveMoney(CMoney* money);

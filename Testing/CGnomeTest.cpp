@@ -39,29 +39,57 @@ namespace Testing
 		TEST_METHOD(TestLose)
 		{
 			CGame game;
-			//load level 0 
+			//load level 1 
 			game.Load(1);
 
 			shared_ptr<CGnome> gnome = game.GetGnome();
 
 			// starts as false
 			Assert::IsFalse(gnome->GetDying());
-			gnome->SetLocation(0, 5000);
-			game.Update(0.5);
-			// update and gnome falls off screen
-			Assert::IsTrue(gnome->GetDying());
+			// sets location to be on top of villan so it collides
+			gnome->SetLocation(1111, 850);
+			game.Lose();
+			// position reset to start
+			Assert::IsTrue(gnome->GetLocation().X() == 852 && gnome->GetLocation().Y() == 540);
 
+			// reset gnome to a safe position to make sure its not dying 
 			gnome->SetLocation(0, 0);
 			game.Update(.01);
 			Assert::IsFalse(gnome->GetDying());
+			
+			// update and set gnome to fall off screen
+			gnome->SetLocation(0, 5000);
+			game.Update(0.01);
+			Assert::IsTrue(gnome->GetDying());
 
-			game.Update(.01);
+
 
 		}
 
-		TEST_METHOD(TestWin)
+		TEST_METHOD(TestNextLevel)
 		{
+			CGame game;
+			//load level 0 
+			game.Load(0);
 
+			// make sure it is set to 0 from loading level0
+			Assert::IsTrue(game.GetLevelNumber() == 0);
+			game.NextLevel();
+
+			// make sure it is set to 0 from loading level1
+			Assert::IsTrue(game.GetLevelNumber() == 1);
+			game.NextLevel();
+
+			// make sure it is set to 0 from loading level2
+			Assert::IsTrue(game.GetLevelNumber() == 2);
+			game.NextLevel();
+
+			// make sure it is set to 0 from loading level3
+			Assert::IsTrue(game.GetLevelNumber() == 3);
+			game.NextLevel();
+
+			// going to next level after 3, just resets 3
+			Assert::IsTrue(game.GetLevelNumber() == 3);
 
 		}
 
