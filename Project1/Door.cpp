@@ -11,6 +11,8 @@
 using namespace std;
 using namespace Gdiplus;
 
+/// Collision distance for the door in pixels
+const double CollisionDistance = 20;
 /**
  * Constructor
  * \param game The Game this Background is a member of
@@ -32,11 +34,14 @@ CDoor::~CDoor()
  */
 bool CDoor::CollisionTest(CItem* item)
 {
-    if (CItem::CollisionTest(item))
+    // Collision for door is different
+    double dx = item->GetX() - GetX();
+    double dy = item->GetY() - GetY();
+    double distance = sqrt(dx * dx + dy * dy);
+    if (distance < CollisionDistance)
     {
-        GetGame()->Clear();
         GetGame()->NextLevel();
-        return true;
     }
+
     return false;
 }

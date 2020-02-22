@@ -63,6 +63,10 @@ CGnome::~CGnome()
  */
 void CGnome::Update(double elapsed)
 {
+
+    CItem::Update(elapsed);
+    //If player is dying it triggers the lose state
+    // could happen from falling or colliding with villan 
     if (mDying)
     {
         GetGame()->Lose();
@@ -157,7 +161,7 @@ void CGnome::Update(double elapsed)
     auto collided = GetGame()->CollisionTest(this);
     if (collided != nullptr)
     {
-        auto itemTop = collided->GetY() - collided->GetHeight() / 2;
+        /*auto itemTop = collided->GetY() - collided->GetHeight() / 2;
         auto itemBottom = collided->GetY() + collided->GetHeight() / 2;
         auto itemLeft = collided->GetX() - collided->GetWidth() / 2;
         auto itemRight = collided->GetX() + collided->GetWidth() / 2;
@@ -165,7 +169,7 @@ void CGnome::Update(double elapsed)
         auto ourTop = GetY() - GetHeight() / 2;
         auto ourBottom = GetY() + GetHeight() / 2;
         auto ourRight = GetX() + GetWidth() / 2;
-        auto ourLeft = GetX() - GetWidth() / 2;
+        auto ourLeft = GetX() - GetWidth() / 2;*/
 
         if (newVelocity.Y() > 0 )
         {
@@ -199,9 +203,9 @@ void CGnome::Update(double elapsed)
         auto ourTop = GetY() - GetHeight() / 2;
 
         //makes sure the platform is not below or above gnome
-        if (newVelocity.X() > 0 && !(collided->GetY() > ourBottom ) && !(collided->GetY() < ourTop)) 
+        if (newVelocity.X() > 0 && !(collided->GetY() > ourBottom ) &&  !(collided->GetY() < ourTop)) 
         {
-            // We are moving to the right, stop at the collision point
+            // We are moving to the right, stop at the collision point 
             newPos.SetX(collided->GetX() - collided->GetWidth() / 2 - GetWidth() / 2 - Epsilon);
             //newVelocity.SetX(0);
         }

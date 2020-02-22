@@ -100,6 +100,7 @@ void CGame::Load(int levelNum)
     Clear();
     mLevel.SetLevel(levelNum);
     mLevel.Install(this);
+
 }
 
 /*
@@ -107,6 +108,8 @@ void CGame::Load(int levelNum)
 */
 void CGame::NextLevel()
 {   
+    mScoreboard.Reset();
+    mLevel.Reset();
     int levelNum = mLevel.GetLevelNum();
     if (levelNum < 3) {
         Load(levelNum + 1);

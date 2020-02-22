@@ -110,7 +110,7 @@ bool CMoney::CollisionTest(CItem* item)
         ourTop > itemBottom ||  // Completely below
         ourBottom < itemTop)    // Completely above
     {
-        return false;
+         return false;
     }
 
     mCollected = true;

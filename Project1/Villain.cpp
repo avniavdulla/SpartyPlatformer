@@ -53,7 +53,7 @@ bool CVillain::CollisionTest(CItem* item)
     if (CItem::CollisionTest(item))
     {
         GetGame()->Lose();
-        return true;
+        return false;
     }
     return false;
 }

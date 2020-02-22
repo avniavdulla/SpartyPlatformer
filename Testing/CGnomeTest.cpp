@@ -44,7 +44,7 @@ namespace Testing
 
 			shared_ptr<CGnome> gnome = game.GetGnome();
 
-			// starts untrue
+			// starts as false
 			Assert::IsFalse(gnome->GetDying());
 			gnome->SetLocation(0, 5000);
 			game.Update(0.5);
