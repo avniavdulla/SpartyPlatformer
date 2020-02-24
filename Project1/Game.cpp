@@ -70,6 +70,16 @@ void CGame::Update(double elapsed)
         item->Update(elapsed);
     }
 
+    for (auto item : mDelete)
+    {
+        auto deleteItem = find(mItems.begin(), mItems.end(), item);
+
+        if (deleteItem != mItems.end())
+        {
+            mItems.erase(deleteItem);
+        }
+    }
+
     mGnome->Update(elapsed);
     mScoreboard.Update(elapsed);
 }
@@ -164,7 +174,7 @@ void CGame::RemoveMoney(CMoney* money)
     {
         if (item.get() == money)
         {
-            mItems.erase(mItems.begin() + index);
+            mDelete.push_back(item);
         }
 
         index++;

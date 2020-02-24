@@ -78,9 +78,9 @@ void CMoney::Update(double elapsed)
     {
         mFly += mSpeed * elapsed;
 
-        if (float(GetY() - GetHeight() / 2) < 112)
+        if (GetY() - mFly < -float(GetHeight() / 2))
         {
-           // GetGame()->RemoveMoney(this);
+           GetGame()->RemoveMoney(this);
         }
     }
 }
@@ -91,28 +91,33 @@ void CMoney::Update(double elapsed)
  */
 bool CMoney::CollisionTest(CItem* item)
 {
-    // Border for the item
-    auto itemLeft = item->GetX() - item->GetWidth() / 2;
-    auto itemRight = item->GetX() + item->GetWidth() / 2;
-    auto itemTop = item->GetY() - item->GetHeight() / 2;
-    auto itemBottom = item->GetY() + item->GetHeight() / 2;
-
-    // For us
-    auto ourLeft = GetX() - GetWidth() / 2;
-    auto ourRight = GetX() + GetWidth() / 2;
-    auto ourTop = GetY() - GetHeight() / 2;
-    auto ourBottom = GetY() + GetHeight() / 2;
-
-    // Test for all of the non-collision cases,
-    // cases where there is a gap between the two items
-    if (ourRight < itemLeft ||  // Completely to the left
-        ourLeft > itemRight ||  // Completely to the right
-        ourTop > itemBottom ||  // Completely below
-        ourBottom < itemTop)    // Completely above
+    if (!mCollected)
     {
-         return false;
+        // Border for the item
+        auto itemLeft = item->GetX() - item->GetWidth() / 2;
+        auto itemRight = item->GetX() + item->GetWidth() / 2;
+        auto itemTop = item->GetY() - item->GetHeight() / 2;
+        auto itemBottom = item->GetY() + item->GetHeight() / 2;
+
+        // For us
+        auto ourLeft = GetX() - GetWidth() / 2;
+        auto ourRight = GetX() + GetWidth() / 2;
+        auto ourTop = GetY() - GetHeight() / 2;
+        auto ourBottom = GetY() + GetHeight() / 2;
+
+        // Test for all of the non-collision cases,
+        // cases where there is a gap between the two items
+        if (ourRight < itemLeft ||  // Completely to the left
+            ourLeft > itemRight ||  // Completely to the right
+            ourTop > itemBottom ||  // Completely below
+            ourBottom < itemTop)    // Completely above
+        {
+             return false;
+        }
+
+        GetGame()->GetScoreboard()->AddScore(mValue);
+        mCollected = true;
     }
 
-    mCollected = true;
     return false;
 }

@@ -12,6 +12,7 @@
 
 #include "XmlNode.h"
 #include "Vector.h"
+#include "ItemVisitor.h"
 
 using namespace xmlnode;
 
@@ -103,6 +104,10 @@ public:
     virtual int GetHeight() const { return mImage->GetHeight(); }
     
     virtual bool CollisionTest(CItem* item);
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) = 0;
 
 protected:
     CItem(CGame* game);

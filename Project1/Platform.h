@@ -49,6 +49,10 @@ public:
      */
     std::shared_ptr<Gdiplus::Bitmap> GetImageRight() { return mImageRight; }
 
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitPlatform(this); }
+
 private:
     /// The image of the left Platform
     std::shared_ptr<Gdiplus::Bitmap> mImageLeft;

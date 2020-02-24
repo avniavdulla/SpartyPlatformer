@@ -27,4 +27,8 @@ public:
     ~CWall();
 
     virtual void Draw(Gdiplus::Graphics* graphics, float scroll) override;
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitWall(this); }
 };
