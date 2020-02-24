@@ -47,6 +47,10 @@ public:
     */
     bool GetDying() { return mDying; }
 
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitGnome(this); }
+
 private:
 
     bool mLeft = false; ///< gnome walking left

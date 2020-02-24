@@ -40,6 +40,8 @@ public:
 
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 
+    CScoreboard* GetScoreboard() { return &mScoreboard; }
+
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
     /// getter for mDimensions
     double GetLevelHeight() { return mLevel.GetHeight(); }
@@ -70,5 +72,8 @@ private:
 
     /// The Items contained in our Game
     std::vector<std::shared_ptr<CItem> > mItems;
+
+    /// The Items to remove in the next update
+    std::vector<std::shared_ptr<CItem> > mDelete;
 
 };

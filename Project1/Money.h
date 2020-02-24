@@ -40,6 +40,13 @@ public:
     * \returns Value of the Money */
     int GetValue() { return mValue; }
 
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMoney(this); }
+
+    /** Increases the value of this Money by 10% */
+    void IncreaseTuition() { mValue *= 1.10;  }
+
 private:
     /// The value of the Money
     int mValue = 100;
@@ -51,6 +58,6 @@ private:
     float mFly = 0;
 
     /// Speed of the Money flying away
-    double mSpeed = 500;
+    double mSpeed = 600;
 };
 

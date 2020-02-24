@@ -27,5 +27,9 @@ public:
     ~CDoor();
 
     virtual bool CollisionTest(CItem* item) override;
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDoor(this); }
 };
 
