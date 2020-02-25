@@ -126,7 +126,6 @@ void CGame::NextLevel()
         mGnome->SetReset(true);
     }   
     else { Load(3); }
-    
 }
 
 /**
