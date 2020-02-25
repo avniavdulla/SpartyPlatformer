@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level width="8192" height="1024" start-y="750" start-x="150"> 
+<level width="8192" height="1024" start-y="750" start-x="5000"> 
 <declarations>
 <platform id="i005" left-image="platformIndustrial_059.png" mid-image="platformIndustrial_060.png" right-image="platformIndustrial_061.png"/>
 <wall id="i006" image="wall1.png"/>
@@ -7,6 +7,8 @@
 <money id="i009" image="money1000.png" value="1000"/>
 <villain id="i012" image="UofM.png"/>
 <villain id="i013" image="wisc.png"/>
+<door id="i011" image="door.png"/>
+
 </declarations>
 
 <items>
@@ -87,10 +89,18 @@
 <money id="i008" x="4300" y="400"/>
 <money id="i008" x="4400" y="400"/>
 <wall id="i006" x="4350" y="1000" width="32" height="640"/>
+
 <platform id="i005" x="5000" y="1000" width="640" height="32"/>
+<wall id="i006" x="5100" y="842" width="32" height="288"/>
+<platform id="i005" x="5320" y="1000" width="1280" height="32"/>
+<platform id="i005" x="5388" y="700" width="608" height="32"/>
+<wall id="i006" x="5676" y="475" width="32" height="416"/>
+<door id="i011" x="5200" y="885"/>
+<platform id="i005" x="5200" y="400" width="192" height="32"/>
+<villain id="i012" x="5550" y="450"/>
+<platform id="i005" x="6085" y="250" width="864" height="32"/>
+<villain id="i013" x="6200" y="130"/>
 
 
-
-<door id="i011" x="0" y="828"/>
 </items>
 </level>
