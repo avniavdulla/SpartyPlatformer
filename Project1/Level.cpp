@@ -204,4 +204,5 @@ void CLevel::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 void CLevel::Reset()
 {
     mItems.clear();
+    mDeclares.clear();
 }

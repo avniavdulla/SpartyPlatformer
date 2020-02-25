@@ -99,6 +99,7 @@ void CGame::Add(std::shared_ptr<CItem> item)
 void CGame::Clear()
 {
     mItems.clear();
+    mDelete.clear();
 }
 
 /**
@@ -120,13 +121,16 @@ void CGame::NextLevel()
 {   
     mScoreboard.Reset();
     mLevel.Reset();
+    mLoading = true;
     int levelNum = mLevel.GetLevelNum();
-    if (levelNum < 3) {
+    if (levelNum < 3) { 
         Load(levelNum + 1);
-        mGnome->SetReset(true);
     }   
-    else { Load(3); }
-    
+    else 
+    { 
+        Load(3); 
+    }
+    mGnome->SetReset(true);
 }
 
 /**
@@ -142,7 +146,12 @@ shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
         {
             return item;
         }
-       
+
+        if (mLoading)
+        {
+            mLoading = false;
+            return nullptr;
+        }
     }
     return nullptr;
 }
@@ -180,3 +189,35 @@ void CGame::RemoveMoney(CMoney* money)
         index++;
     }
 }
+
+/**
+ * Removes the Tuition-Up object from the game
+ *
+ * \param money The Money object to be removed
+ */
+void CGame::RemoveTuitionUp(CTuitionUp* tuitionUp)
+{
+    int index = 1;
+
+    for (auto item : mItems)
+    {
+        if (item.get() == tuitionUp)
+        {
+            mDelete.push_back(item);
+        }
+
+        index++;
+    }
+}
+
+/** Accept a visitor for the collection
+ * \param visitor The visitor for the collection
+ */
+void CGame::Accept(CItemVisitor* visitor)
+{
+    for (auto tile : mItems)
+    {
+        tile->Accept(visitor);
+    }
+}
+

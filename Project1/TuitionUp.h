@@ -31,5 +31,9 @@ public:
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTuitionUp(this); }
+
+private:
+    /// Is false as long as Tuition Up has not yet been collected
+    bool mCollected = false;
 };
 
