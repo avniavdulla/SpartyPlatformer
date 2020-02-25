@@ -16,6 +16,7 @@
 #include "Gnome.h"
 #include "Scoreboard.h"
 #include "Money.h"
+#include "TuitionUp.h"
 #include "XmlNode.h"
 
 /**
@@ -43,13 +44,20 @@ public:
     CScoreboard* GetScoreboard() { return &mScoreboard; }
 
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
+
     /// getter for level height 
     double GetLevelHeight() { return mLevel.GetHeight(); }
+
     /// getter for level number
     int GetLevelNumber() { return mLevel.GetLevelNum(); }
+
     void Lose();
 
     void RemoveMoney(CMoney* money);
+
+    void RemoveTuitionUp(CTuitionUp* tuitionUp);
+
+    void Accept(CItemVisitor* visitor);
 
     /**
      * Gets list of Items in the Game
@@ -61,6 +69,9 @@ private:
 
     /// Scale of the Game dependent on window size
     float mScale = 0.0;
+
+    /// True if Game is currently loading a Level so that the Game does not update
+    bool mLoading = false;
 
     /// An object that describes the current Level
     CLevel mLevel;
