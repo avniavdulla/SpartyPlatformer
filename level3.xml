@@ -1,11 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level width="8192" height="1024" start-y="796" start-x="788">
+<level width="8192" height="1024" start-y="750" start-x="150"> 
 <declarations>
 <platform id="i005" left-image="platformIndustrial_059.png" mid-image="platformIndustrial_060.png" right-image="platformIndustrial_061.png"/>
-<door id="i011" image="door.png"/>
+<wall id="i006" image="wall1.png"/>
+<money id="i008" image="money100.png" value="100"/>
+<money id="i009" image="money1000.png" value="1000"/>
+<villain id="i012" image="UofM.png"/>
+<villain id="i013" image="wisc.png"/>
 </declarations>
+
 <items>
-<platform id="i005" x="912" y="944" width="352" height="32"/>
-<door id="i011" x="1024" y="828"/>
+<villain id="i013" x="-50" y="400"/>
+<wall id="i006" x="170" y="415" width="32" height="384"/>
+<money id="i008" x="80" y="400"/>
+<money id="i008" x="80" y="450"/>
+<money id="i008" x="80" y="500"/>
+<money id="i008" x="80" y="550"/>
+<platform id="i005" x="200" y="920" width="352" height="32"/>
+<platform id="i005" x="150" y="600" width="224" height="32"/>
+<platform id="i005" x="700" y="800" width="352" height="32"/>
+<platform id="i005" x="500" y="300" width="224" height="32"/>
+<money id="i009" x="550" y="700"/>
+<money id="i008" x="550" y="650"/>
+<money id="i009" x="550" y="600"/>
+<villain id="i013" x="633" y="700"/>
+<money id="i009" x="750" y="700"/>
+<money id="i008" x="750" y="650"/>
+<money id="i009" x="750" y="600"/>
+
+<platform id="i005" x="1200" y="800" width="64" height="32"/>
+<money id="i009" x="1200" y="400"/>
+<money id="i008" x="1400" y="350"/>
+<money id="i009" x="1600" y="400"/>
+<villain id="i013" x="1400" y="750"/>
+<platform id="i005" x="1600" y="800" width="64" height="32"/>
+<platform id="i005" x="1600" y="200" width="416" height="32"/>
+<platform id="i005" x="950" y="-10" width="64" height="32"/>
+<wall id="i006" x="955" y="100" width="32" height="200"/>
+
+<money id="i009" x="1600" y="400"/>
+<money id="i008" x="1800" y="350"/>
+<money id="i009" x="2000" y="400"/>
+<villain id="i012" x="1800" y="750"/>
+<platform id="i005" x="2000" y="800" width="64" height="32"/>
+<villain id="i013" x="2250" y="750"/>
+<platform id="i005" x="2200" y="300" width="64" height="32"/>
+<money id="i009" x="2100" y="600"/>
+<money id="i008" x="2200" y="550"/>
+<money id="i009" x="2300" y="500"/>
+<platform id="i005" x="2600" y="200" width="192" height="32"/>
+
+<platform id="i005" x="2650" y="600" width="416" height="32"/>
+
+<money id="i008" x="3000" y="-25"/>
+<money id="i008" x="3100" y="-25"/>
+<money id="i008" x="3200" y="-25"/>
+<money id="i008" x="3300" y="-25"/>
+
+<platform id="i005" x="3200" y="10" width="544" height="32"/>
+
+<platform id="i005" x="3000" y="350" width="224" height="32"/>
+<platform id="i005" x="3200" y="300" width="224" height="32"/>
+<platform id="i005" x="3400" y="250" width="224" height="32"/>
+<villain id="i012" x="4000" y="300"/>
+<platform id="i005" x="4350" y="212" width="192" height="32"/>
+<wall id="i006" x="4400" y="0" width="32" height="384"/>
+
+<villain id="i012" x="3400" y="739"/>
+
+<platform id="i005" x="3000" y="800" width="224" height="32"/>
+<platform id="i005" x="3200" y="850" width="224" height="32"/>
+<platform id="i005" x="3400" y="900" width="224" height="32"/>
+<platform id="i005" x="4000" y="1000" width="224" height="32"/>
+<money id="i009" x="3600" y="700"/>
+<money id="i009" x="3700" y="650"/>
+<money id="i009" x="3800" y="600"/>
+<money id="i009" x="3900" y="550"/>
+<wall id="i006" x="3900" y="850" width="32" height="416"/>
+<money id="i008" x="4000" y="800"/>
+<money id="i008" x="4100" y="800"/>
+<money id="i008" x="4000" y="900"/>
+<money id="i008" x="4100" y="900"/>
+<platform id="i005" x="4350" y="450" width="224" height="32"/>
+<money id="i008" x="4300" y="300"/>
+<money id="i008" x="4400" y="300"/>
+<money id="i008" x="4300" y="400"/>
+<money id="i008" x="4400" y="400"/>
+<wall id="i006" x="4350" y="1000" width="32" height="640"/>
+<platform id="i005" x="5000" y="1000" width="640" height="32"/>
+
+
+
+<door id="i011" x="0" y="828"/>
 </items>
 </level>
