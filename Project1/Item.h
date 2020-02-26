@@ -40,12 +40,17 @@ public:
     /**
      * Handle updates for animation
      * \param elapsed The time since the last update
+     * \return Void
      */
     virtual void Update(double elapsed) {}
 
+    /**
+     * Sets the image to draw
+     * \param image Shared Ptr of bitmap to set mImage to
+     */
     void SetImage(std::shared_ptr<Gdiplus::Bitmap> image) { mImage = image; }
 
-    void SetImage(const std::wstring& file);
+    void SetImage(const std::wstring &file);
     /**
      * Return the Game the Item belongs to
      * \return Game the Item belongs to
@@ -54,13 +59,13 @@ public:
 
     /**
      * The X location of the Item
-     * \returns X location in pixels
+     * \return X location in pixels
      */
     double GetX() const { return mPos.X(); }
 
     /**
      * The Y location of the Item
-     * \returns Y location in pixels
+     * \return Y location in pixels
      */
     double GetY() const { return mPos.Y(); }
 
@@ -79,34 +84,35 @@ public:
 
     /**
      * The location of the Item
-     * \returns Location as a Vector
+     * \return Location as a Vector
      */
     CVector CItem::GetLocation() { return mPos; }
 
     /**  Get the file name for this tile image
-     * \returns Filename or blank if none */
+     * \return Filename or blank if none */
     std::wstring GetFile() { return mFile; }
 
     /**  Get the image for this Item
-    * \returns Image */
+     * \return Image */
     std::shared_ptr<Gdiplus::Bitmap> GetImage() { return mImage; }
 
     /**
      * Get the width of the Item
-     * \returns Width of the Item
+     * \return Width of the Item
      */
     virtual int GetWidth() const { return mImage->GetWidth(); }
 
     /**
      * Get the height of the Item
-     * \returns Height of the Item
+     * \return Height of the Item
      */
     virtual int GetHeight() const { return mImage->GetHeight(); }
     
     virtual bool CollisionTest(CItem* item);
 
     /** Accept a visitor
-     * \param visitor The visitor we accept */
+     * \param visitor The visitor we accept
+     * \return Void */
     virtual void Accept(CItemVisitor* visitor) = 0;
 
 protected:
@@ -116,7 +122,7 @@ private:
     /// The Level this Item is contained in
     CGame* mGame;
 
-    // Item Vector in the Level
+    /// Item Vector in the Level
     CVector mPos;
 
     /// The image of this Item

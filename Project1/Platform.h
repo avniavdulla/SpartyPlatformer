@@ -33,24 +33,25 @@ public:
 
     /**
      * Get the left image of the Platform
-     * \returns Left image of the Platform
+     * \return Left image of the Platform
      */
     std::shared_ptr<Gdiplus::Bitmap> GetImageLeft() { return mImageLeft; }
 
     /**
      * Get the middle image of the Platform
-     * \returns Middle image of the Platform
+     * \return Middle image of the Platform
      */
     std::shared_ptr<Gdiplus::Bitmap> GetImageMid() { return mImageMid; }
 
     /**
      * Get the right image of the Platform
-     * \returns Right image of the Platform
+     * \return Right image of the Platform
      */
     std::shared_ptr<Gdiplus::Bitmap> GetImageRight() { return mImageRight; }
 
     /** Accept a visitor
-     * \param visitor The visitor we accept */
+     * \param visitor The visitor we accept 
+     * \return Void */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitPlatform(this); }
 
 private:

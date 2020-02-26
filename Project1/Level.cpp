@@ -187,6 +187,7 @@ void CLevel::XmlDeclare(const shared_ptr<CXmlNode>& node)
 /**
  * Handle an Item node
  * \param node Pointer to XML node we are handling
+ * \param game Game the created Item will belong in
  */
 void CLevel::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {
@@ -203,6 +204,7 @@ void CLevel::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
         }
     }
 }
+
 /**
  * Resets a Level
  */

@@ -38,6 +38,7 @@ CItem::~CItem()
  *
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
+ * \return Void
  */
 void CItem::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
@@ -56,7 +57,7 @@ void CItem::Draw(Gdiplus::Graphics* graphics, float scroll)
  * Set the image file to draw
  * \param file The base filename. Blank files are allowed
  */
-void CItem::SetImage(const wstring& file)
+void CItem::SetImage(const std::wstring& file)
 {
     if (!file.empty())
     {
@@ -76,6 +77,7 @@ void CItem::SetImage(const wstring& file)
 * This is the  base class version that tests for collisions
 *
 * \param item The Item we are testing collision against
+* \return True if item has collided with us
 */
 bool CItem::CollisionTest(CItem* item)
 {

@@ -74,6 +74,7 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
  * This function is called in response to a drawing message
  * whenever we need to redraw the window on the screen.
  * It is responsible for painting the window.
+ * \return Void
  */
 void CChildView::OnPaint() 
 {
@@ -145,6 +146,7 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 /**
  * Handle timer events
  * \param nIDEvent The timer event ID
+ * \return Void
  */
 void CChildView::OnTimer(UINT_PTR nIDEvent)
 {
@@ -152,6 +154,13 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
     CWnd::OnTimer(nIDEvent);
 }
 
+/**
+ * Handle key presses for player-controlled Gnome
+ * \param nChar Key pressed down
+ * \param nRepCnt Count of key pressed down
+ * \param nFlags Flags for keys pressed down
+ * \return Void
+ */
 void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
     switch (nChar)
@@ -170,6 +179,10 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 /**
  * Handle key up events
+ * \param nChar Key up
+ * \param nRepCnt Count of key up
+ * \param nFlags Flags for key up
+ * \return Void
  */
 void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
@@ -187,6 +200,7 @@ void CChildView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 /**
  * Handler for Level 0
+ * \return Void
  */
 void CChildView::OnLevelLevel0()
 {
@@ -196,6 +210,7 @@ void CChildView::OnLevelLevel0()
 
 /**
  * Handler for Level 1
+ * \return Void
  */
 void CChildView::OnLevelLevel1()
 {
@@ -205,6 +220,7 @@ void CChildView::OnLevelLevel1()
 
 /**
  * Handler for Level 2
+ * \return Void
  */
 void CChildView::OnLevelLevel2()
 {
@@ -214,6 +230,7 @@ void CChildView::OnLevelLevel2()
 
 /**
  * Handler for Level 3
+ * \return Void
  */
 void CChildView::OnLevelLevel3()
 {

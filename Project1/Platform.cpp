@@ -12,7 +12,7 @@
 using namespace std;
 using namespace Gdiplus;
 
-/*
+/**
  * Constructor
  * \param game Game this Platform is a member of
  */
@@ -32,6 +32,7 @@ CPlatform::~CPlatform()
  *
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
+ * \return Void
  */
 void CPlatform::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
@@ -63,6 +64,7 @@ void CPlatform::Draw(Gdiplus::Graphics* graphics, float scroll)
 /**
  * Set the image file to draw for the Platform
  * \param left The filename for the left of the Platform. Blank files are allowed
+ * \param mid The filename for the middle of the Platform. Blank files are allowed
  * \param right The filename for the right of the Platform. Blank files are allowed
  */
 void CPlatform::SetPlatformImage(std::shared_ptr<Gdiplus::Bitmap> left, std::shared_ptr<Gdiplus::Bitmap> mid, std::shared_ptr<Gdiplus::Bitmap> right)

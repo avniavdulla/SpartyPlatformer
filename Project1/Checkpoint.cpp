@@ -46,6 +46,7 @@ CCheckpoint::~CCheckpoint()
  *
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
+ * \return Void
  */
 void CCheckpoint::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
@@ -103,6 +104,7 @@ void CCheckpoint::Update(double elapsed)
 /**
  * Tests if any other item is colliding with it
  * \param item Item testing for a collision
+ * \return false Gnome can pass through Checkpoint
  */
 bool CCheckpoint::CollisionTest(CItem* item)
 {

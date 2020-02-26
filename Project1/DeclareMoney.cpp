@@ -31,6 +31,7 @@ CDeclareMoney::~CDeclareMoney()
  * Load the attributes for an item node
  *
  * \param node The Xml node we are loading the item from
+ * \return Void
  */
 void CDeclareMoney::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
@@ -43,6 +44,8 @@ void CDeclareMoney::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node)
  * Loads attributes for Platforms
  *
  * \param node The Xml Node we are loading the Declare from
+ * \param game The Game the created Item belongs to
+ * \return Item created from the Declare and the node
  */
 shared_ptr<CItem> CDeclareMoney::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {

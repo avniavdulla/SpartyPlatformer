@@ -29,6 +29,7 @@ CBackground::~CBackground()
  * Draw our Background
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
+ * \return Void
  */
 void CBackground::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
@@ -44,6 +45,7 @@ void CBackground::Draw(Gdiplus::Graphics* graphics, float scroll)
  * Tests if any other item is colliding with it
  * Backgrounds do not collide with anything
  * \param item Item testing for a collision
+ * \return false backgrounds do not collide with anything
  */
 bool CBackground::CollisionTest(CItem* item)
 {

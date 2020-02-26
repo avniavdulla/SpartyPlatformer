@@ -10,7 +10,9 @@
 #include "Checkpoint.h"
 
  /** Visit a Checkpoint Item
- * \param money Money we are visiting */
+  * \param checkpoint Money we are visiting 
+  * \return Void
+  */
 void CCheckpointVisitor::VisitCheckpoint(CCheckpoint* checkpoint)
 {
     checkpoint->UnsetCheckpoint();

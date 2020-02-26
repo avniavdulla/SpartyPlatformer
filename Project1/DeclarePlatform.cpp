@@ -32,6 +32,7 @@ CDeclarePlatform::~CDeclarePlatform()
  * Load the attributes for an item node
  *
  * \param node The Xml node we are loading the item from
+ * \return Void
  */
 void CDeclarePlatform::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
@@ -48,6 +49,8 @@ void CDeclarePlatform::XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node
  * Loads attributes for Platforms
  *
  * \param node The Xml Node we are loading the Declare from
+ * \param game The Game the created Item belongs to
+ * \return Item created from the Declare and the node
  */
 shared_ptr<CItem> CDeclarePlatform::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {
@@ -68,7 +71,7 @@ shared_ptr<CItem> CDeclarePlatform::XmlItem(const shared_ptr<CXmlNode>& node, CG
 /**
  * Set the image file to draw for the Platform
  * \param left The filename for the left of the Platform. Blank files are allowed
- * \param left The filename for the middle of the Platform. Blank files are allowed
+ * \param mid The filename for the middle of the Platform. Blank files are allowed
  * \param right The filename for the right of the Platform. Blank files are allowed
  */
 void CDeclarePlatform::SetPlatformImage(const std::wstring& left, const std::wstring& mid, const std::wstring& right)

@@ -10,6 +10,9 @@
 
 #include "Item.h"
 
+/**
+ * Base class for any Wall or Platform
+ */
 class CObstacle : public CItem
 {
 public:

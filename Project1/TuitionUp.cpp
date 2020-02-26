@@ -42,6 +42,7 @@ CTuitionUp::~CTuitionUp()
  *
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
+ * \return Void
  */
 void CTuitionUp::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
@@ -101,6 +102,7 @@ void CTuitionUp::Update(double elapsed)
 /**
  * Tests if any other item is colliding with it
  * \param item Item testing for a collision
+ * \return False Gnome can pass through Tuition Up items
  */
 bool CTuitionUp::CollisionTest(CItem* item)
 {

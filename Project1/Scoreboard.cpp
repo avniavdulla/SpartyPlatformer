@@ -30,7 +30,6 @@ CScoreboard::~CScoreboard()
 /**
  * Draw the Scoreboard
  * \param graphics The graphics context to draw on
- * \param scroll The scroll offset
  */
 void CScoreboard::Draw(Gdiplus::Graphics* graphics)
 {

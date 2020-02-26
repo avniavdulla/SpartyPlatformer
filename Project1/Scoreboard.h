@@ -8,6 +8,9 @@
 
 #pragma once
 
+/**
+ * Class that represents the Scoreboard
+ */
 class CScoreboard
 {
 public:
@@ -27,6 +30,9 @@ public:
      */
     void AddScore(int value) { mScore += value; }
 
+    /**
+     * Sets Lose condition
+     */
     void Lose() { mLose = true; }
 
 private:
@@ -36,5 +42,6 @@ private:
     /// Score accumulated in the Level
     int mScore = 0;
 
+    /// True if in Lose condition
     bool mLose = false;
 };

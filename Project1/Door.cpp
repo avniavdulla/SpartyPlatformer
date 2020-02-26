@@ -13,6 +13,7 @@ using namespace Gdiplus;
 
 /// Collision distance for the door in pixels
 const double CollisionDistance = 20;
+
 /**
  * Constructor
  * \param game The Game this Background is a member of
@@ -31,6 +32,7 @@ CDoor::~CDoor()
 /**
  * Tests if any other item is colliding with it
  * \param item Item testing for a collision
+ * \return false Gnome can pass through doors
  */
 bool CDoor::CollisionTest(CItem* item)
 {

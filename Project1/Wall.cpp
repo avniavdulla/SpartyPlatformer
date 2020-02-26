@@ -13,7 +13,7 @@
 using namespace std;
 using namespace Gdiplus;
 
-/*
+/**
  * Constructor
  * \param game Game this Wall is a member of
  */
@@ -33,6 +33,7 @@ CWall::~CWall()
  *
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
+ * \return Void
  */
 void CWall::Draw(Gdiplus::Graphics* graphics, float scroll)
 {

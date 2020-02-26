@@ -57,6 +57,7 @@ void CDeclare::SetImage(const wstring& file)
  * for specific Declares.
  *
  * \param node The Xml Node we are loading the Declare from
+ * \return Void
  */
 void CDeclare::XmlDeclare(const shared_ptr<CXmlNode>& node)
 {
@@ -74,6 +75,8 @@ void CDeclare::XmlDeclare(const shared_ptr<CXmlNode>& node)
  * Loads attributes for Backgrounds
  *
  * \param node The Xml Node we are loading the Declare from
+ * \param game The Game the created Item belongs to
+ * \return Item created from the Declare and the node
  */
 shared_ptr<CItem> CDeclare::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {

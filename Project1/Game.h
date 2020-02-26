@@ -39,18 +39,36 @@ public:
 
     void NextLevel();
 
+    /**
+     * Gets the Game's Gnome
+     * \return Shared Ptr to the Gnome
+     */
     std::shared_ptr<CGnome> GetGnome() { return mGnome; }
 
+    /**
+     * Gets the Game's Scoreboard
+     * \return Ptr to the Scoreboard
+     */
     CScoreboard* GetScoreboard() { return &mScoreboard; }
 
+    /**
+     * Gets the Game's Level
+     * \return Ptr to the Level
+     */
     CLevel* GetLevel() { return &mLevel; }
 
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
 
-    /// getter for level height 
+    /**
+     * Gets the Game's Level's height
+     * \return Level's height
+     */
     double GetLevelHeight() { return mLevel.GetHeight(); }
 
-    /// getter for level number
+    /**
+     * Gets the Game's Level's number
+     * \return Level's number
+     */
     int GetLevelNumber() { return mLevel.GetLevelNum(); }
 
     void Lose();
@@ -90,7 +108,7 @@ private:
     /// An object that describes the Scoreboard
     CScoreboard mScoreboard;
 
-    // The player-controlled Gnome object
+    /// The player-controlled Gnome object
     std::shared_ptr<CGnome> mGnome;
 
     /// The Items contained in our Game

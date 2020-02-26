@@ -104,7 +104,7 @@ void CGame::Clear()
 
 /**
  * Load the Game from a specified Level
- * \param filename File name of the Level
+ * \param levelNum Level number of Level to load
  */
 void CGame::Load(int levelNum)
 {
@@ -114,9 +114,9 @@ void CGame::Load(int levelNum)
     mStart = mLevel.GetStart();
 }
 
-/*
-* Loads next level
-*/
+/**
+ * Loads the next Level based on the current Level
+ */
 void CGame::NextLevel()
 {   
     mScoreboard.Reset();
@@ -194,7 +194,7 @@ void CGame::RemoveMoney(CMoney* money)
 /**
  * Removes the Tuition-Up object from the game
  *
- * \param money The Money object to be removed
+ * \param tuitionUp The Tuition-Up object to be removed
  */
 void CGame::RemoveTuitionUp(CTuitionUp* tuitionUp)
 {

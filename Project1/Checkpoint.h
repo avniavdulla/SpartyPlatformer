@@ -10,6 +10,9 @@
 #pragma once
 #include "Item.h"
 
+/**
+ * Class that represents the Checkpoint
+ */
 class CCheckpoint : public CItem
 {
 public:
@@ -30,7 +33,9 @@ public:
     virtual bool CollisionTest(CItem* item) override;
 
     /** Accept a visitor
-     * \param visitor The visitor we accept */
+     * \param visitor The visitor we accept 
+     * \return Void
+     */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitCheckpoint(this); }
 
     /** Unsets the Checkpoint */

@@ -10,6 +10,9 @@
 
 #include "Declare.h"
 
+/**
+ * Class that represents a Wall Declaration
+ */
 class CDeclareWall : public CDeclare
 {
 public:

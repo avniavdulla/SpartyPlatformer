@@ -26,6 +26,7 @@ public:
 
     ~CVillain();
 
+    /** Sets the height range a Villain moves about in */
     void SetRangeHeight() { mMaxHeight = GetY() - 300;  mMinHeight = GetY(); }
 
     void Update(double elapsed);
@@ -33,14 +34,18 @@ public:
     virtual bool CollisionTest(CItem* item) override;
 
     /** Accept a visitor
-     * \param visitor The visitor we accept */
+     * \param visitor The visitor we accept
+     * \return Void */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitVillain(this); }
 
 private:
+    /// Maximum height Villain can travel to
     double mMaxHeight = 0;
     
+    /// Minimum height Villain can travel to
     double mMinHeight = 0;
 
+    /// Speed of Villain
     double mSpeed = 240;
 };
 

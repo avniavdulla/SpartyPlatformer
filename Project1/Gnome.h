@@ -11,6 +11,9 @@
 #include "Item.h"
 #include "Vector.h"
 
+/**
+ * Class that represents the Gnome
+ */
 class CGnome : public CItem
 {
 public:
@@ -28,28 +31,35 @@ public:
 
     void Reset(CVector start);
 
+    /** Sets mReset
+     * \param set Boolean to set mReset */
     void SetReset(bool set) { mReset = set; }
 
     /** Gets Gnome's Velocity
      * \return Gnome's Velocity */
     CVector GetVelocity() { return mVelocity; }
 
-    /// Sets the Gnome to move right
+    /** Sets mLeft
+     * \param move Boolean to set mLeft */
     void GoLeft(bool move) { mLeft = move; }
 
-    /// Sets the Gnome to move right
+    /** Sets mRight
+     * \param move Boolean to set mRight */
     void GoRight(bool move) { mRight = move; }
 
-    /// sets the Gnome to jump
+    /** Sets mJump
+     * \param move Boolean to set mJump */
     void Jump(bool move) { mJump = true; };
+
     /**
-    * Getter for mDying
-    * \return bool mDying variable
-    */
+     * Getter for mDying
+     * \return bool mDying variable
+     */
     bool GetDying() { return mDying; }
 
     /** Accept a visitor
-     * \param visitor The visitor we accept */
+     * \param visitor The visitor we accept
+     * \return Void */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitGnome(this); }
 
 private:

@@ -36,6 +36,7 @@ CMoney::~CMoney()
  *
  * \param graphics The graphics context to draw on
  * \param scroll The scroll offset
+ * \return Void
  */
 void CMoney::Draw(Gdiplus::Graphics* graphics, float scroll)
 {
@@ -91,6 +92,7 @@ void CMoney::Update(double elapsed)
 /**
  * Tests if any other item is colliding with it
  * \param item Item testing for a collision
+ * \return false Gnome passes through Money
  */
 bool CMoney::CollisionTest(CItem* item)
 {

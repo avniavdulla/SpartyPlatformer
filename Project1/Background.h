@@ -30,8 +30,11 @@ public:
 
     virtual bool CollisionTest(CItem* item) override;
 
-    /** Accept a visitor
-     * \param visitor The visitor we accept */
+    /**
+     * Accept a visitor
+     * \param visitor Visitor to accept to visit Background
+     * \return Void
+     */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBackground(this); }
 };
 

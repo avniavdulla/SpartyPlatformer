@@ -15,7 +15,7 @@ using namespace std;
 
 /**
  * Constructor
- * \param level Level this Villain is a member of
+ * \param game Game this Villain is a member of
  */
 CVillain::CVillain(CGame* game) : CItem(game)
 {
@@ -48,12 +48,16 @@ void CVillain::Update(double elapsed)
     }
 }
 
+/**
+ * Tests if any other item is colliding with it
+ * \param item Item testing for a collision
+ * \return False Gnome does not need to collide with a Villain as it is dead
+ */
 bool CVillain::CollisionTest(CItem* item)
 {
     if (CItem::CollisionTest(item))
     {
         GetGame()->Lose();
-        return false;
     }
     return false;
 }

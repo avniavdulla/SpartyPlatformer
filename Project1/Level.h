@@ -28,6 +28,9 @@ public:
 
     void Add(std::shared_ptr<CItem> item);
 
+    /** Sets the Level dimensions
+     * \param width Width of Level in pixels
+     * \param height Height of Level in pixels */
     void SetDimensions(double width, double height) { mWidth = width; mHeight = height; }
 
     void SetLevel(int levelNum);
@@ -41,13 +44,16 @@ public:
 
     void Reset();
 
-    /// getter for level height 
+    /** Gets Level's height
+     * \return Height of Level in pixels */
     double GetHeight() { return mHeight; }
 
     /** Gets starting position
      * \return Vector Starting position */
     CVector GetStart() { return mStart; }
 
+    /** Gets Level Number
+     * \return Number of Level */
     int GetLevelNum() { return mLevelNum; }
 
     /** Gets collection of Items

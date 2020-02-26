@@ -40,7 +40,7 @@ const double Epsilon = 0.01;
 
  /**
   * Constructor
-  * \param level The Level this Gnome is a member of
+  * \param game The Game this Gnome is a member of
   */
 CGnome::CGnome(CGame* game) : CItem(game)
 {
@@ -231,6 +231,10 @@ void CGnome::Update(double elapsed)
     
 }
 
+/**
+ * Resets the Gnome to a specific location
+ * \param start The Vector position to Set Location
+ */
 void CGnome::Reset(CVector start)
 {
     CItem::SetImage(GnomeImage);

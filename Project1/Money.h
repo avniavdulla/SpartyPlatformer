@@ -41,7 +41,8 @@ public:
     int GetValue() { return mValue; }
 
     /** Accept a visitor
-     * \param visitor The visitor we accept */
+     * \param visitor The visitor we accept 
+     * \return Void */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitMoney(this); }
 
     /** Increases the value of this Money by 10% */

@@ -13,6 +13,9 @@
 
 using namespace xmlnode;
 
+/**
+ * Base class for any Declaration
+ */
 class CDeclare 
 {
 public:
@@ -39,9 +42,6 @@ public:
 
     virtual void XmlDeclare(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-    /** Creates an Item based on the Declare
-     * \param node The Xml Node we are loading the Item from
-     */
     virtual std::shared_ptr<CItem> XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, CGame* game);
 
 protected:

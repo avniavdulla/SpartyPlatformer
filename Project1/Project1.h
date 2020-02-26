@@ -9,11 +9,9 @@
 
 #include "resource.h"       // main symbols
 
-
-// CProject1App:
-// See Project1.cpp for the implementation of this class
-//
-
+/**
+ * Main class for Project1 application
+ */
 class CProject1App : public CWinApp
 {
 public:

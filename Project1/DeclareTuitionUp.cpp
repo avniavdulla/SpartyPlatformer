@@ -31,6 +31,8 @@ CDeclareTuitionUp::~CDeclareTuitionUp()
  * Loads attributes for Platforms
  *
  * \param node The Xml Node we are loading the Declare from
+ * \param game The Game the created Item belongs to
+ * \return Item created from the Declare and the node
  */
 shared_ptr<CItem> CDeclareTuitionUp::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {

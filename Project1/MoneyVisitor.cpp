@@ -10,7 +10,8 @@
 #include "Money.h"
 
  /** Visit a Money Item
- * \param money Money we are visiting */
+  * \param money Money we are visiting 
+  * \return Void */
 void CMoneyVisitor::VisitMoney(CMoney* money)
 {
     money->IncreaseTuition();
