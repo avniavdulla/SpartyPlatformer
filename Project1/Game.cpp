@@ -111,7 +111,7 @@ void CGame::Load(int levelNum)
     Clear();
     mLevel.SetLevel(levelNum);
     mLevel.Install(this);
-
+    mStart = mLevel.GetStart();
 }
 
 /*
@@ -168,6 +168,7 @@ void CGame::Lose()
     mScoreboard.Reset();
     mGnome->SetReset(true);
     mLevel.Install(this);
+    mGnome->SetLocation(mStart);
 }
 
 /**
@@ -215,9 +216,9 @@ void CGame::RemoveTuitionUp(CTuitionUp* tuitionUp)
  */
 void CGame::Accept(CItemVisitor* visitor)
 {
-    for (auto tile : mItems)
+    for (auto item : mItems)
     {
-        tile->Accept(visitor);
+        item->Accept(visitor);
     }
 }
 

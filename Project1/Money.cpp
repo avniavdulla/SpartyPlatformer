@@ -13,6 +13,9 @@
 using namespace std;
 using namespace Gdiplus;
 
+/// Money speed in pixels per second
+const double Speed = 600.0;
+
 /**
  * Constructor
  * \param game The Game this Money is a member of
@@ -76,7 +79,7 @@ void CMoney::Update(double elapsed)
 {
     if (mCollected)
     {
-        mFly += mSpeed * elapsed;
+        mFly += Speed * elapsed;
 
         if (GetY() - mFly < -float(GetHeight() / 2))
         {

@@ -45,8 +45,5 @@ private:
 
     /// Text size as Tuition Up Text flies away
     float mTextSize = 20;
-
-    /// Speed of the Text and Tuition Up flying away
-    double mSpeed = 600;
 };
 

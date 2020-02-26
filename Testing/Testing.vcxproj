@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;XmlNode;Vector;Game;Scoreboard;Level;Item;Declare;Gnome;Background;Obstacle;Platform;Wall;Money;TuitionUp;Door;Villain;DeclarePlatform;DeclareBackground;DeclareWall;DeclareMoney;DeclareTuitionUp;DeclareDoor;DeclareVillain</AdditionalDependencies>
+      <AdditionalDependencies>pch;XmlNode;Vector;Game;Scoreboard;Level;Item;Declare;Gnome;Background;Obstacle;Platform;Wall;Money;TuitionUp;Door;Villain;Checkpoint;DeclarePlatform;DeclareBackground;DeclareWall;DeclareMoney;DeclareTuitionUp;DeclareDoor;DeclareVillain;DeclareCheckpoint;ItemVisitor;MoneyVisitor;CheckpointVisitor</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -172,6 +172,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CCheckpointTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CGameTest.cpp">
       <SubType>
       </SubType>

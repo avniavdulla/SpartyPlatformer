@@ -18,6 +18,7 @@ class CTuitionUp;
 class CVillain;
 class CDoor;
 class CGnome;
+class CCheckpoint;
 
 /** Item Visitor base class */
 class CItemVisitor
@@ -56,4 +57,8 @@ public:
     /** Visit a Gnome Item
      * \param gnome Gnome we are visiting */
     virtual void VisitGnome(CGnome* gnome) {}
+
+    /** Visit a Checkpoint Item
+     * \param checkpoint Checkpoint we are visiting */
+    virtual void VisitCheckpoint(CCheckpoint* checkpoint) {}
 };

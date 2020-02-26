@@ -39,6 +39,7 @@ public:
 
     /// Sets the Gnome to move right
     void GoRight(bool move) { mRight = move; }
+
     /// sets the Gnome to jump
     void Jump(bool move) { mJump = true; };
     /**

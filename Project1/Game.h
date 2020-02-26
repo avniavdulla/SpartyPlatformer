@@ -43,6 +43,8 @@ public:
 
     CScoreboard* GetScoreboard() { return &mScoreboard; }
 
+    CLevel* GetLevel() { return &mLevel; }
+
     std::shared_ptr<CItem> CollisionTest(CGnome* gnome);
 
     /// getter for level height 
@@ -58,6 +60,15 @@ public:
     void RemoveTuitionUp(CTuitionUp* tuitionUp);
 
     void Accept(CItemVisitor* visitor);
+
+    /** Sets starting position
+     * \param x Starting X position
+     * \param y Starting Y position */
+    void SetStart(double x, double y) { mStart.Set(x, y); }
+
+    /** Gets starting position
+     * \return Vector Starting position */
+    CVector GetStart() { return mStart; }
 
     /**
      * Gets list of Items in the Game
@@ -87,5 +98,8 @@ private:
 
     /// The Items to remove in the next update
     std::vector<std::shared_ptr<CItem> > mDelete;
+
+    /// In Game starting point
+    CVector mStart;
 
 };

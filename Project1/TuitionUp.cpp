@@ -13,7 +13,7 @@
 using namespace std;
 using namespace Gdiplus;
 
-/// Horizontal character speed in pixels per second
+/// Tuition Up and Text speed in pixels per second
 const double Speed = 800.0;
 
 /// Growth rate of Tuition Up text

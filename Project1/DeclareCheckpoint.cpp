@@ -1,13 +1,13 @@
 /**
- * \file DeclareDoor.cpp
+ * \file DeclareCheckpoint.cpp
  *
  * \author Sean Nguyen
  */
 
 #include "pch.h"
 
-#include "DeclareDoor.h"
-#include "Door.h"
+#include "DeclareCheckpoint.h"
+#include "Checkpoint.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -15,25 +15,25 @@ using namespace xmlnode;
 /**
  * Constructor
  */
-CDeclareDoor::CDeclareDoor()
+CDeclareCheckpoint::CDeclareCheckpoint()
 {
 }
 
 /**
  *  Destructor
  */
-CDeclareDoor::~CDeclareDoor()
+CDeclareCheckpoint::~CDeclareCheckpoint()
 {
 }
 
 /**
- * Loads attributes for Doors
+ * Loads attributes for Checkpoints
  *
  * \param node The Xml Node we are loading the Declare from
  */
-shared_ptr<CItem> CDeclareDoor::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
+shared_ptr<CItem> CDeclareCheckpoint::XmlItem(const shared_ptr<CXmlNode>& node, CGame* game)
 {
-    shared_ptr<CDoor> item = make_shared<CDoor>(game);
+    shared_ptr<CCheckpoint> item = make_shared<CCheckpoint>(game);
 
     double x = node->GetAttributeDoubleValue(L"x", 0);
     double y = node->GetAttributeDoubleValue(L"y", 0);

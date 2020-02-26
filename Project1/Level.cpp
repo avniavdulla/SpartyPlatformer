@@ -16,6 +16,7 @@
 #include "DeclareTuitionUp.h"
 #include "DeclareVillain.h"
 #include "DeclareDoor.h"
+#include "DeclareCheckpoint.h"
 
 using namespace std;
 using namespace xmlnode;
@@ -170,6 +171,10 @@ void CLevel::XmlDeclare(const shared_ptr<CXmlNode>& node)
     else if (name == L"door")
     {
         declare = make_shared<CDeclareDoor>();
+    }
+    else if (name == L"checkpoint")
+    {
+        declare = make_shared<CDeclareCheckpoint>();
     }
 
     if (declare != nullptr)

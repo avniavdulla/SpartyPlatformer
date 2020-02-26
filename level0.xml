@@ -4,6 +4,7 @@
 <background id="i001" image="backgroundForest.png"/>
 <platform id="i005" left-image="platformIndustrial_059.png" mid-image="platformIndustrial_060.png" right-image="platformIndustrial_061.png"/>
 <tuition-up id="i010" image="stanley.png"/>
+<checkpoint id="i015" image="checkpoint.png"/>
 <door id="i011" image="door.png"/>
 </declarations>
 <items>
@@ -12,7 +13,9 @@
 <platform id="i005" x="416" y="912" width="64" height="32"/>
 <platform id="i005" x="432" y="848" width="96" height="32"/>
 <platform id="i005" x="448" y="784" width="128" height="32"/>
-<platform id="i005" x="464" y="720" width="160" height="32"/>
+<platform id="i005" x="464" y="720" width="816" height="32"/>
+<checkpoint id="i015" x="800" y="600"/>
+<checkpoint id="i015" x="200" y="600"/>
 <platform id="i005" x="464" y="300" width="160" height="32"/>
 <tuition-up id="i010" x="464" y="600"/>
 <door id="i011" x="464" y="400"/>

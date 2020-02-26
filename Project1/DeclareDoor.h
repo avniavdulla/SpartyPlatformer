@@ -10,9 +10,9 @@
 
 #include "Declare.h"
 
- /**
-  * Represents the Door Declaration
-  */
+/**
+ * Represents the Door Declaration
+ */
 class CDeclareDoor : public CDeclare
 {
 public:

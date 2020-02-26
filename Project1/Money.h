@@ -56,8 +56,5 @@ private:
 
     /// Offset for drawing the Money flying away
     float mFly = 0;
-
-    /// Speed of the Money flying away
-    double mSpeed = 600;
 };
 
