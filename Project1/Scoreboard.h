@@ -18,7 +18,9 @@ public:
 
     ~CScoreboard();
 
-    void Draw(Gdiplus::Graphics* graphics);
+    void Draw(Gdiplus::Graphics* graphics, int width, int height);
+
+    void DrawSplashText(Gdiplus::Graphics* graphics, int width, int height, std::wstring splashText);
 
     void Update(double elapsed);
 
@@ -36,18 +38,10 @@ public:
      */
     int GetScore() { return mScore; }
 
-    /**
-     * Sets Lose condition
-     */
-    void Lose() { mLose = true; }
-
 private:
     /// Seconds spent in the Level
     double mSeconds = 0;
 
     /// Score accumulated in the Level
     int mScore = 0;
-
-    /// True if in Lose condition
-    bool mLose = false;
 };

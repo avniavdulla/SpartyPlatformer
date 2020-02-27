@@ -102,6 +102,12 @@ private:
     /// True if Game is currently loading a Level so that the Game does not update
     bool mLoading = false;
 
+    /// True if the Game is just starting
+    bool mInitial = false;
+
+    /// True if the player has lost the game
+    bool mLose = false;
+
     /// An object that describes the current Level
     CLevel mLevel;
 
@@ -120,4 +126,6 @@ private:
     /// In Game starting point
     CVector mStart;
 
+    /// Elapsed time since a state, such as initial or lose, has started
+    double mElapsed = 0.0;
 };

@@ -33,7 +33,7 @@ public:
 
     /** Sets mReset
      * \param set Boolean to set mReset */
-    void SetReset(bool set) { mReset = set; }
+    void SetReset(bool set) { mReset = set; mImmobile = true; }
 
     /** Gets Gnome's Velocity
      * \return Gnome's Velocity */
@@ -47,9 +47,12 @@ public:
      * \param move Boolean to set mRight */
     void GoRight(bool move) { mRight = move; }
 
-    /** Sets mJump
-     * \param move Boolean to set mJump */
-    void Jump(bool move) { mJump = true; };
+    /** Sets mJump */
+    void Jump() { mJump = true; };
+
+    /** Sets mImmobile
+     * \param freeze Boolean to set mImmobile */
+    void SetImmobile(bool freeze) { mImmobile = freeze; };
 
     /**
      * Getter for mDying
@@ -69,6 +72,7 @@ private:
     bool mJump = false; ///< jump initiated
     bool mDying = false; ///< gnome is dying 
     bool mReset = false; ///< checks if gnome got reset 
+    bool mImmobile = true; ///< True when Gnome cannot be controlled
     double mWalk = 0; ///< keeps track of time while walking
 
     CVector mVelocity; ///< velocity of the gnome

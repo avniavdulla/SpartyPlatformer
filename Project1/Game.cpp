@@ -55,7 +55,19 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     }
 
     mGnome->Draw(graphics, scroll);
-    mScoreboard.Draw(graphics);
+    mScoreboard.Draw(graphics, virtualWidth, (float)height / mScale);
+
+    if (mInitial)
+    {
+        wstring splashText = L"Level " + to_wstring(mLevel.GetLevelNum()) + L" Begin";
+        mScoreboard.DrawSplashText(graphics, virtualWidth, (float)height / mScale, splashText);
+    }
+
+    if (mLose)
+    {
+        wstring splashText = L"You Lose!";
+        mScoreboard.DrawSplashText(graphics, virtualWidth, (float)height / mScale, splashText);
+    }
 }
 
 /**
@@ -64,6 +76,36 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
  */
 void CGame::Update(double elapsed)
 {
+    if (mInitial)
+    {
+        mElapsed += elapsed;
+
+        if (mElapsed >= 1)
+        {
+            mElapsed = 0;
+            mInitial = false;
+            mGnome->SetImmobile(false);
+        }
+    }
+
+    if (mLose)
+    {
+        mElapsed += elapsed;
+
+        if (mElapsed >= 2)
+        {
+            mElapsed = 0;
+            mGnome->SetImmobile(false);
+            Clear();
+            mLevel.Reset();
+            mScoreboard.Reset();
+            mGnome->SetReset(true);
+            mLevel.Install(this);
+            mGnome->SetLocation(mStart);
+            mInitial = true;
+            mLose = false;
+        }
+    }
 
     for (auto item : mItems)
     {
@@ -113,6 +155,8 @@ void CGame::Load(int levelNum)
     mLevel.Install(this);
     mScoreboard.Reset();
     mStart = mLevel.GetStart();
+    mGnome->SetImmobile(true);
+    mInitial = true;
 }
 
 /**
@@ -132,6 +176,7 @@ void CGame::NextLevel()
         Load(3); 
     }
     mGnome->SetReset(true);
+    mInitial = true;
 }
 
 /**
@@ -164,12 +209,8 @@ shared_ptr<CItem> CGame::CollisionTest(CGnome* gnome)
 */
 void CGame::Lose()
 {
-    Clear();
-    mLevel.Reset();
-    mScoreboard.Reset();
-    mGnome->SetReset(true);
-    mLevel.Install(this);
-    mGnome->SetLocation(mStart);
+    mLose = true;
+    mGnome->SetImmobile(true);
 }
 
 /**

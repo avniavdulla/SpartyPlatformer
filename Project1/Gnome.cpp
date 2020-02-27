@@ -63,8 +63,8 @@ CGnome::~CGnome()
  */
 void CGnome::Update(double elapsed)
 {
-
     CItem::Update(elapsed);
+
     //If player is dying it triggers the lose state
     // could happen from falling or colliding with villan 
     if (mDying)
@@ -136,7 +136,7 @@ void CGnome::Update(double elapsed)
     {
         CItem::SetImage(GnomeRight1Image);
     }
-    else if (mJump)
+    else if (mJump && !mImmobile)
     {
         if (mVelocity.Y() == 0) {
             newVelocity.SetY(JumpSpeed);
@@ -178,6 +178,16 @@ void CGnome::Update(double elapsed)
         // If we collide, we cancel any velocity
         // in the Y direction
         newVelocity.SetY(0);
+    }
+
+    if (mImmobile)
+    {
+        CItem::SetImage(GnomeImage);
+        newVelocity.SetX(0);
+        mVelocity = newVelocity;
+        SetLocation(GetX(), newPos.Y());
+
+        return;
     }
 
     if (!mReset) {
@@ -228,7 +238,6 @@ void CGnome::Update(double elapsed)
     {
         mDying = true;
     }
-    
 }
 
 /**

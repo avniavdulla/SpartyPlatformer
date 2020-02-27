@@ -30,8 +30,10 @@ CScoreboard::~CScoreboard()
 /**
  * Draw the Scoreboard
  * \param graphics The graphics context to draw on
+ * \param height Height of the current window
+ * \param width Width of the current window
  */
-void CScoreboard::Draw(Gdiplus::Graphics* graphics)
+void CScoreboard::Draw(Gdiplus::Graphics* graphics, int width, int height)
 {
     int min = int(mSeconds / 60);
     int sec = int(mSeconds - (double(min) * 60));
@@ -50,23 +52,35 @@ void CScoreboard::Draw(Gdiplus::Graphics* graphics)
     }
 
     FontFamily fontFamily(L"Arial");
-    Gdiplus::Font font(&fontFamily, 70, FontStyleBold);
+    Gdiplus::Font font(&fontFamily, 60, FontStyleBold);
 
     wstring time = minString + L":" + secString;
     wstring score = L"$" + to_wstring(mScore);
-    wstring level = L"Level Begin";
+    
 
     SolidBrush grey(Color(200, 200, 200));
-    SolidBrush red(Color(255, 0, 0));
+    
 
-    graphics->DrawString(time.c_str(), -1, &font, PointF(90, 18), &grey); 
-    graphics->DrawString(score.c_str(), -1, &font, PointF(1050, 18), &grey);
+    graphics->DrawString(time.c_str(), -1, &font, PointF(100, 18), &grey); 
+    graphics->DrawString(score.c_str(), -1, &font, PointF(width - 260, 18), &grey);
+}
 
+/**
+ * Draw the Scoreboard Splash Text
+ * \param graphics The graphics context to draw on
+ * \param height Height of the current window
+ * \param width Width of the current window
+ * \param splashText Text to display
+ */
+void CScoreboard::DrawSplashText(Gdiplus::Graphics* graphics, int width, int height, wstring splashText) 
+{
+    FontFamily fontFamily(L"Arial");
+    Gdiplus::Font splash(&fontFamily, 100, FontStyleBold);
+    SolidBrush pink(Color(255, 105, 180));
+    StringFormat stringFormat = new StringFormat();
+    stringFormat.SetAlignment(StringAlignmentCenter);
 
-    if (mSeconds < 2) 
-    {
-        graphics->DrawString(level.c_str(), -1, &font, PointF(500, 512), &red);
-    }
+    graphics->DrawString(splashText.c_str(), -1, &splash, PointF(width / 2, height / 2), &stringFormat, &pink);
 }
 
 /**
