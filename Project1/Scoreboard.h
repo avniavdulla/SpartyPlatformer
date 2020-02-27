@@ -31,6 +31,12 @@ public:
     void AddScore(int value) { mScore += value; }
 
     /**
+     * Gets the score
+     * \return Current score of the Game
+     */
+    int GetScore() { return mScore; }
+
+    /**
      * Sets Lose condition
      */
     void Lose() { mLose = true; }

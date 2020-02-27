@@ -111,6 +111,7 @@ void CGame::Load(int levelNum)
     Clear();
     mLevel.SetLevel(levelNum);
     mLevel.Install(this);
+    mScoreboard.Reset();
     mStart = mLevel.GetStart();
 }
 

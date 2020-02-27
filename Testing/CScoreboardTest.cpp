@@ -17,11 +17,28 @@ namespace Testing
 			::SetCurrentDirectory(g_dir);
 		}
 		
-		TEST_METHOD(TestCScordboardConstruct)
+		TEST_METHOD(TestCScoreboardConstruct)
 		{
 			CGame game;
 			CScoreboard board;
 		}
 
+		TEST_METHOD(TestCScoreboardReset)
+		{
+			CGame game;
+			game.Load(1);
+			// Assert scoreboard starts at 0
+			Assert::IsTrue(game.GetScoreboard()->GetScore() == 0);
+
+			game.GetScoreboard()->AddScore(300);
+
+			// Assert scoreboard has updated
+			Assert::IsTrue(game.GetScoreboard()->GetScore() == 300);
+
+			game.Load(1);
+
+			// Assert scoreboard resets on game load
+			Assert::IsTrue(game.GetScoreboard()->GetScore() == 0);
+		}
 	};
 }
