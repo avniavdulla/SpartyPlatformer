@@ -61,7 +61,7 @@ void CMoney::Draw(Gdiplus::Graphics* graphics, float scroll)
             Gdiplus::Font font(&fontFamily, 30, FontStyleBold);
 
             SolidBrush green(Color(79, 160, 66));
-            wstring valueLabel = L"$" + to_wstring(mValue);
+            wstring valueLabel = L"$" + to_wstring(int(mValue));
 
             graphics->DrawString(valueLabel.c_str(), -1, &font, 
                 PointF(float(GetX() - width / 2) + (float)scroll, float(GetY() - height / 2)), 
@@ -120,7 +120,7 @@ bool CMoney::CollisionTest(CItem* item)
              return false;
         }
 
-        GetGame()->GetScoreboard()->AddScore(mValue);
+        GetGame()->GetScoreboard()->AddScore(int(mValue));
         mCollected = true;
     }
 

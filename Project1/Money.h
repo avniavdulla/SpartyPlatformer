@@ -34,11 +34,11 @@ public:
 
     /** Set the value for this Money
     * \param value Value of the Money */
-    void SetValue(int value) { mValue = value; }
+    void SetValue(double value) { mValue = value; }
 
     /** Get the value for this Money
     * \returns Value of the Money */
-    int GetValue() { return mValue; }
+    int GetValue() { return int(mValue); }
 
     /** Accept a visitor
      * \param visitor The visitor we accept 
@@ -50,7 +50,7 @@ public:
 
 private:
     /// The value of the Money
-    int mValue = 100;
+    double mValue = 100.0;
 
     /// Is false as long as Money has not yet been collected
     bool mCollected = false;

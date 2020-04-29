@@ -41,7 +41,7 @@ public:
     /** Unsets the Checkpoint */
     void UnsetCheckpoint() { mSet = false; mFly = 0; mTextSize = 20; }
 
-public:
+private:
     /// True if checkpoint is the current spawn point
     bool mSet = false;
 

@@ -108,6 +108,9 @@ private:
     /// True if the player has lost the game
     bool mLose = false;
 
+    /// True if the player has completed the game
+    bool mComplete = false;
+
     /// An object that describes the current Level
     CLevel mLevel;
 

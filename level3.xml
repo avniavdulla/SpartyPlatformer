@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level width="8192" height="1024" start-y="800" start-x="150"> 
 <declarations>
+<background id="i001" image="backgroundColorDesert.png"/>
 <platform id="i005" left-image="platformIndustrial_059.png" mid-image="platformIndustrial_060.png" right-image="platformIndustrial_061.png"/>
 <wall id="i006" image="wall2.png"/>
 <money id="i008" image="money100.png" value="100"/>
@@ -9,13 +10,11 @@
 <villain id="i013" image="wisc.png"/>
 <door id="i011" image="door.png"/>
 <checkpoint id="i015" image="checkpoint.png"/>
-<background id="i001" image="backgroundColorDesert.png"/>
 <tuition-up id="i010" image="stanley.png"/>
 </declarations>
 
 <items>
 <background id="i001" x="-512" y="512"/>
-<background id="i001" x="0" y="512"/>
 <background id="i001" x="512" y="512"/>
 <background id="i001" x="1536" y="512"/>
 <background id="i001" x="2560" y="512"/>

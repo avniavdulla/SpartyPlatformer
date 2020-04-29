@@ -61,8 +61,8 @@ void CScoreboard::Draw(Gdiplus::Graphics* graphics, int width, int height)
     SolidBrush grey(Color(200, 200, 200));
     
 
-    graphics->DrawString(time.c_str(), -1, &font, PointF(100, 18), &grey); 
-    graphics->DrawString(score.c_str(), -1, &font, PointF(width - 260, 18), &grey);
+    graphics->DrawString(time.c_str(), -1, &font, PointF(60, 18), &grey); 
+    graphics->DrawString(score.c_str(), -1, &font, PointF(width - 360, 18), &grey);
 }
 
 /**

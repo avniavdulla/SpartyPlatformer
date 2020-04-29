@@ -77,7 +77,7 @@ void CCheckpoint::Draw(Gdiplus::Graphics* graphics, float scroll)
             wstring valueLabel = L"Checkpoint Set!";
 
             graphics->DrawString(valueLabel.c_str(), -1, &font,
-                PointF(GetX() + (float)scroll, GetY() - mFly),
+                PointF((float)GetX() + (float)scroll, (float)GetY() - mFly),
                 &stringFormat, &green);
         }
     }
@@ -95,8 +95,8 @@ void CCheckpoint::Update(double elapsed)
     {
         if (GetY() - mFly >= -OutOfBounds)
         {
-            mFly += Speed * elapsed;
-            mTextSize += TextGrow * elapsed;
+            mFly += float(Speed * elapsed);
+            mTextSize += float(TextGrow * elapsed);
         }
     }
 }
